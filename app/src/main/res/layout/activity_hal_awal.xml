@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".hal_awal">
+
+    <ImageView
+        android:layout_width="460dp"
+        android:layout_height="500dp"
+        android:background="@drawable/lego"
+        tools:layout_editor_absoluteX="-67dp"
+        tools:layout_editor_absoluteY="-7dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:src="@drawable/yodak"
+            android:layout_marginTop="220dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let's live healthy!"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/birutua"
+            android:layout_gravity="center"
+            android:layout_marginTop="250dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Easily track and maintain a healthy lifestyle\nwith foody"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:textColor="@color/birutua"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <View
+            android:layout_width="18dp"
+            android:layout_height="2dp"
+            android:background="@drawable/rounded_rectangle"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+
+        <Button
+            android:id="@+id/started"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:width="340dp"
+            android:height="65dp"
+            android:text="GET STARTED"
+            android:textSize="20dp"
+            android:textColor="@color/birucerah"
+            android:background="@drawable/button_birutua"
+            android:layout_marginTop="20dp"
+            android:onClick="startMainActivity"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
