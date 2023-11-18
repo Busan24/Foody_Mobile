@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="370dp"
+    android:layout_height="370dp"
+    android:background="@drawable/pp_hijau"
+    android:layout_gravity="center"
+    tools:context=".DialogSuccess">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:src="@drawable/scs"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berhasil Mencatat"
+            android:textSize="20dp"
+            android:textColor="@color/birutua"
+            android:layout_gravity="center"/>
+        
+        <Button
+            android:id="@+id/success_close"
+            android:layout_width="258dp"
+            android:layout_height="49dp"
+            android:background="@drawable/button_birutua"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/birucerah"
+            android:text="ok"
+            android:textSize="18dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

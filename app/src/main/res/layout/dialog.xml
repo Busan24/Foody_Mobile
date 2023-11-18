@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="140dp"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/pp_pink">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/birutua"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_birucerah"
+        android:id="@+id/btn_edit"
+        android:text="Edit"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_birutua"
+        android:textColor="@color/birucerah"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:id="@+id/btn_delete"
+        android:text="Delete"/>
+</LinearLayout>

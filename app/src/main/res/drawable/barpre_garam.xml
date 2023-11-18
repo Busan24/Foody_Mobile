@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/bg_prbar">
+        <shape
+            android:shape="rectangle">
+            <corners android:radius="20dp"/>
+            <solid android:color="@color/abupucetcerah"/>
+        </shape>
+    </item>
+
+    <item android:id="@+id/prbar_gula">
+        <clip>
+            <shape
+                android:shape="rectangle"
+                android:useLevel="false">
+                <corners android:radius="20dp"/>
+                <solid android:color="#33A14D"/>
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

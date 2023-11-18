@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/keterangan_bmi2"
+    android:layout_height="224dp"
+    android:background="@drawable/button_birucerah">
+
+    <ViewSwitcher
+        android:id="@+id/dialog_swcket_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bmiket1"
+                android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30.0 - 34.9"
+                    android:textSize="16dp"
+                    android:textColor="@color/birutua"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_marginTop="52dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="35.0 - 39.9"
+                    android:textSize="16dp"
+                    android:textColor="@color/birutua"/>
+
+                <TextView
+                    android:layout_marginTop="54dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="40.0 atau lebih"
+                    android:textSize="16dp"
+                    android:textColor="@color/birutua"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+
+                <Button
+                    android:layout_width="130dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/button_merahcerah"
+                    android:drawableStart="@drawable/titik_merah"
+                    android:paddingLeft="15dp"
+                    android:text="Obesitas I"
+                    android:textColor="#CD224C"
+                    android:textSize="14dp"
+                    android:textAllCaps="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:layout_marginLeft="3dp"/>
+
+                <Button
+                    android:layout_width="130dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/button_merahcerah"
+                    android:drawableStart="@drawable/titik_merah"
+                    android:paddingLeft="15dp"
+                    android:text="Obesitas II"
+                    android:textColor="#CD224C"
+                    android:textSize="14dp"
+                    android:textAllCaps="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:layout_marginTop="39dp"
+                    android:layout_marginLeft="3dp"/>
+
+                <Button
+                    android:layout_width="130dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/button_merahcerah"
+                    android:drawableStart="@drawable/titik_merah"
+                    android:paddingLeft="15dp"
+                    android:text="Obesitas III"
+                    android:textColor="#CD224C"
+                    android:textSize="14dp"
+                    android:textAllCaps="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:layout_marginTop="39dp"
+                    android:layout_marginLeft="3dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/sd_ket_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See Details"
+            android:textSize="12dp"
+            android:textColor="@color/birutua"
+            android:layout_alignParentEnd="true"
+            android:paddingRight="30dp"
+            android:layout_marginTop="5dp"/>
+
+        <ImageView
+            android:id="@+id/as_bmi_3"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/arrow_kanan"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="13dp"/>
+    </RelativeLayout>
+    </ViewSwitcher>
+</LinearLayout>

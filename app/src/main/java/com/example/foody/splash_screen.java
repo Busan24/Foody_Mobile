@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.content.SharedPreferences;
+
 
 public class splash_screen extends AppCompatActivity {
 
@@ -16,9 +18,19 @@ public class splash_screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(splash_screen.this,hal_awal.class));
+                // Cek status login
+                if (isLoggedIn()) {
+                    startActivity(new Intent(splash_screen.this, HomeFoodyActivity.class));
+                } else {
+                    startActivity(new Intent(splash_screen.this, hal_awal.class));
+                }
                 finish();
             }
-        },3000);
+        }, 3000);
+    }
+
+    private boolean isLoggedIn() {
+        SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("is_logged_in", false);
     }
 }

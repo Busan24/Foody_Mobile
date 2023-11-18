@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="370dp"
+    android:layout_height="220dp"
+    android:background="@color/white"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apakah Anda Yakin?"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/birutua"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anda Tidak Bisa Mengembalikan data\nsetelah dihapus"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textColor="@color/birutua"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="5dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp">
+            <Button
+                android:id="@+id/hapus_catatanku"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:background="@drawable/button_birutua"
+                android:text="Hapus"
+                android:textColor="@color/birucerah"
+                android:textAllCaps="false"
+                android:textSize="16dp"/>
+            <Button
+                android:id="@+id/batal_hapus"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/pp_pink"
+                android:text="Batal"
+                android:textColor="@color/birutua"
+                android:textAllCaps="false"
+                android:textSize="16dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

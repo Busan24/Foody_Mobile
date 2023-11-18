@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    tools:context=".DialogRekommakanan"
+    android:background="@drawable/rekom_makanan"
+    android:layout_gravity="bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/oval_rekommakanan"/>
+
+        <TextView
+            android:id="@+id/nm_rekom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grilled Chicken Breast"
+            android:textColor="@color/birutua"
+            android:textSize="18dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"/>
+
+        <ImageView
+            android:id="@+id/img_rekom"
+            android:layout_width="250dp"
+            android:layout_height="210dp"
+            android:src="@drawable/makanan1"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp">
+            <TextView
+                android:id="@+id/harga_rekom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 18.000"
+                android:textColor="@color/birutua"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/desc_rekom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum dolor sit amet consectetur. Aliquam vitae dictum erat ut vel auctor magna imperdiet. Integer et nunc facilisis viverra aliquam suspendisse tortor tortor augue. Sem nisl mollis pulvinar nulla adipiscing adipiscing interdum."
+                android:textSize="14dp"
+                android:textColor="@color/abupucet"
+                android:layout_marginTop="10dp"/>
+
+            <Button
+                android:id="@+id/btn_rekom"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/button_birutua"
+                android:layout_marginTop="20dp"
+                android:text="Visit The Store"
+                android:textColor="@color/birucerah"
+                android:textAllCaps="false"
+                android:textSize="16dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

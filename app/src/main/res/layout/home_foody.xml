@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,16 +10,915 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:paddingBottom="10dp">
+        <ImageView
+            android:layout_width="89dp"
+            android:layout_height="38dp"
+            android:src="@drawable/yodak"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HOME PAGE"
-            android:textColor="@color/birutua"
-            android:textSize="30dp"
-            android:layout_gravity="center"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <ImageView
+                android:id="@+id/profilhome"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@drawable/profil_user"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="18dp"/>
+            
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/elipse_profil_home"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="22dp"
+                android:layout_marginTop="15dp"/>
+
+        </RelativeLayout>
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Selamat Datang, "
+                        android:textSize="18dp"
+                        android:textColor="@color/birutua"/>
+                    <TextView
+                        android:id="@+id/username_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yoon Jung"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"/>
+                </LinearLayout>
+
+                <ViewFlipper
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:flipInterval="2000"
+                    android:autoStart="true"
+                    android:inAnimation="@android:anim/fade_in"
+                    android:outAnimation="@android:anim/fade_out">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="350dp"
+                        android:layout_height="188dp"
+                        android:src="@drawable/pagi_home"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="340dp"
+                        android:layout_height="188dp"
+                        android:src="@drawable/siang_home"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="340dp"
+                        android:layout_height="188dp"
+                        android:src="@drawable/sore_home"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="340dp"
+                        android:layout_height="188dp"
+                        android:src="@drawable/malam_home"/>
+                </ViewFlipper>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="S"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="S"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="40dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="R"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="40dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="K"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="40dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="J"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="40dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="S"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="40dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="M"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="40dp"/>
+                </LinearLayout>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp">
+                    
+                    <Button
+                        android:id="@+id/btn_hari_senen"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/btn_date_home"
+                        android:text="01"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginBottom="5dp"/>
+
+                    <Button
+                        android:id="@+id/btn_hari_selasa"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/btn_bulat_putih"
+                        android:text="02"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"/>
+
+                    <Button
+                        android:id="@+id/btn_hari_rabu"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/btn_bulat_putih"
+                        android:text="03"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="15dp"/>
+
+                    <Button
+                        android:id="@+id/btn_hari_kamis"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/btn_bulat_putih"
+                        android:text="04"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="15dp"/>
+
+                    <Button
+                        android:id="@+id/btn_hari_jumat"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/btn_bulat_putih"
+                        android:text="05"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="15dp"/>
+
+                    <Button
+                        android:id="@+id/btn_hari_sabtu"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/btn_bulat_putih"
+                        android:text="02"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="15dp"/>
+
+                    <Button
+                        android:id="@+id/btn_hari_minggu"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/btn_bulat_putih"
+                        android:text="07"
+                        android:textSize="16dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginLeft="15dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_dh"
+                    android:layout_width="match_parent"
+                    android:layout_height="290dp"
+                    android:orientation="horizontal">
+
+                    <ViewSwitcher
+                        android:id="@+id/switcher_dharian"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/dh_senin"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="280dp"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:background="@drawable/pp_putih">-->
+
+<!--                            <RelativeLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center">-->
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/bar_home"-->
+<!--                                    android:layout_width="144dp"-->
+<!--                                    android:layout_height="144dp"-->
+<!--                                    android:progress="0"-->
+<!--                                    android:max="100"-->
+<!--                                    android:layout_marginLeft="10dp"/>-->
+<!--                                <TextView-->
+<!--                                    android:id="@+id/total_gram"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="1101"-->
+<!--                                    android:textSize="20dp"-->
+<!--                                    android:textColor="@color/birutua"-->
+<!--                                    android:layout_centerInParent="true"-->
+<!--                                    android:paddingLeft="10dp"-->
+<!--                                    android:paddingBottom="10dp"/>-->
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="gr/day"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="@color/abupucet"-->
+<!--                                    android:layout_centerInParent="true"-->
+<!--                                    android:paddingTop="30dp"-->
+<!--                                    android:paddingLeft="10dp"/>-->
+<!--                            </RelativeLayout>-->
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="139dp"-->
+<!--                                android:layout_height="245dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginLeft="20dp"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal">-->
+
+<!--                                    <RelativeLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content">-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/text_carbo"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="Karbohidrat"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/birutua"-->
+<!--                                            android:layout_marginTop="5dp"-->
+<!--                                            android:layout_alignParentStart="true"/>-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/hasil_carbo_persen"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="50"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:layout_marginTop="5dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"-->
+<!--                                            android:layout_marginRight="8dp"/>-->
+<!--                                        <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="%"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:layout_marginTop="5dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"/>-->
+<!--                                    </RelativeLayout>-->
+<!--                                </LinearLayout>-->
+
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/bar_carbo"-->
+<!--                                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+<!--                                    android:progress="0"-->
+<!--                                    android:max="100"-->
+<!--                                    android:progressDrawable="@drawable/barpre_carbo"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="10dp"-->
+<!--                                    android:layout_marginTop="3dp"/>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="3dp">-->
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/hasil_carbo"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="163"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="/"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="190"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="5dp">-->
+<!--                                    <RelativeLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content">-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/text_protein"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="Protein"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/birutua"-->
+<!--                                            android:layout_alignParentStart="true"/>-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/hasil_protein_persen"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="75"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"-->
+<!--                                            android:layout_marginRight="8dp"/>-->
+<!--                                        <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="%"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"/>-->
+<!--                                    </RelativeLayout>-->
+<!--                                </LinearLayout>-->
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/bar_protein"-->
+<!--                                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+<!--                                    android:progress="0"-->
+<!--                                    android:max="100"-->
+<!--                                    android:progressDrawable="@drawable/barpre_protein"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="10dp"-->
+<!--                                    android:layout_marginTop="3dp"/>-->
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="3dp">-->
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/hasil_protein"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="163"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="/"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="190"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="5dp">-->
+<!--                                    <RelativeLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content">-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/text_gula"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="Gula"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/birutua"-->
+<!--                                            android:layout_alignParentStart="true"/>-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/hasil_gula_persen"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="25"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"-->
+<!--                                            android:layout_marginRight="8dp"/>-->
+<!--                                        <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="%"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"/>-->
+<!--                                    </RelativeLayout>-->
+<!--                                </LinearLayout>-->
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/bar_gula"-->
+<!--                                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+<!--                                    android:progress="0"-->
+<!--                                    android:max="100"-->
+<!--                                    android:progressDrawable="@drawable/barpre_gula"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="10dp"-->
+<!--                                    android:layout_marginTop="3dp"/>-->
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="3dp">-->
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/hasil_gula"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="163"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="/"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="190"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="5dp">-->
+<!--                                    <RelativeLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content">-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/text_lemak"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="Lemak"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/birutua"-->
+<!--                                            android:layout_alignParentStart="true"/>-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/hasil_lemak_persen"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="60"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"-->
+<!--                                            android:layout_marginRight="8dp"/>-->
+<!--                                        <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="%"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"/>-->
+<!--                                    </RelativeLayout>-->
+<!--                                </LinearLayout>-->
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/bar_lemak"-->
+<!--                                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+<!--                                    android:progress="0"-->
+<!--                                    android:max="100"-->
+<!--                                    android:progressDrawable="@drawable/barpre_gula"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="10dp"-->
+<!--                                    android:layout_marginTop="3dp"/>-->
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="3dp">-->
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/hasil_lemak"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="163"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="/"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="190"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="5dp">-->
+<!--                                    <RelativeLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content">-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/text_garam"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="Garam"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/birutua"-->
+<!--                                            android:layout_alignParentStart="true"/>-->
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/hasil_garam_persen"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="60"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"-->
+<!--                                            android:layout_marginRight="8dp"/>-->
+<!--                                        <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="%"-->
+<!--                                            android:textSize="10dp"-->
+<!--                                            android:textColor="@color/abupucet"-->
+<!--                                            android:layout_alignParentEnd="true"/>-->
+<!--                                    </RelativeLayout>-->
+<!--                                </LinearLayout>-->
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/bar_garam"-->
+<!--                                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+<!--                                    android:progress="0"-->
+<!--                                    android:max="100"-->
+<!--                                    android:progressDrawable="@drawable/barpre_garam"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="10dp"-->
+<!--                                    android:layout_marginTop="3dp"/>-->
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal"-->
+<!--                                    android:layout_marginTop="3dp">-->
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/hasil_garam"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="163"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="/"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="190"-->
+<!--                                        android:textSize="10dp"-->
+<!--                                        android:textColor="@color/birutua"/>-->
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+<!--                    </LinearLayout>-->
+                        <include
+                            android:id="@+id/pindah_harian"
+                            layout="@layout/activity_switch_harian"
+                            android:visibility="gone" />
+
+                    </ViewSwitcher>
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="124dp"
+                        android:layout_height="184dp"
+                        android:layout_margin="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp"
+                        app:cardBackgroundColor="@color/pink">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Grilled Chicken Breast"
+                                android:textColor="@color/birutua"
+                                android:textSize="12dp"
+                                android:fontFamily="sans-serif" />
+
+                            <ImageView
+                                android:layout_width="120dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/grilled_chicken_breast"/>
+                            
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/see_details"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="See Details"
+                                    android:textColor="@color/birutua"
+                                    android:textSize="12dp"
+                                    android:layout_marginLeft="15dp"/>
+
+                                <ImageView
+                                    android:id="@+id/arrow_rekom"
+                                    android:layout_width="12dp"
+                                    android:layout_height="6dp"
+                                    android:background="@drawable/arrow_kanan"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginLeft="5dp"/>
+                            </LinearLayout>
+                            
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="124dp"
+                        android:layout_height="184dp"
+                        android:layout_margin="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp"
+                        app:cardBackgroundColor="@color/birucerah">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Grilled Chicken Breast"
+                                android:textColor="@color/birutua"
+                                android:textSize="12dp"
+                                android:fontFamily="sans-serif" />
+
+                            <ImageView
+                                android:layout_width="120dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/grilled_chicken_breast"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="See Details"
+                                    android:textColor="@color/birutua"
+                                    android:textSize="12dp"
+                                    android:layout_marginLeft="15dp"/>
+
+                                <View
+                                    android:layout_width="12dp"
+                                    android:layout_height="6dp"
+                                    android:background="@drawable/arrow_kanan"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginLeft="5dp"/>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="124dp"
+                        android:layout_height="184dp"
+                        android:layout_margin="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp"
+                        app:cardBackgroundColor="@color/pink">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Grilled Chicken Breast"
+                                android:textColor="@color/birutua"
+                                android:textSize="12dp"
+                                android:fontFamily="sans-serif" />
+
+                            <ImageView
+                                android:layout_width="120dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/grilled_chicken_breast"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="See Details"
+                                    android:textColor="@color/birutua"
+                                    android:textSize="12dp"
+                                    android:layout_marginLeft="15dp"/>
+
+                                <View
+                                    android:layout_width="12dp"
+                                    android:layout_height="6dp"
+                                    android:background="@drawable/arrow_kanan"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginLeft="5dp"/>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="124dp"
+                        android:layout_height="184dp"
+                        android:layout_margin="15dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp"
+                        app:cardBackgroundColor="@color/birucerah">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Grilled Chicken Breast"
+                                android:textColor="@color/birutua"
+                                android:textSize="12dp"
+                                android:fontFamily="sans-serif" />
+
+                            <ImageView
+                                android:layout_width="120dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/grilled_chicken_breast"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="See Details"
+                                    android:textColor="@color/birutua"
+                                    android:textSize="12dp"
+                                    android:layout_marginLeft="15dp"/>
+
+                                <View
+                                    android:layout_width="12dp"
+                                    android:layout_height="6dp"
+                                    android:background="@drawable/arrow_kanan"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginLeft="5dp"/>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -31,5 +930,6 @@
         app:itemRippleColor="@android:color/transparent"
         app:labelVisibilityMode="unlabeled"
         app:itemIconTint="@color/birutua" />
+    </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/pp_ot_pink" android:level="0" />
+    <item android:drawable="@drawable/pp_ot_birucerah" android:level="10000" />
+</layer-list>

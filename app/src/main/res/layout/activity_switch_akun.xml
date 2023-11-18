@@ -100,7 +100,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/input_abupucet"
                 android:layout_marginTop="10dp"
-                android:text="1999-12-19"
+                android:text=""
                 android:textSize="16dp"
                 android:textColor="@color/birutua"
                 android:paddingLeft="15dp"
