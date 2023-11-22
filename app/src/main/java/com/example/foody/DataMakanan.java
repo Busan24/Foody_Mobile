@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -246,5 +247,10 @@ public class DataMakanan extends AppCompatActivity {
         String authToken = sharedPreferences.getString("token", "");
         Log.d("AuthToken", "Token: " + authToken); // Tambahkan log ini
         return authToken;
+    }
+
+    public void kembaliKeMakanan(View view) {
+        Intent intent = new Intent(this, FiturMakanan.class);
+        startActivity(intent);
     }
 }

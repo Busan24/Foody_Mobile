@@ -32,10 +32,15 @@
         android:layout_height="wrap_content">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         android:scrollbars="none">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,20 +60,13 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="224dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/button_birucerah">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-<!--                            <ImageView-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:src="@drawable/grafik_bmi"/>-->
-
-                        </LinearLayout>
-
+                            <WebView
+                                android:id="@+id/webView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
                     </LinearLayout>
             </LinearLayout>
                 <TextView
@@ -80,7 +78,7 @@
                     android:textColor="@color/birutua"
                     android:layout_alignParentEnd="true"
                     android:paddingRight="30dp"
-                    android:layout_marginTop="25dp"/>
+                    android:layout_marginTop="4dp"/>
 
                 <ImageView
                     android:id="@+id/as_bmi"
@@ -88,7 +86,7 @@
                     android:layout_height="14dp"
                     android:src="@drawable/arrow_kanan"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="6dp"
                     android:layout_marginRight="13dp"/>
             </RelativeLayout>
 
@@ -97,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="20dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -132,9 +130,11 @@
                     android:layout_height="46dp"
                     android:background="@drawable/button_birucerah"
                     android:hint="Isi Tinggi Badan"
-                    android:textSize="12dp"
-                    android:textColor="@color/abupucet"
-                    android:paddingLeft="10dp"/>
+                    android:textSize="14dp"
+                    android:text=""
+                    android:textColor="@color/birutua"
+                    android:paddingLeft="10dp"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/isi_bb"
@@ -142,19 +142,21 @@
                     android:layout_height="46dp"
                     android:background="@drawable/button_birucerah"
                     android:hint="Isi Berat Badan"
-                    android:textSize="12dp"
-                    android:textColor="@color/abupucet"
+                    android:textSize="14dp"
+                    android:textColor="@color/birutua"
                     android:paddingLeft="10dp"
-                    android:layout_marginLeft="37dp"/>
+                    android:layout_marginLeft="37dp"
+                    android:inputType="number"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="15dp">
                 
                 <Button
+                    android:id="@+id/btn_reset"
                     android:layout_width="150dp"
                     android:layout_height="46dp"
                     android:background="@drawable/pp_pink"
@@ -164,6 +166,7 @@
                     android:textColor="@color/birutua"/>
 
                 <Button
+                    android:id="@+id/btn_count"
                     android:layout_width="150dp"
                     android:layout_height="46dp"
                     android:background="@drawable/button_birutua"
@@ -174,9 +177,54 @@
                     android:layout_marginLeft="37dp"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/btn_rc_hs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
 
+                <Button
+                    android:id="@+id/btn_recent_bmi"
+                    android:layout_width="100dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/button_birutua"
+                    android:text="  Recent"
+                    android:textSize="14dp"
+                    android:textColor="@color/birucerah"
+                    android:drawableStart="@drawable/icon_recent"
+                    android:paddingLeft="15dp"
+                    android:textAllCaps="false"
+                    android:gravity="start|center_vertical"/>
+
+                <Button
+                    android:id="@+id/btn_hs_bmi"
+                    android:layout_width="100dp"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_birucerah"
+                    android:text="  History"
+                    android:textSize="14dp"
+                    android:textColor="@color/birutua"
+                    android:drawableStart="@drawable/icon_history"
+                    android:paddingLeft="10dp"
+                    android:textAllCaps="false"
+                    android:gravity="start|center_vertical"
+                    android:onClick="HalamanHistoryBmi"/>
+
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/rvbmi_recent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"/>
         </LinearLayout>
-
+        </RelativeLayout>
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

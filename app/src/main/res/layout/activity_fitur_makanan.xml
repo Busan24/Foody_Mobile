@@ -33,6 +33,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
         >
 
         <RelativeLayout
@@ -197,8 +198,22 @@
                 </LinearLayout>
 
             </HorizontalScrollView>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@color/birucerah"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pencarian Terkait"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="25dp"
+                    android:textSize="14dp"
+                    android:textColor="@color/birutua"/>
+            </RelativeLayout>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="20dp"
                     android:id="@+id/rvmakanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

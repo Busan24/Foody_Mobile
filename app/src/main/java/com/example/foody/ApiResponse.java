@@ -4,6 +4,8 @@ public class ApiResponse<T> {
     private String status;
     private T data;
 
+    private String message;
+
     public String getStatus() {
         return status;
     }
@@ -18,5 +20,13 @@ public class ApiResponse<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

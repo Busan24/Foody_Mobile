@@ -3,6 +3,7 @@ package com.example.foody;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,18 @@ import java.util.List;
 public class CatatanMakananAdapter extends RecyclerView.Adapter<CatatanMakananAdapter.ViewHolder> {
 
     private List<CatatanMakananModel> catatanMakananList;
+    private OnDeleteClickListener onDeleteClickListener;
+
+    // Interface untuk mendengarkan klik hapus
+    public interface OnDeleteClickListener {
+        void onDeleteClick(int position, String catatanId);
+    }
+
+
+    // Setter untuk listener
+    public void setOnDeleteClickListener(OnDeleteClickListener listener) {
+        this.onDeleteClickListener = listener;
+    }
 
     public CatatanMakananAdapter(List<CatatanMakananModel> catatanMakananList) {
         this.catatanMakananList = catatanMakananList;
@@ -40,6 +53,15 @@ public class CatatanMakananAdapter extends RecyclerView.Adapter<CatatanMakananAd
             // Jika posisi ganjil, gunakan background pp_ot_birucerah
             holder.viewSeling.setBackgroundResource(R.drawable.pp_ot_birucerah);
         }
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onDeleteClickListener != null) {
+                    onDeleteClickListener.onDeleteClick(holder.getAdapterPosition(), catatanMakanan.getId());
+                }
+            }
+        });
     }
 
 
@@ -53,6 +75,7 @@ public class CatatanMakananAdapter extends RecyclerView.Adapter<CatatanMakananAd
         private TextView txtWaktu;
         private TextView txtJumlahPorsi;
 
+        public ImageView btnDelete;
         public View viewSeling;
 
         private TextView catatankuKarbo, catatankuProterin, cacatankuGula, catatankuLemak, catatankuGaram, namaMakananDaily;
@@ -69,6 +92,8 @@ public class CatatanMakananAdapter extends RecyclerView.Adapter<CatatanMakananAd
             cacatankuGula = itemView.findViewById(R.id.catatanku_gula);
 
             viewSeling = itemView.findViewById(R.id.view_seling);
+
+            btnDelete = itemView.findViewById(R.id.delete_catatanku);
         }
 
         public void bind(CatatanMakananModel catatanMakanan) {

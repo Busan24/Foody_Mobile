@@ -82,7 +82,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Morning"
+                                android:text="Pagi"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
                                 android:fontFamily="sans-serif"
@@ -91,7 +91,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="05.00 - 10.00"
+                                android:text="00.00 - 09.00"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
                                 android:fontFamily="sans-serif"
@@ -132,7 +132,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Afternoon"
+                                android:text="Siang"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
                                 android:fontFamily="sans-serif"
@@ -141,7 +141,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="10.00 - 15.00"
+                                android:text="10.00 - 14.00"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
                                 android:fontFamily="sans-serif"
@@ -182,7 +182,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Evening"
+                                android:text="Sore"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
                                 android:fontFamily="sans-serif"
@@ -191,7 +191,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="15.00 - 20.00"
+                                android:text="15.00 - 18.00"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
                                 android:fontFamily="sans-serif"
@@ -232,7 +232,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Night"
+                                android:text="Malam"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
                                 android:fontFamily="sans-serif"
@@ -241,7 +241,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="20.00 - 00.00"
+                                android:text="19.00 - 23.00"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
                                 android:fontFamily="sans-serif"

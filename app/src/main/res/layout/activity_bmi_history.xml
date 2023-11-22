@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BmiHistory"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:paddingTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvbmi_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/white">
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/pp_birucerah"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back_arrow"
+            android:paddingLeft="12dp"
+            android:id="@+id/back_hal_catatanku"
+            android:onClick="kembaliKalkulatorBmi"
+            android:layout_gravity="start|top"/>
+
+
+        <TextView
+            android:id="@+id/text_hs_ctt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMI HISTORY"
+            android:textSize="20dp"
+            android:textColor="@color/birutua"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="start|top"/>
+    </RelativeLayout>
+
+</RelativeLayout>

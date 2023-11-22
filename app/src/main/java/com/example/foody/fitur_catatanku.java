@@ -1,11 +1,13 @@
 package com.example.foody;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -244,6 +246,8 @@ public class fitur_catatanku extends AppCompatActivity {
         myDialog.show();
     }
 
+
+
     // ...
 
     private void simpanCatatanMakanan(CatatanMakananModel catatanMakanan) {
@@ -288,17 +292,12 @@ public class fitur_catatanku extends AppCompatActivity {
                     }, DELAY_MILLIS);
 
                 } else {
+                    showFailedDialog();
+                    loadingDialog.dismiss();
+                    myDialog.dismiss();
                     // Gagal disimpan
                     Toast.makeText(fitur_catatanku.this, "Gagal Menyimpan Catatan Makanan", Toast.LENGTH_SHORT).show();
                 }
-
-                // Menutup dialog dengan penundaan
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadingDialog.dismiss();
-                    }
-                }, DELAY_MILLIS);
             }
 
             @Override
@@ -308,6 +307,10 @@ public class fitur_catatanku extends AppCompatActivity {
                 // Gagal disimpan
                 Toast.makeText(fitur_catatanku.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
                 Log.e("RetrofitError", "Error: " + t.getMessage(), t);
+
+                showFailedDialog();
+                loadingDialog.dismiss();
+                myDialog.dismiss();
             }
         });
     }
@@ -356,6 +359,13 @@ public class fitur_catatanku extends AppCompatActivity {
 
         // Tambahkan baris berikut untuk memastikan adapter diupdate
         adapter.notifyDataSetChanged();
+
+        adapter.setOnDeleteClickListener(new CatatanMakananAdapter.OnDeleteClickListener() {
+            @Override
+            public void onDeleteClick(int position, String catatanId) {
+                showDeleteConfirmationDialog(catatanId);
+            }
+        });
     }
 
 
@@ -411,4 +421,82 @@ public class fitur_catatanku extends AppCompatActivity {
         // Tampilkan dialog berhasil
         successDialog.show();
     }
+
+    private void showFailedDialog() {
+        Dialog failedDialog = new Dialog(fitur_catatanku.this);
+        failedDialog.setContentView(R.layout.activity_dialog_gagal);
+
+        Button failedCloseButton = failedDialog.findViewById(R.id.gagal_close);
+        failedCloseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tutup dialog gagal
+                failedDialog.dismiss();
+            }
+        });
+
+        // Tampilkan dialog gagal
+        failedDialog.show();
+    }
+
+    private void showDeleteConfirmationDialog(String catatanId) {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_dialog_hapus);
+
+        // ... (inisialisasi elemen-elemen dalam dialog)
+
+        // Ketika tombol "Hapus" pada dialog diklik
+        Button hapusButton = dialog.findViewById(R.id.hapus_catatanku);
+        hapusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Panggil metode untuk melakukan penghapusan dari server
+                hapusCatatan(catatanId);
+                dialog.dismiss();
+            }
+        });
+
+        // Ketika tombol "Batal" pada dialog diklik
+        Button batalButton = dialog.findViewById(R.id.batal_hapus);
+        batalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+
+    private void hapusCatatan(String catatanId) {
+        // Panggil API untuk menghapus catatan
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        String authToken = "Bearer " + getAuthToken();
+
+        Call<ApiResponse<Void>> call = apiService.hapusCatatanMakanan(authToken, catatanId);
+        call.enqueue(new Callback<ApiResponse<Void>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<Void>> call, Response<ApiResponse<Void>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // Berhasil dihapus
+                    Toast.makeText(fitur_catatanku.this, "Catatan Makanan Berhasil Dihapus", Toast.LENGTH_SHORT).show();
+                    getCatatanMakananDaily(); // Refresh tampilan setelah penghapusan
+                } else {
+                    // Gagal dihapus
+                    Toast.makeText(fitur_catatanku.this, "Gagal Menghapus Catatan Makanan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<Void>> call, Throwable t) {
+                // Handle kesalahan jaringan
+                Toast.makeText(fitur_catatanku.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                Log.e("RetrofitError", "Error: " + t.getMessage(), t);
+            }
+        });
+    }
+
 }

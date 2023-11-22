@@ -96,7 +96,8 @@
                 android:paddingLeft="10dp"
                 android:hint="jumlah"
                 android:layout_marginTop="5dp"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:inputType="number"/>
         </LinearLayout>
 
         <Button

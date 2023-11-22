@@ -123,7 +123,7 @@ public class FiturProfil extends AppCompatActivity {
                     genderUserTextView.setText(userData.getJenis_kelamin());
                     umurUserTextView.setText(String.valueOf(userData.getUsia()));
                     // Sesuaikan dengan atribut UserData dan SummaryData yang lain
-                    meanBmiTextView.setText(String.valueOf(summaryData.getRata_rata_bmi()));
+                    meanBmiTextView.setText(decimalFormat.format(summaryData.getRata_rata_bmi()));;
                     beratTextView.setText(String.valueOf(userData.getBerat_badan()));
                     tinggiTextView.setText(String.valueOf(userData.getTinggi_badan()));
 
@@ -145,8 +145,6 @@ public class FiturProfil extends AppCompatActivity {
                     usernameAkun.setText(userData.getUsername());
                     dateAkun.setText(userData.getTanggla_lahir());
                     genderAkun.setText(userData.getJenis_kelamin());
-
-
 
                     // ... (sisanya sesuaikan dengan atribut UserData dan SummaryData)
                 } else {
@@ -299,6 +297,14 @@ public class FiturProfil extends AppCompatActivity {
                 myDialog.dismiss();
             }
         });
+
+        Button batalButton = myDialog.findViewById(R.id.btn_close);
+        batalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
     }
 
     private void getProfileDetails(String authToken) {
@@ -442,19 +448,23 @@ public class FiturProfil extends AppCompatActivity {
                     UserData userData = userProfile.getData();
                     SummaryData summaryData = userProfile.getSummary();
 
-                    // Update tampilan profil dengan data baru
+                    DecimalFormat decimalFormat = new DecimalFormat("#.#");
+
+                    // Tampilkan data ke TextView
                     namaUserTextView.setText(userData.getName());
                     genderUserTextView.setText(userData.getJenis_kelamin());
                     umurUserTextView.setText(String.valueOf(userData.getUsia()));
                     // Sesuaikan dengan atribut UserData dan SummaryData yang lain
-                    meanBmiTextView.setText(String.valueOf(summaryData.getRata_rata_bmi()));
+                    meanBmiTextView.setText(decimalFormat.format(summaryData.getRata_rata_bmi()));;
                     beratTextView.setText(String.valueOf(userData.getBerat_badan()));
                     tinggiTextView.setText(String.valueOf(userData.getTinggi_badan()));
-                    lemakTextView.setText(String.valueOf(summaryData.getTotal_lemak()));
-                    karbohidratTextView.setText(String.valueOf(summaryData.getTotal_karbohidrat()));
-                    proteinTextView.setText(String.valueOf(summaryData.getTotal_protein()));
-                    garamTextView.setText(String.valueOf(summaryData.getTotal_garam()));
-                    gulaTextView.setText(String.valueOf(summaryData.getTotal_gula()));
+
+                    lemakTextView.setText(decimalFormat.format(summaryData.getTotal_lemak()));
+                    karbohidratTextView.setText(decimalFormat.format(summaryData.getTotal_karbohidrat()));
+                    proteinTextView.setText(decimalFormat.format(summaryData.getTotal_protein()));
+                    garamTextView.setText(decimalFormat.format(summaryData.getTotal_garam()));
+                    gulaTextView.setText(decimalFormat.format(summaryData.getTotal_gula()));
+
                     batasKarboTextView.setText(String.valueOf(summaryData.getBatas_karbohidrat()));
                     batasProteinTextView.setText(String.valueOf(summaryData.getBatas_protein()));
                     batasLemakTextView.setText(String.valueOf(summaryData.getBatas_lemak()));

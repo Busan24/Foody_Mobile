@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFoodyActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +25,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            
+
             <ImageView
                 android:id="@+id/profilhome"
                 android:layout_width="44dp"
@@ -33,7 +34,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="18dp"/>
-            
+
             <ImageView
                 android:layout_width="22dp"
                 android:layout_height="22dp"
@@ -81,7 +82,7 @@
                         android:id="@+id/username_home"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Yoon Jung"
+                        android:text=""
                         android:textSize="16dp"
                         android:textColor="@color/birutua"/>
                 </LinearLayout>
@@ -673,16 +674,32 @@
                     </ViewSwitcher>
                 </LinearLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/viewall_produk"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textColor="@color/birutua"
+                        android:textSize="14dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="5dp"/>
+                </RelativeLayout>
+
                 <HorizontalScrollView
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
-
+                    android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
                     <androidx.cardview.widget.CardView
                         android:layout_width="124dp"
                         android:layout_height="184dp"
@@ -907,6 +924,7 @@
 
 
                     </LinearLayout>
+                </LinearLayout>
                 </HorizontalScrollView>
 
                 <View

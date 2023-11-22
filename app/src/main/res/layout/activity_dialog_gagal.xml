@@ -3,19 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="370dp"
-    android:layout_height="390dp"
-    android:background="@drawable/pp_hijau"
-    android:layout_gravity="center"
-    tools:context=".DialogSuccess">
+    android:layout_height="340dp"
+    android:background="@color/merahcerah"
+    android:layout_gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <pl.droidsonroids.gif.GifImageView
+        <ImageView
             android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:src="@drawable/scs"
+            android:layout_height="200dp"
+            android:src="@drawable/error_baru"
             android:layout_gravity="center"/>
         <TextView
             android:layout_width="wrap_content"

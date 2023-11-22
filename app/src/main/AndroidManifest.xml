@@ -17,6 +17,36 @@
         android:theme="@style/Theme.Foody"
         tools:targetApi="31">
         <activity
+            android:name=".DataProduk"
+            android:exported="false" />
+        <activity
+            android:name=".RekomendasiProduk"
+            android:exported="false" />
+        <activity
+            android:name=".DataHistory"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryCatatankuPerhari"
+            android:exported="false" />
+        <activity
+            android:name=".BmiHistoryPerhari"
+            android:exported="false" />
+        <activity
+            android:name=".BmiHistory"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryDataBmi"
+            android:exported="false" />
+        <activity
+            android:name=".DialogHapus"
+            android:exported="false" />
+        <activity
+            android:name=".DataBmi"
+            android:exported="false" />
+        <activity
+            android:name=".NotifBmi"
+            android:exported="false" />
+        <activity
             android:name=".TanggalHistory"
             android:exported="false" />
         <activity
@@ -51,7 +81,8 @@
             android:exported="false" />
         <activity
             android:name=".KalkulatorBmi"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".TombolNav"
             android:exported="false" />

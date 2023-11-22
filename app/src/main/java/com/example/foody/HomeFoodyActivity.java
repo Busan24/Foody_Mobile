@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,15 +16,25 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.text.DecimalFormat;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class HomeFoodyActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     ViewSwitcher switcher;
+    private TextView namaAkun;
+    private String authToken;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +46,49 @@ public class HomeFoodyActivity extends AppCompatActivity {
 
         ImageView profilHome = findViewById(R.id.profilhome);
 
+        namaAkun = findViewById(R.id.username_home);
+
+        authToken = getAuthToken();
+
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+
+        // Melakukan permintaan profil pengguna dengan menyertakan token
+        Call<UserProfile> call = apiService.getUserProfile("Bearer " + authToken);
+        call.enqueue(new Callback<UserProfile>() {
+            @Override
+            public void onResponse(Call<UserProfile> call, Response<UserProfile> response) {
+                if (response.isSuccessful()) {
+                    UserProfile userProfile = response.body();
+                    UserData userData = userProfile.getData();
+
+                    namaAkun.setText(userData.getName());
+                } else {
+                    // Tangani kesalahan pada respons
+                    Toast.makeText(HomeFoodyActivity.this, "Gagal mengambil profil. Coba lagi.", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<UserProfile> call, Throwable t) {
+                // Tangani kesalahan pada permintaan
+                Toast.makeText(HomeFoodyActivity.this, "Gagal mengambil profil. Periksa koneksi internet Anda.", Toast.LENGTH_SHORT).show();
+                Log.e("Get Profile Error", "Gagal mengambil profil", t);
+            }
+        });
+
         profilHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeFoodyActivity.this, FiturProfil.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView viewAllTextView = findViewById(R.id.viewall_produk);
+
+        viewAllTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeFoodyActivity.this, RekomendasiProduk.class);
                 startActivity(intent);
             }
         });
@@ -256,5 +307,12 @@ public class HomeFoodyActivity extends AppCompatActivity {
                 btnHariMinggu.setBackgroundResource(R.drawable.btn_date_home);
             }
         });
+    }
+
+    private String getAuthToken() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("auth_token", MODE_PRIVATE);
+        String authToken = sharedPreferences.getString("token", "");
+        Log.d("AuthToken", "Token: " + authToken); // Tambahkan log ini
+        return authToken;
     }
 }

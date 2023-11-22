@@ -11,5 +11,7 @@
     <color name="merahcerah">#F9D8D8</color>
     <color name="hitam">#111111</color>
     <color name="grey">#6C6A85</color>
+    <color name="warna_bbkurang">#1270EE</color>
+    <color name="warna_bbnormal">#33A14D</color>
 
 </resources>

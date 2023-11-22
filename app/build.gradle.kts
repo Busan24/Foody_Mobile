@@ -54,5 +54,8 @@ dependencies {
 
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.25")
 
+
+
 //    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
 }

@@ -42,10 +42,29 @@ public interface ApiService {
     @GET("catatanku/daily")
     Call<ApiResponse<List<CatatanMakananModel>>> getCatatanMakananDaily(@Header("Authorization") String authToken);
 
-    @GET("catatanku/history")
-    Call<ApiResponse<List<CatatankuHistoryItem>>> getCatatankuHistory(@Header("Authorization") String authToken);
+    @POST("bmi")
+    Call<ApiResponse<BmiModel>> hitungBmi(@Header("Authorization") String authToken, @Body BmiModel bmiModel);
 
-    @GET("catatanku/tanggal/{tanggal}")
-    Call<ApiResponse<List<CatatankuItem>>> getCatatankuByTanggal(@Header("Authorization") String authToken, @Path("tanggal") String tanggal);
+    @GET("bmi/recent")
+    Call<ApiResponse<List<BmiHistoryModel>>> getRecentBmiData(@Header("Authorization") String authToken);
+
+    @DELETE("bmi/delete/{id}")
+    Call<ApiResponse<Void>> deleteBmiData(@Header("Authorization") String authToken, @Path("id") String bmiId);
+
+    @DELETE("catatanku/delete/{id}")
+    Call<ApiResponse<Void>> hapusCatatanMakanan(@Header("Authorization") String authToken, @Path("id") String catatanId);
+
+    @GET("bmi/history")
+    Call<ApiResponse<List<HistoryBmiModel>>> getBmiHistory(@Header("Authorization") String authToken);
+
+    @GET("catatanku/history")
+    Call<ApiResponse<List<HistoryResponse>>> getHistory(@Header("Authorization") String authToken);
+
+    @GET("produk")
+    Call<ApiResponse<List<Produk>>> getProduk();
+
+    @GET("/bmi/chart")
+    Call<ApiResponse<ChartData>> getBmiChartData(@Header("Authorization") String authToken);
 
 }
+
