@@ -6,8 +6,7 @@
     android:layout_height="205dp"
     tools:context=".Create_catatan"
     android:background="@drawable/outline_abu"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="25dp">
+    android:layout_marginTop="20dp">
 
     <View
         android:id="@+id/view_seling"

@@ -93,6 +93,16 @@ public class HomeFoodyActivity extends AppCompatActivity {
             }
         });
 
+        ImageView arrowAllProduk = findViewById(R.id.vall_produk);
+
+        arrowAllProduk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeFoodyActivity.this, RekomendasiProduk.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Membuat dialog kustom
         final Dialog customDialog = new Dialog(this);

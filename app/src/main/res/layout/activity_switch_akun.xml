@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="341dp"
     android:layout_height="610dp"
-    android:layout_marginLeft="25dp"
     tools:context=".PopupEditProfileActivity"
     android:id="@+id/switch_akun"
     android:background="@drawable/pp_putih">

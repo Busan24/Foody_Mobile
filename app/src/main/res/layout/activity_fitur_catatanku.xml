@@ -267,14 +267,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                >
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/btn_recent"
                     android:layout_width="160dp"
                     android:layout_height="46dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="25dp"
                     android:background="@drawable/button_birutua"
                     android:text="  Recent"
                     android:textSize="16dp"
@@ -291,7 +295,7 @@
                     android:layout_width="160dp"
                     android:layout_height="46dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/button_birucerah"
                     android:text="  History"
                     android:textSize="16dp"
@@ -301,14 +305,23 @@
                     android:textAllCaps="false"
                     android:gravity="start|center_vertical"
                     />
-
+                </RelativeLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp">
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:id="@+id/rvcatatanku_daily"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
 <!--            <RelativeLayout-->
 <!--                android:id="@+id/kotak_tgl_rc"-->
@@ -513,6 +526,10 @@
 <!--                    android:layout_marginTop="110dp"/>-->
 
 <!--            </RelativeLayout>-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"/>
         </LinearLayout>
     </ScrollView>
 

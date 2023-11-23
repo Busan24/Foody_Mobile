@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".hal_awal">
+    tools:context=".hal_awal"
+    android:layout_marginBottom="25dp">
 
     <ImageView
         android:layout_width="460dp"
@@ -14,6 +15,7 @@
         tools:layout_editor_absoluteY="-7dp" />
 
     <LinearLayout
+        android:id="@+id/ln_hal_awal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -51,22 +53,22 @@
             android:layout_gravity="center"
             android:layout_marginTop="40dp"/>
 
-        <Button
-            android:id="@+id/started"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:width="340dp"
-            android:height="65dp"
-            android:text="GET STARTED"
-            android:textSize="20dp"
-            android:textColor="@color/birucerah"
-            android:background="@drawable/button_birutua"
-            android:layout_marginTop="20dp"
-            android:onClick="startMainActivity"/>
-
     </LinearLayout>
 
-
+    <Button
+        android:id="@+id/started"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:width="340dp"
+        android:height="65dp"
+        android:text="GET STARTED"
+        android:textSize="20dp"
+        android:textColor="@color/birucerah"
+        android:background="@drawable/button_birutua"
+        android:onClick="startMainActivity"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

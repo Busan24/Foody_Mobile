@@ -467,7 +467,8 @@
             android:paddingLeft="12dp"
             android:id="@+id/back_hal_catatanku"
             android:onClick="kembaliKeMakanan"
-            android:layout_gravity="start|top"/>
+            android:layout_gravity="start|top"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/text_hs_ctt"
@@ -480,7 +481,8 @@
             android:layout_marginTop="35dp"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="100dp"
-            android:layout_gravity="start|top"/>
+            android:layout_gravity="start|top"
+            android:layout_centerVertical="true" />
     </RelativeLayout>
 
 </RelativeLayout>
