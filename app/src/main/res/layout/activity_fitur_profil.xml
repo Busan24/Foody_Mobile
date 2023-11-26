@@ -37,13 +37,12 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp">
 
                 <ImageView
                     android:id="@+id/foto_profil"
@@ -82,7 +81,7 @@
                         android:text=""
                         android:textSize="16dp"
                         android:textColor="@color/abupucet"
-                        android:layout_marginLeft="145dp"
+                        android:layout_marginLeft="165dp"
                         android:layout_marginTop="75dp"/>
                     <TextView
 
@@ -123,7 +122,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:background="@drawable/logout_profil"
-                        android:layout_marginLeft="145dp"
+                        android:layout_marginLeft="165dp"
                         android:layout_marginTop="15dp"/>
                     <TextView
                         android:id="@+id/logout_profil"
@@ -195,14 +194,15 @@
                                 android:orientation="horizontal">
 
                                 <androidx.cardview.widget.CardView
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp"
-                                    android:layout_marginBottom="10dp">
+                                    android:layout_marginBottom="20dp">
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -246,10 +246,11 @@
                                     </LinearLayout>
                                 </androidx.cardview.widget.CardView>
                                 <androidx.cardview.widget.CardView
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
                                     android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp">
@@ -320,14 +321,15 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_tinggi_terakhir"
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp"
-                                    android:layout_marginBottom="10dp">
+                                    android:layout_marginBottom="20dp">
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -386,10 +388,11 @@
                                 </androidx.cardview.widget.CardView>
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_fat"
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
                                     android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp">
@@ -460,14 +463,15 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_karbohidrat"
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp"
-                                    android:layout_marginBottom="10dp">
+                                    android:layout_marginBottom="20dp">
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -526,10 +530,11 @@
                                 </androidx.cardview.widget.CardView>
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_protein"
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
+                                    android:layout_marginRight="20dp"
                                     android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp">
@@ -600,14 +605,15 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_garam"
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp"
-                                    android:layout_marginBottom="10dp">
+                                    android:layout_marginBottom="20dp">
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -666,10 +672,11 @@
                                 </androidx.cardview.widget.CardView>
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_gula"
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
                                     android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp">
@@ -740,14 +747,15 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_bataskarbo"
-                                    android:layout_marginLeft="1dp"
-                                    android:layout_width="165dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
-                                    android:layout_marginTop="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp"
-                                    android:layout_marginBottom="10dp">
+                                    android:layout_marginBottom="20dp">
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -806,10 +814,11 @@
                                 </androidx.cardview.widget.CardView>
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_batasprotein"
-                                    android:layout_width="165dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="213dp"
                                     android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp">
@@ -880,14 +889,15 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/card_bataslemak"
-                                    android:layout_width="165dp"
-                                    android:layout_marginLeft="1dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
                                     android:layout_height="213dp"
-                                    android:layout_marginTop="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp"
-                                    android:layout_marginBottom="10dp">
+                                    android:layout_marginBottom="20dp">
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -945,89 +955,16 @@
                                     </LinearLayout>
                                 </androidx.cardview.widget.CardView>
                                 <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_kebutuhankalori"
-                                    android:layout_width="165dp"
-                                    android:layout_height="213dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:background="@drawable/outline_abu"
-                                    app:cardCornerRadius="10dp"
-                                    app:cardElevation="10dp">
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <RelativeLayout
-                                            android:layout_width="64dp"
-                                            android:layout_height="64dp"
-                                            android:background="@drawable/bulat_pink"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginTop="50dp">
-
-                                            <ImageView
-                                                android:id="@+id/gf_kebutuhankalori"
-                                                android:layout_width="20dp"
-                                                android:layout_height="10dp"
-                                                android:src="@drawable/ic_grafik_naik"
-                                                android:layout_marginTop="26dp"
-                                                android:layout_marginLeft="22dp"/>
-                                        </RelativeLayout>
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="horizontal">
-                                            <TextView
-                                                android:id="@+id/hasil_kebutuhankalori"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text=""
-                                                android:textSize="26dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="22dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="gr/hari"
-                                                android:textSize="16dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                        </LinearLayout>
-                                        <TextView
-                                            android:id="@+id/txt_kebutuhankalori"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Kebutuhan Kalori"
-                                            android:textColor="@color/abupucet"
-                                            android:textSize="14dp"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="5dp"/>
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
-
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.cardview.widget.CardView
                                     android:id="@+id/card_aktivitas"
-                                    android:layout_width="165dp"
-                                    android:layout_marginLeft="1dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="20dp"
                                     android:layout_height="213dp"
-                                    android:layout_marginTop="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp"
-                                    android:layout_marginBottom="10dp">
+                                    android:layout_marginBottom="20dp">
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -1079,13 +1016,90 @@
 
 
 
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/card_kebutuhankalori"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_pink"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:id="@+id/gf_kebutuhankalori"
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_kebutuhankalori"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="kal/hari"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+                                        <TextView
+                                            android:id="@+id/txt_kebutuhankalori"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Kebutuhan Kalori"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+
+
+
+
 
                             </LinearLayout>
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="60dp"/>
+                                android:layout_marginTop="80dp"/>
                         </LinearLayout>
 
                         <!-- Konten dari activity_switch_akun.xml -->
@@ -1109,7 +1123,7 @@
                 android:layout_marginTop="110dp"
                 android:drawableLeft="@drawable/edit_profil"
                 android:paddingLeft="10dp"
-                android:layout_marginLeft="80dp"/>
+                android:layout_marginLeft="100dp"/>
 
         </RelativeLayout>
 

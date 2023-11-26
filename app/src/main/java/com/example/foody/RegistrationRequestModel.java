@@ -9,11 +9,11 @@ public class RegistrationRequestModel {
     private String password;
     private String jenis_kelamin;
     private String tanggal_lahir;
-    private int aktivitas;
+    private double aktivitas;
     private double tinggi_badan;
     private double berat_badan;
 
-    public RegistrationRequestModel(String name, String email, String username, String password, String jenis_kelamin, String tanggal_lahir, int aktivitas, double tinggi_badan, double berat_badan) {
+    public RegistrationRequestModel(String name, String email, String username, String password, String jenis_kelamin, String tanggal_lahir, double aktivitas, double tinggi_badan, double berat_badan) {
         this.name = name;
         this.email = email;
         this.username = username;
@@ -73,11 +73,11 @@ public class RegistrationRequestModel {
         this.tanggal_lahir = tanggal_lahir;
     }
 
-    public int getAktivitas() {
+    public double getAktivitas() {
         return aktivitas;
     }
 
-    public void setAktivitas(int aktivitas) {
+    public void setAktivitas(double aktivitas) {
         this.aktivitas = aktivitas;
     }
 

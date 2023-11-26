@@ -270,13 +270,9 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
                 <Button
                     android:id="@+id/btn_recent"
-                    android:layout_width="160dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="46dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_birutua"
@@ -284,28 +280,26 @@
                     android:textSize="16dp"
                     android:textColor="@color/birucerah"
                     android:drawableStart="@drawable/icon_recent"
-                    android:paddingLeft="45dp"
+                    android:paddingHorizontal="20dp"
                     android:textAllCaps="false"
                     android:gravity="start|center_vertical"
-                    android:onClick="Resent"
                     />
 
                 <Button
                     android:id="@+id/btn_hs_catatan"
-                    android:layout_width="160dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="46dp"
                     android:layout_marginTop="20dp"
-                    android:layout_alignParentEnd="true"
                     android:background="@drawable/button_birucerah"
                     android:text="  History"
                     android:textSize="16dp"
                     android:textColor="@color/birutua"
+                    android:layout_marginLeft="20dp"
+                    android:paddingHorizontal="20dp"
                     android:drawableStart="@drawable/icon_history"
-                    android:paddingLeft="45dp"
                     android:textAllCaps="false"
                     android:gravity="start|center_vertical"
-                    />
-                </RelativeLayout>
+                    android:layout_marginBottom="3dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -318,7 +312,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:id="@+id/rvcatatanku_daily"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             </LinearLayout>

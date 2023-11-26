@@ -6,6 +6,7 @@ public class UpdateProfileRequest {
     private String email;
     private String username;
     private String tanggal_lahir;
+    private double aktivitas;
 
     public String getName() {
         return name;
@@ -39,5 +40,11 @@ public class UpdateProfileRequest {
         this.tanggal_lahir = tanggal_lahir;
     }
 
+    public double getAktivitas() {
+        return aktivitas;
+    }
 
+    public void setAktivitas(double aktivitas) {
+        this.aktivitas = aktivitas;
+    }
 }

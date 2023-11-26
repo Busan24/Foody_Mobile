@@ -163,18 +163,18 @@ public class DataMakanan extends AppCompatActivity {
 
 
         // batas kandungan get
-        batasKarbohidrat.setText(String.valueOf(summaryData.getBatas_karbohidrat()));
-        batasProtein.setText(String.valueOf(summaryData.getBatas_protein()));
-        batasGula.setText(String.valueOf(summaryData.getBatas_gula()));
-        batasLemak.setText(String.valueOf(summaryData.getBatas_lemak()));
-        batasGaram.setText(String.valueOf(summaryData.getBatas_garam()));
+        batasKarbohidrat.setText(decimalFormat.format(summaryData.getBatas_karbohidrat()));
+        batasProtein.setText(decimalFormat.format(summaryData.getBatas_protein()));
+        batasGula.setText(decimalFormat.format(summaryData.getBatas_gula()));
+        batasLemak.setText(decimalFormat.format(summaryData.getBatas_lemak()));
+        batasGaram.setText(decimalFormat.format(summaryData.getBatas_garam()));
 
         // Hitung persentase untuk setiap jenis nutrisi berdasarkan batas yang didapatkan dari summary
-        int batasKarbo = summaryData.getBatas_karbohidrat();
-        int batasProtein = summaryData.getBatas_protein();
-        int batasGula = summaryData.getBatas_gula();
-        int batasLemak = summaryData.getBatas_lemak();
-        int batasGaram = summaryData.getBatas_garam();
+        double batasKarbo = summaryData.getBatas_karbohidrat();
+        double batasProtein = summaryData.getBatas_protein();
+        double batasGula = summaryData.getBatas_gula();
+        double batasLemak = summaryData.getBatas_lemak();
+        double batasGaram = summaryData.getBatas_garam();
 
 
         int hasilKarboPersen = (int) ((double) makanan.getKarbohidrat() / batasKarbo * 100);

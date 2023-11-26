@@ -139,12 +139,12 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
 
                     sendBmiToServer(bmiModel);
                     closeKeyboard();
-                    scrollView.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            scrollView.fullScroll(View.FOCUS_DOWN);
-                        }
-                    });
+//                    scrollView.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            scrollView.fullScroll(View.FOCUS_DOWN);
+//                        }
+//                    });
                 } else {
                     Toast.makeText(KalkulatorBmi.this, "Isi Tinggi dan Berat Badan terlebih dahulu", Toast.LENGTH_SHORT).show();
                 }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="340dp"
+    android:background="@color/merahcerah"
+    android:layout_gravity="center"
+    tools:context=".NotifPeringatan"
+    android:layout_marginHorizontal="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:src="@drawable/error_baru"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Konsumsi "
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="@color/birutua" />
+
+            <TextView
+                android:id="@+id/peringatan_kandungan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Garam"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/birutua" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="telah melebihi batas harian! "
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/birutua" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih makanan"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/birutua" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="yang rendah "
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/birutua" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/solusi_kandungan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Garam"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="@color/birutua"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/gagal_close"
+            android:layout_width="258dp"
+            android:layout_height="49dp"
+            android:background="@drawable/button_birutua"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/birucerah"
+            android:text="ok"
+            android:textSize="18dp"/>
+    </LinearLayout>
+</RelativeLayout>

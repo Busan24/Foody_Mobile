@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="341dp"
+    android:layout_width="match_parent"
     android:layout_height="610dp"
     tools:context=".PopupEditProfileActivity"
     android:id="@+id/switch_akun"
@@ -28,7 +28,8 @@
 
             <TextView
                 android:id="@+id/akun_nama"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_height="65dp"
                 android:layout_gravity="center"
                 android:background="@drawable/input_abupucet"
@@ -50,7 +51,8 @@
 
             <TextView
                 android:id="@+id/akun_email"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_height="65dp"
                 android:layout_gravity="center"
                 android:background="@drawable/input_abupucet"
@@ -72,7 +74,8 @@
 
             <TextView
                 android:id="@+id/akun_username"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_height="65dp"
                 android:layout_gravity="center"
                 android:background="@drawable/input_abupucet"
@@ -94,7 +97,8 @@
 
             <TextView
                 android:id="@+id/akun_date"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_height="65dp"
                 android:layout_gravity="center"
                 android:background="@drawable/input_abupucet"
@@ -116,7 +120,8 @@
 
             <TextView
                 android:id="@+id/akun_gender"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_height="65dp"
                 android:layout_gravity="center"
                 android:background="@drawable/input_abupucet"

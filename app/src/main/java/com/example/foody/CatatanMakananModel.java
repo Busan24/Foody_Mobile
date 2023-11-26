@@ -14,6 +14,28 @@ public class CatatanMakananModel {
     private double gula;
     private double lemak;
 
+    // Add these fields
+    private double daily_garam;
+    private double batas_garam;
+
+    // Add getters and setters for the new fields
+
+    public double getDaily_garam() {
+        return daily_garam;
+    }
+
+    public void setDaily_garam(double daily_garam) {
+        this.daily_garam = daily_garam;
+    }
+
+    public double getBatas_garam() {
+        return batas_garam;
+    }
+
+    public void setBatas_garam(double batas_garam) {
+        this.batas_garam = batas_garam;
+    }
+
     public String getNama() {
         return nama;
     }

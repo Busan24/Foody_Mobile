@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Foody"
         tools:targetApi="31">
         <activity
+            android:name=".NotifPeringatan"
+            android:exported="false" />
+        <activity
             android:name=".DataProduk"
             android:exported="false" />
         <activity

@@ -5,7 +5,7 @@ public class CatatankuData {
     private String nama_makanan;
     private int jumlah;
     private String waktu;
-    private int karbohidrat;
+    private double karbohidrat;
     private double protein;
     private double garam;
     private double gula;
@@ -43,12 +43,14 @@ public class CatatankuData {
         this.waktu = waktu;
     }
 
-    public int getKarbohidrat() {
-        return karbohidrat;
+
+
+    public void setKarbohidrat(double karbohidrat) {
+        this.karbohidrat = karbohidrat;
     }
 
-    public void setKarbohidrat(int karbohidrat) {
-        this.karbohidrat = karbohidrat;
+    public double getKarbohidrat() {
+        return karbohidrat;
     }
 
     public double getProtein() {

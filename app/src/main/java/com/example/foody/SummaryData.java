@@ -8,12 +8,18 @@ public class SummaryData {
     private double total_lemak;
     private double total_garam;
     private double total_gula;
-    private int batas_karbohidrat;
-    private int batas_protein;
-    private int batas_lemak;
-    private int kebutuhan_kalori;
-    private int batas_gula;
-    private int batas_garam;
+    private double batas_karbohidrat;
+    private double batas_protein;
+    private double batas_lemak;
+    private double kebutuhan_kalori;
+    private double batas_gula;
+    private double batas_garam;
+
+    private double daily_karbohidrat;
+    private double daily_protein;
+    private double daily_lemak;
+    private double daily_garam;
+    private double daily_gula;
 
     public double getRata_rata_bmi() {
         return rata_rata_bmi;
@@ -71,52 +77,91 @@ public class SummaryData {
         this.total_gula = total_gula;
     }
 
-    public int getBatas_karbohidrat() {
+    public double getBatas_karbohidrat() {
         return batas_karbohidrat;
     }
 
-    public void setBatas_karbohidrat(int batas_karbohidrat) {
+    public void setBatas_karbohidrat(double batas_karbohidrat) {
         this.batas_karbohidrat = batas_karbohidrat;
     }
 
-    public int getBatas_protein() {
+    public double getBatas_protein() {
         return batas_protein;
     }
 
-    public void setBatas_protein(int batas_protein) {
+    public void setBatas_protein(double batas_protein) {
         this.batas_protein = batas_protein;
     }
 
-    public int getBatas_lemak() {
+    public double getBatas_lemak() {
         return batas_lemak;
     }
 
-    public void setBatas_lemak(int batas_lemak) {
+    public void setBatas_lemak(double batas_lemak) {
         this.batas_lemak = batas_lemak;
     }
 
-    public int getKebutuhan_kalori() {
+    public double getKebutuhan_kalori() {
         return kebutuhan_kalori;
     }
 
-    public void setKebutuhan_kalori(int kebutuhan_kalori) {
+    public void setKebutuhan_kalori(double kebutuhan_kalori) {
         this.kebutuhan_kalori = kebutuhan_kalori;
     }
 
-
-    public int getBatas_gula() {
+    public double getBatas_gula() {
         return batas_gula;
     }
 
-    public void setBatas_gula(int batas_gula) {
+    public void setBatas_gula(double batas_gula) {
         this.batas_gula = batas_gula;
     }
 
-    public int getBatas_garam() {
+    public double getBatas_garam() {
         return batas_garam;
     }
 
-    public void setBatas_garam(int batas_garam) {
+    public void setBatas_garam(double batas_garam) {
         this.batas_garam = batas_garam;
+    }
+
+    public double getDaily_karbohidrat() {
+        return daily_karbohidrat;
+    }
+
+    public void setDaily_karbohidrat(double daily_karbohidrat) {
+        this.daily_karbohidrat = daily_karbohidrat;
+    }
+
+    public double getDaily_protein() {
+        return daily_protein;
+    }
+
+    public void setDaily_protein(double daily_protein) {
+        this.daily_protein = daily_protein;
+    }
+
+    public double getDaily_lemak() {
+        return daily_lemak;
+    }
+
+    public void setDaily_lemak(double daily_lemak) {
+        this.daily_lemak = daily_lemak;
+    }
+
+    public double getDaily_garam() {
+        return daily_garam;
+    }
+
+    public void setDaily_garam(double daily_garam) {
+        this.daily_garam = daily_garam;
+    }
+
+    public double getDaily_gula() {
+        return daily_gula;
+    }
+
+    public void setDaily_gula(double daily_gula) {
+        this.daily_gula = daily_gula;
     }
 }

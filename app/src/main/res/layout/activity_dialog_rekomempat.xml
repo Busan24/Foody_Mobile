@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="450dp"
-    tools:context=".DialogRekommakanan"
     android:background="@drawable/rekom_makanan"
     android:layout_gravity="bottom">
 
@@ -22,7 +21,7 @@
             android:id="@+id/nm_rekom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Granola Less Sugar"
+            android:text="Proteina LX 250 gr"
             android:textColor="@color/birutua"
             android:textAllCaps="false"
             android:textSize="18dp"
@@ -39,7 +38,7 @@
                 android:id="@+id/img_rekom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/produk_1"
+                android:src="@drawable/produk_4"
                 android:scaleType="centerCrop" />
         </androidx.cardview.widget.CardView>
 
@@ -54,7 +53,7 @@
                 android:id="@+id/harga_rekom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 46.790"
+                android:text="Rp 10.800"
                 android:textColor="@color/birutua"
                 android:textSize="18dp" />
 
@@ -62,13 +61,13 @@
                 android:id="@+id/desc_rekom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kandungan buah dan biji-bijian paling banyak dan paling lengkap, membantu kelancaran pencernaan"
+                android:text="protein nabati dari kedelai murni yang telah dipisahkan minyaknya, tanpa tambahan bahan-bahan lain."
                 android:textSize="14dp"
                 android:textColor="@color/abupucet"
                 android:layout_marginTop="10dp"/>
 
             <Button
-                android:id="@+id/btn_rekom"
+                android:id="@+id/btn_rekomEmpat"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:background="@drawable/button_birutua"

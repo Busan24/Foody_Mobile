@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -101,14 +102,6 @@ public class fitur_catatanku extends AppCompatActivity {
                 }
             });
 
-        Button btnRecent = findViewById(R.id.btn_recent);
-        btnRecent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(fitur_catatanku.this, ViewData.class);
-                startActivity(intent);
-            }
-        });
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
@@ -179,6 +172,8 @@ public class fitur_catatanku extends AppCompatActivity {
         // Panggil metode untuk mengambil data makanan dari API
         getDaftarMakanan();
 
+
+
     }
 
     private void showCustomDialog(String text, String backgroundColor) {
@@ -229,7 +224,21 @@ public class fitur_catatanku extends AppCompatActivity {
 
                 String namaMakanan = edtNamaMakanan.getText().toString();
                 String waktuMakan = spinnerWaktuNyatat.getSelectedItem().toString();
-                int jumlahPorsi = Integer.parseInt(edtJumlahPorsi.getText().toString());
+                String jumlahPorsiStr = edtJumlahPorsi.getText().toString();
+
+                if (TextUtils.isEmpty(namaMakanan)) {
+                    edtNamaMakanan.setError("Nama Makanan harus diisi");
+                    Toast.makeText(fitur_catatanku.this, "Nama Makanan harus diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(jumlahPorsiStr)) {
+                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    Toast.makeText(fitur_catatanku.this, "Jumlah Porsi harus diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int jumlahPorsi = Integer.parseInt(jumlahPorsiStr);
 
                 // Buat objek CatatanMakananModel
                 CatatanMakananModel catatanMakanan = new CatatanMakananModel();
@@ -242,13 +251,9 @@ public class fitur_catatanku extends AppCompatActivity {
             }
         });
 
-        // Instansiasi adapter
         myDialog.show();
+
     }
-
-
-
-    // ...
 
     private void simpanCatatanMakanan(CatatanMakananModel catatanMakanan) {
         // Menampilkan dialog loading
@@ -267,14 +272,14 @@ public class fitur_catatanku extends AppCompatActivity {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         String authToken = "Bearer " + getAuthToken();
 
+
         Call<ApiResponse<CatatanMakananModel>> call = apiService.simpanCatatanMakanan(authToken, catatanMakanan);
         call.enqueue(new Callback<ApiResponse<CatatanMakananModel>>() {
             @Override
             public void onResponse(Call<ApiResponse<CatatanMakananModel>> call, Response<ApiResponse<CatatanMakananModel>> response) {
 
                 if (response.isSuccessful() && response.body() != null) {
-                    // Berhasil disimpan
-//                    Toast.makeText(fitur_catatanku.this, "Catatan Makanan Berhasil Disimpan", Toast.LENGTH_SHORT).show();
+
 
                     // Menutup loading dialog dengan penundaan
                     new Handler().postDelayed(new Runnable() {
@@ -288,6 +293,8 @@ public class fitur_catatanku extends AppCompatActivity {
                             getCatatanMakananDaily();
 
                             myDialog.dismiss();
+
+
                         }
                     }, DELAY_MILLIS);
 
@@ -315,7 +322,76 @@ public class fitur_catatanku extends AppCompatActivity {
         });
     }
 
-// ...
+    private void getSummaryData(){
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        String authToken = "Bearer " + getAuthToken();
+
+        Call<ApiResponse<SummaryData>> callSummary = apiService.getUserSummary("Bearer " + authToken);
+        callSummary.enqueue(new Callback<ApiResponse<SummaryData>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<SummaryData>> call, Response<ApiResponse<SummaryData>> response) {
+                if (response.isSuccessful()) {
+                    ApiResponse<SummaryData> apiResponseSummary = response.body();
+                    if (apiResponseSummary != null && "success".equals(apiResponseSummary.getStatus())) {
+                        SummaryData summaryData = apiResponseSummary.getData();
+                        if (summaryData != null) {
+                            if (summaryData.getDaily_garam() > summaryData.getBatas_garam()){
+                                showWarningDialog("garam");
+                            }if (summaryData.getDaily_gula() > summaryData.getBatas_gula()){
+                                showWarningDialog("gula");
+                            }if (summaryData.getDaily_karbohidrat() > summaryData.getBatas_karbohidrat()){
+                                showWarningDialog("karbohidrat");
+                            }if (summaryData.getDaily_protein() > summaryData.getBatas_protein()){
+                                showWarningDialog("protein");
+                            }if (summaryData.getDaily_lemak() > summaryData.getBatas_lemak()){
+                                showWarningDialog("lemak");
+                            }
+
+                        } else {
+                            // Handle jika data summary tidak ditemukan
+                        }
+                    } else {
+
+                    }
+                } else {
+                    // Handle jika terjadi kesalahan saat mengambil data summary
+                    ;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<SummaryData>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void showWarningDialog(String kandungan) {
+        // Create a dialog
+        Dialog warningDialog = new Dialog(fitur_catatanku.this);
+        warningDialog.setContentView(R.layout.activity_notif_peringatan);
+
+        // Access elements in the dialog
+        TextView peringatanKandungan = warningDialog.findViewById(R.id.peringatan_kandungan);
+        TextView solusiKandungan = warningDialog.findViewById(R.id.solusi_kandungan);
+        Button gagalCloseButton = warningDialog.findViewById(R.id.gagal_close);
+
+        // Set text based on the exceeded values
+        peringatanKandungan.setText(kandungan);
+        solusiKandungan.setText(kandungan);
+
+        // Close the warning dialog
+        gagalCloseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                warningDialog.dismiss();
+            }
+        });
+
+        // Show the warning dialog
+        warningDialog.show();
+    }
 
 
     private void getCatatanMakananDaily() {
@@ -415,6 +491,8 @@ public class fitur_catatanku extends AppCompatActivity {
 
                 // Tutup dialog login
                 myDialog.dismiss();
+
+                getSummaryData();
             }
         });
 

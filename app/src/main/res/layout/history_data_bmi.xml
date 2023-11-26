@@ -19,7 +19,7 @@
             android:orientation="vertical">
         <RelativeLayout
             android:id="@+id/kotak_tgl_rc"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="46dp"
             android:background="@drawable/outline_abu"
             android:layout_marginTop="20dp">
