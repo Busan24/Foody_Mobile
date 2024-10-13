@@ -63,16 +63,7 @@
                 android:paddingLeft="20dp"
                 android:id="@+id/name_regis"/>
 
-            <EditText
-                android:layout_width="340dp"
-                android:layout_height="65dp"
-                android:background="@drawable/input_abupucet"
-                android:hint="Email"
-                android:layout_gravity="center"
-                android:paddingLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:id="@+id/email_regis"
-                android:layout_marginBottom="20dp"/>
+
 
 
             <Spinner
@@ -81,7 +72,8 @@
                 android:layout_height="65dp"
                 android:background="@drawable/input_abupucet"
                 android:layout_gravity="center"
-                android:paddingLeft="10dp" />
+                android:paddingLeft="10dp"
+                android:layout_marginTop="20dp"/>
 
 
 <!--            <EditText-->
@@ -152,10 +144,19 @@
                 android:layout_width="340dp"
                 android:layout_height="65dp"
                 android:background="@drawable/input_abupucet"
-                android:hint="Username"
+                android:hint="Email"
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
-                android:id="@+id/username_regis"/>
+                android:id="@+id/email_regis" />
+
+<!--            <EditText-->
+<!--                android:layout_width="340dp"-->
+<!--                android:layout_height="65dp"-->
+<!--                android:background="@drawable/input_abupucet"-->
+<!--                android:hint="Username"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:paddingLeft="20dp"-->
+<!--                android:id="@+id/username_regis"/>-->
 
             <EditText
                 android:layout_width="340dp"
@@ -292,7 +293,6 @@
                 android:textSize="13dp" />
 
         </LinearLayout>
-
 
     </RelativeLayout>
 </ScrollView>

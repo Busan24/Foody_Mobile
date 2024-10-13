@@ -55,10 +55,10 @@
             android:layout_width="340dp"
             android:layout_height="65dp"
             android:background="@drawable/input_abupucet"
-            android:hint="Username"
+            android:hint="Email"
             android:layout_gravity="center"
             android:paddingLeft="20dp"
-            android:id="@+id/username_login"/>
+            android:id="@+id/email_login"/>
 
         <EditText
             android:layout_width="340dp"

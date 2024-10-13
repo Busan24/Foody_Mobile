@@ -4,6 +4,8 @@ package com.example.foody;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +23,7 @@ import android.content.SharedPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText usernameEditText, passwordEditText;
+    private EditText emailEditText, passwordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Inisialisasi komponen UI
-        usernameEditText = findViewById(R.id.username_login);
+        emailEditText = findViewById(R.id.email_login);
         passwordEditText = findViewById(R.id.password_login);
 
         Button loginButton = findViewById(R.id.btn_login);
@@ -52,29 +54,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView privacyPoliceTextView = findViewById(R.id.privacy_police);
-
-        privacyPoliceTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HomeFoodyActivity.class);
-                startActivity(intent);
-            }
-        });
+//        TextView privacyPoliceTextView = findViewById(R.id.privacy_police);
+//
+//        privacyPoliceTextView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, HomeFoodyActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     // Metode untuk melakukan login
     private void loginUser() {
-        String username = usernameEditText.getText().toString().trim();
+        String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (!isValidEmail(email)) {
+            emailEditText.setError("Alamat email tidak valid");
+            Toast.makeText(this, "Email tidak valid. Harap masukkan email yang benar.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Harap isi semua kolom", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        if (password.length() < 8) {
+            passwordEditText.setError("Password berisi 8 karakter");
+            passwordEditText.setError("Password harus memiliki panjang minimal 8 karakter");
+            return;
+        }
         // Membuat objek model untuk permintaan login
-        LoginRequestModel loginRequestModel = new LoginRequestModel(username, password);
+        LoginRequestModel loginRequestModel = new LoginRequestModel(email, password);
 
         // Mendapatkan objek ApiService
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
@@ -105,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // Tangani kesalahan pada respons
                     if (response.code() == 401) {
-                        // Kode 401 menunjukkan bahwa username atau password salah
-                        Toast.makeText(MainActivity.this, "Username atau password salah. Silakan coba lagi.", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(MainActivity.this, "Email atau password salah. Silakan coba lagi.", Toast.LENGTH_SHORT).show();
                     } else {
                         // Tangani kesalahan lainnya
                         Toast.makeText(MainActivity.this, "Login gagal. Periksa kredensial Anda.", Toast.LENGTH_SHORT).show();
@@ -134,5 +148,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("is_logged_in", status);
         editor.apply();
+    }
+
+    private boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 }

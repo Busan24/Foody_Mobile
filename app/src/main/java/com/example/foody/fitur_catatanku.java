@@ -372,6 +372,8 @@ public class fitur_catatanku extends AppCompatActivity {
         Dialog warningDialog = new Dialog(fitur_catatanku.this);
         warningDialog.setContentView(R.layout.activity_notif_peringatan);
 
+        warningDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         // Access elements in the dialog
         TextView peringatanKandungan = warningDialog.findViewById(R.id.peringatan_kandungan);
         TextView solusiKandungan = warningDialog.findViewById(R.id.solusi_kandungan);

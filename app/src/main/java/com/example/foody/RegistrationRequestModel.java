@@ -5,7 +5,7 @@ package com.example.foody;
 public class RegistrationRequestModel {
     private String name;
     private String email;
-    private String username;
+//    private String username;
     private String password;
     private String jenis_kelamin;
     private String tanggal_lahir;
@@ -13,10 +13,12 @@ public class RegistrationRequestModel {
     private double tinggi_badan;
     private double berat_badan;
 
-    public RegistrationRequestModel(String name, String email, String username, String password, String jenis_kelamin, String tanggal_lahir, double aktivitas, double tinggi_badan, double berat_badan) {
+    public RegistrationRequestModel(String name, String email,
+//                                    String username,
+                                    String password, String jenis_kelamin, String tanggal_lahir, double aktivitas, double tinggi_badan, double berat_badan) {
         this.name = name;
         this.email = email;
-        this.username = username;
+//        this.username = username;
         this.password = password;
         this.jenis_kelamin = jenis_kelamin;
         this.tanggal_lahir = tanggal_lahir;
@@ -41,13 +43,13 @@ public class RegistrationRequestModel {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+//    public String getUsername() {
+//        return username;
+//    }
+//
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
 
     public String getPassword() {
         return password;

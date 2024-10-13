@@ -10,6 +10,8 @@ public class UserData {
     private String username;
     private String tanggla_lahir;
 
+    private String gambar;
+
     public String getName() {
         return name;
     }
@@ -72,5 +74,13 @@ public class UserData {
 
     public void setTanggla_lahir(String tanggla_lahir) {
         this.tanggla_lahir = tanggla_lahir;
+    }
+
+    public String getGambar() {
+        return gambar;
+    }
+
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
     }
 }

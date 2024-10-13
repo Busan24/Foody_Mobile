@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VerifikasiOtp"
+    android:background="@color/white">
+
+   <ImageView
+       android:layout_width="wrap_content"
+       android:layout_height="370dp"
+       android:src="@drawable/verif_otp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VERIFIKASI OTP"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="@color/birutua"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Silakan Masukkan Kode Anda yang telah kami\n kirimkan kepada Anda"
+        android:textAlignment="center"
+        android:textSize="15dp"
+        android:textColor="@color/birutua"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alamat Email:"
+        android:textAlignment="center"
+        android:textSize="15dp"
+        android:textColor="@color/birutua"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/email_otp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="@color/birutua"
+        android:text="texxxt@gmail.com"
+        />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/verif_otp_email1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/abupucetcerah"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/birutua"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/verif_otp_email2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/abupucetcerah"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/birutua"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/verif_otp_email3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/abupucetcerah"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/birutua"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/verif_otp_email4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/abupucetcerah"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/birutua"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="18dp"
+        android:layout_height="2dp"
+        android:background="@drawable/rounded_rectangle"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"/>
+<!--    <ProgressBar-->
+<!--        android:id="@+id/otpProgressBar"-->
+<!--        style="?android:attr/progressBarStyle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:indeterminateTint="@color/birutua"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/guideline4"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:visibility="invisible"-->
+<!--        />-->
+    <Button
+        android:id="@+id/started"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:width="340dp"
+        android:height="65dp"
+        android:text="Verifikasi"
+        android:textSize="20dp"
+        android:textColor="@color/birucerah"
+        android:background="@drawable/button_birutua"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/ly_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:textAlignment="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak Menerima Otp? "
+            android:textColor="@color/abupucet"
+            android:textSize="13dp" />
+
+
+
+        <TextView
+            android:id="@+id/kirim_ulang_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kirim Ulang"
+            android:textColor="@color/birutua"
+            android:textSize="13dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</LinearLayout>

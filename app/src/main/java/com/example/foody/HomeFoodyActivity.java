@@ -26,8 +26,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.shape.ShapeAppearanceModel;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -43,6 +47,8 @@ public class HomeFoodyActivity extends AppCompatActivity {
     private TextView namaAkun;
     private String authToken;
 
+    private ShapeableImageView fotoProfil;
+
     private WebView webView;
     private TextView karbohidratTextView, proteinTextView, garamTextView, gulaTextView, lemakTextView;
     private TextView batasKarbohidrat, batasProtein, batasGula, batasLemak, batasGaram;
@@ -54,6 +60,8 @@ public class HomeFoodyActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
+
+        fotoProfil = findViewById(R.id.profilhome);
 
         ImageView profilHome = findViewById(R.id.profilhome);
 
@@ -86,322 +94,324 @@ public class HomeFoodyActivity extends AppCompatActivity {
             }
         });
 
-        TextView viewAllTextView = findViewById(R.id.viewall_produk);
-
-        viewAllTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeFoodyActivity.this, RekomendasiProduk.class);
-                startActivity(intent);
-            }
-        });
-
-        ImageView arrowAllProduk = findViewById(R.id.vall_produk);
-
-        arrowAllProduk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeFoodyActivity.this, RekomendasiProduk.class);
-                startActivity(intent);
-            }
-        });
-
-
-        // Membuat dialog kustom
-        final Dialog customDialog = new Dialog(this);
-        customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        customDialog.setContentView(R.layout.activity_dialog_rekommakanan);
-
-
-        customDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-        // Mendapatkan referensi elemen "see_details" dan "arrow_rekom"
-        TextView seeDetails = findViewById(R.id.see_details);
-        ImageView arrowRekom = findViewById(R.id.arrow_rekom);
-
-        // Menambahkan OnClickListener pada "see_details"
-        seeDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tampilkan dialog kustom ketika "see_details" diklik
-
-                // Mendapatkan posisi elemen "see_details" pada layar
-                int[] location = new int[2];
-                v.getLocationOnScreen(location);
-
-                // Menentukan posisi vertikal dialog berdasarkan elemen "see_details"
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(customDialog.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                layoutParams.gravity = Gravity.TOP | Gravity.START;
-                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "see_details"
-                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "see_details"
-
-                customDialog.getWindow().setAttributes(layoutParams);
-                customDialog.show();
-            }
-        });
-        arrowRekom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tampilkan dialog kustom ketika "arrow_rekom" diklik
-
-                // Mendapatkan posisi elemen "arrow_rekom" pada layar
-                int[] location = new int[2];
-                v.getLocationOnScreen(location);
-
-                // Menentukan posisi vertikal dialog berdasarkan elemen "arrow_rekom"
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(customDialog.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                layoutParams.gravity = Gravity.TOP | Gravity.START;
-                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "arrow_rekom"
-                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "arrow_rekom"
-
-                customDialog.getWindow().setAttributes(layoutParams);
-                customDialog.show();
-
-
-            }
-        });
-
-        Button btnRekomDialog = customDialog.findViewById(R.id.btn_rekom);
-        btnRekomDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent untuk membuka link pada browser
-                String shopeeLink = "https://shopee.co.id/Granola-400-gr-LESS-SWEET-Nutriology-Sereal-Sehat-Makanan-Diet-Crunchy-Lengkap-Murah-Bergizi-Alami-Natural-High-Quality-i.61035441.22545782983?sp_atk=2124f05e-9378-425e-be88-0e3de518fce4&xptdk=2124f05e-9378-425e-be88-0e3de518fce4";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopeeLink));
-                startActivity(intent);
-
-                // Tutup dialog setelah membuka link
-                customDialog.dismiss();
-            }
-        });
-
-
-        final Dialog dialogProdukDua = new Dialog(this);
-        dialogProdukDua.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogProdukDua.setContentView(R.layout.activity_dialogr_rekomdua);
-
-        dialogProdukDua.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-        // Mendapatkan referensi elemen "see_details" dan "arrow_rekom"
-        TextView seeDetailsProdukDua = findViewById(R.id.lihat_produkdua);
-        ImageView arrowRekomProdukDua = findViewById(R.id.arw_produkdua);
-
-        // Menambahkan OnClickListener pada "see_details"
-        seeDetailsProdukDua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tampilkan dialog kustom ketika "see_details" diklik
-
-                // Mendapatkan posisi elemen "see_details" pada layar
-                int[] location = new int[2];
-                v.getLocationOnScreen(location);
-
-                // Menentukan posisi vertikal dialog berdasarkan elemen "see_details"
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(dialogProdukDua.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                layoutParams.gravity = Gravity.TOP | Gravity.START;
-                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "see_details"
-                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "see_details"
-
-                dialogProdukDua.getWindow().setAttributes(layoutParams);
-                dialogProdukDua.show();
-            }
-        });
-
-        arrowRekomProdukDua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tampilkan dialog kustom ketika "arrow_rekom" diklik
-
-                // Mendapatkan posisi elemen "arrow_rekom" pada layar
-                int[] location = new int[2];
-                v.getLocationOnScreen(location);
-
-                // Menentukan posisi vertikal dialog berdasarkan elemen "arrow_rekom"
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(dialogProdukDua.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                layoutParams.gravity = Gravity.TOP | Gravity.START;
-                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "arrow_rekom"
-                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "arrow_rekom"
-
-                dialogProdukDua.getWindow().setAttributes(layoutParams);
-                dialogProdukDua.show();
-
-
-            }
-        });
-
-        Button btnRekomDua = dialogProdukDua.findViewById(R.id.btn_rekomdua);
-        btnRekomDua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent untuk membuka link pada browser
-                String shopeeLink = "https://www.tokopedia.com/leanlab/lean-lab-selai-matcha-250gr-peanut-butter-powder-selai-rendah-kalori?extParam=ivf%3Dtrue&src=topads";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopeeLink));
-                startActivity(intent);
-
-                // Tutup dialog setelah membuka link
-                dialogProdukDua.dismiss();
-            }
-        });
-
-
-        final Dialog dialogProdukTiga = new Dialog(this);
-        dialogProdukTiga.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogProdukTiga.setContentView(R.layout.activity_dialog_rekomtiga);
-
-        dialogProdukTiga.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-        // Mendapatkan referensi elemen "see_details" dan "arrow_rekom"
-        TextView seeDetailsProdukTiga = findViewById(R.id.lihat_produktiga);
-        ImageView arrowRekomProdukTiga = findViewById(R.id.arw_produktiga);
-
-        // Menambahkan OnClickListener pada "see_details"
-        seeDetailsProdukTiga.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tampilkan dialog kustom ketika "see_details" diklik
-
-                // Mendapatkan posisi elemen "see_details" pada layar
-                int[] location = new int[2];
-                v.getLocationOnScreen(location);
-
-                // Menentukan posisi vertikal dialog berdasarkan elemen "see_details"
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(dialogProdukTiga.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                layoutParams.gravity = Gravity.TOP | Gravity.START;
-                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "see_details"
-                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "see_details"
-
-                dialogProdukTiga.getWindow().setAttributes(layoutParams);
-                dialogProdukTiga.show();
-            }
-        });
-
-        arrowRekomProdukTiga.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tampilkan dialog kustom ketika "arrow_rekom" diklik
-
-                // Mendapatkan posisi elemen "arrow_rekom" pada layar
-                int[] location = new int[2];
-                v.getLocationOnScreen(location);
-
-                // Menentukan posisi vertikal dialog berdasarkan elemen "arrow_rekom"
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(dialogProdukTiga.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                layoutParams.gravity = Gravity.TOP | Gravity.START;
-                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "arrow_rekom"
-                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "arrow_rekom"
-
-                dialogProdukTiga.getWindow().setAttributes(layoutParams);
-                dialogProdukTiga.show();
-
-
-            }
-        });
-
-        Button btnRekomTiga = dialogProdukTiga.findViewById(R.id.btn_rekomtiga);
-        btnRekomTiga.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent untuk membuka link pada browser
-                String shopeeLink = "https://tokopedia.link/7Xa2HOkCVEb";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopeeLink));
-                startActivity(intent);
-
-                // Tutup dialog setelah membuka link
-                dialogProdukTiga.dismiss();
-            }
-        });
-
-
-        final Dialog dialogProdukEmpat = new Dialog(this);
-        dialogProdukEmpat.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogProdukEmpat.setContentView(R.layout.activity_dialog_rekomempat);
-
-        dialogProdukEmpat.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-        // Mendapatkan referensi elemen "see_details" dan "arrow_rekom"
-        TextView seeDetailsProdukEmpat = findViewById(R.id.lihat_produkempat);
-        ImageView arrowRekomProdukEmpat = findViewById(R.id.arw_produkempat);
-
-        // Menambahkan OnClickListener pada "see_details"
-        seeDetailsProdukEmpat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tampilkan dialog kustom ketika "see_details" diklik
-
-                // Mendapatkan posisi elemen "see_details" pada layar
-                int[] location = new int[2];
-                v.getLocationOnScreen(location);
-
-                // Menentukan posisi vertikal dialog berdasarkan elemen "see_details"
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(dialogProdukEmpat.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                layoutParams.gravity = Gravity.TOP | Gravity.START;
-                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "see_details"
-                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "see_details"
-
-                dialogProdukEmpat.getWindow().setAttributes(layoutParams);
-                dialogProdukEmpat.show();
-            }
-        });
-
-        arrowRekomProdukEmpat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Tampilkan dialog kustom ketika "arrow_rekom" diklik
-
-                // Mendapatkan posisi elemen "arrow_rekom" pada layar
-                int[] location = new int[2];
-                v.getLocationOnScreen(location);
-
-                // Menentukan posisi vertikal dialog berdasarkan elemen "arrow_rekom"
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(dialogProdukEmpat.getWindow().getAttributes());
-                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                layoutParams.gravity = Gravity.TOP | Gravity.START;
-                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "arrow_rekom"
-                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "arrow_rekom"
-
-                dialogProdukEmpat.getWindow().setAttributes(layoutParams);
-                dialogProdukEmpat.show();
-
-
-            }
-        });
-
-        Button btnRekomEmpat = dialogProdukEmpat.findViewById(R.id.btn_rekomEmpat);
-        btnRekomEmpat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent untuk membuka link pada browser
-                String shopeeLink = "https://shopee.co.id/Proteina-LX-250-gr-Protein-Nabati-Vegetarian-Healthy-Food-i.1001474331.22742464977?sp_atk=c9f90000-cbd1-4915-83c6-0b2262b23f30&xptdk=c9f90000-cbd1-4915-83c6-0b2262b23f30";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopeeLink));
-                startActivity(intent);
-
-                // Tutup dialog setelah membuka link
-                dialogProdukEmpat.dismiss();
-            }
-        });
+//      BAGIAN REKOMENDASI RPODUK AWAL
+
+//        TextView viewAllTextView = findViewById(R.id.viewall_produk);
+//
+//        viewAllTextView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomeFoodyActivity.this, RekomendasiProduk.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        ImageView arrowAllProduk = findViewById(R.id.vall_produk);
+//
+//        arrowAllProduk.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomeFoodyActivity.this, RekomendasiProduk.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//
+//        // Membuat dialog kustom
+//        final Dialog customDialog = new Dialog(this);
+//        customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        customDialog.setContentView(R.layout.activity_dialog_rekommakanan);
+//
+//
+//        customDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//
+//        // Mendapatkan referensi elemen "see_details" dan "arrow_rekom"
+//        TextView seeDetails = findViewById(R.id.see_details);
+//        ImageView arrowRekom = findViewById(R.id.arrow_rekom);
+//
+//        // Menambahkan OnClickListener pada "see_details"
+//        seeDetails.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Tampilkan dialog kustom ketika "see_details" diklik
+//
+//                // Mendapatkan posisi elemen "see_details" pada layar
+//                int[] location = new int[2];
+//                v.getLocationOnScreen(location);
+//
+//                // Menentukan posisi vertikal dialog berdasarkan elemen "see_details"
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(customDialog.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//                layoutParams.gravity = Gravity.TOP | Gravity.START;
+//                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "see_details"
+//                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "see_details"
+//
+//                customDialog.getWindow().setAttributes(layoutParams);
+//                customDialog.show();
+//            }
+//        });
+//        arrowRekom.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Tampilkan dialog kustom ketika "arrow_rekom" diklik
+//
+//                // Mendapatkan posisi elemen "arrow_rekom" pada layar
+//                int[] location = new int[2];
+//                v.getLocationOnScreen(location);
+//
+//                // Menentukan posisi vertikal dialog berdasarkan elemen "arrow_rekom"
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(customDialog.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//                layoutParams.gravity = Gravity.TOP | Gravity.START;
+//                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "arrow_rekom"
+//                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "arrow_rekom"
+//
+//                customDialog.getWindow().setAttributes(layoutParams);
+//                customDialog.show();
+//
+//
+//            }
+//        });
+//
+//        Button btnRekomDialog = customDialog.findViewById(R.id.btn_rekom);
+//        btnRekomDialog.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Intent untuk membuka link pada browser
+//                String shopeeLink = "https://shopee.co.id/Granola-400-gr-LESS-SWEET-Nutriology-Sereal-Sehat-Makanan-Diet-Crunchy-Lengkap-Murah-Bergizi-Alami-Natural-High-Quality-i.61035441.22545782983?sp_atk=2124f05e-9378-425e-be88-0e3de518fce4&xptdk=2124f05e-9378-425e-be88-0e3de518fce4";
+//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopeeLink));
+//                startActivity(intent);
+//
+//                // Tutup dialog setelah membuka link
+//                customDialog.dismiss();
+//            }
+//        });
+//
+//
+//        final Dialog dialogProdukDua = new Dialog(this);
+//        dialogProdukDua.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialogProdukDua.setContentView(R.layout.activity_dialogr_rekomdua);
+//
+//        dialogProdukDua.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//
+//        // Mendapatkan referensi elemen "see_details" dan "arrow_rekom"
+//        TextView seeDetailsProdukDua = findViewById(R.id.lihat_produkdua);
+//        ImageView arrowRekomProdukDua = findViewById(R.id.arw_produkdua);
+//
+//        // Menambahkan OnClickListener pada "see_details"
+//        seeDetailsProdukDua.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Tampilkan dialog kustom ketika "see_details" diklik
+//
+//                // Mendapatkan posisi elemen "see_details" pada layar
+//                int[] location = new int[2];
+//                v.getLocationOnScreen(location);
+//
+//                // Menentukan posisi vertikal dialog berdasarkan elemen "see_details"
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(dialogProdukDua.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//                layoutParams.gravity = Gravity.TOP | Gravity.START;
+//                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "see_details"
+//                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "see_details"
+//
+//                dialogProdukDua.getWindow().setAttributes(layoutParams);
+//                dialogProdukDua.show();
+//            }
+//        });
+//
+//        arrowRekomProdukDua.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Tampilkan dialog kustom ketika "arrow_rekom" diklik
+//
+//                // Mendapatkan posisi elemen "arrow_rekom" pada layar
+//                int[] location = new int[2];
+//                v.getLocationOnScreen(location);
+//
+//                // Menentukan posisi vertikal dialog berdasarkan elemen "arrow_rekom"
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(dialogProdukDua.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//                layoutParams.gravity = Gravity.TOP | Gravity.START;
+//                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "arrow_rekom"
+//                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "arrow_rekom"
+//
+//                dialogProdukDua.getWindow().setAttributes(layoutParams);
+//                dialogProdukDua.show();
+//
+//
+//            }
+//        });
+//
+//        Button btnRekomDua = dialogProdukDua.findViewById(R.id.btn_rekomdua);
+//        btnRekomDua.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Intent untuk membuka link pada browser
+//                String shopeeLink = "https://www.tokopedia.com/leanlab/lean-lab-selai-matcha-250gr-peanut-butter-powder-selai-rendah-kalori?extParam=ivf%3Dtrue&src=topads";
+//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopeeLink));
+//                startActivity(intent);
+//
+//                // Tutup dialog setelah membuka link
+//                dialogProdukDua.dismiss();
+//            }
+//        });
+//
+//
+//        final Dialog dialogProdukTiga = new Dialog(this);
+//        dialogProdukTiga.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialogProdukTiga.setContentView(R.layout.activity_dialog_rekomtiga);
+//
+//        dialogProdukTiga.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//
+//        // Mendapatkan referensi elemen "see_details" dan "arrow_rekom"
+//        TextView seeDetailsProdukTiga = findViewById(R.id.lihat_produktiga);
+//        ImageView arrowRekomProdukTiga = findViewById(R.id.arw_produktiga);
+//
+//        // Menambahkan OnClickListener pada "see_details"
+//        seeDetailsProdukTiga.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Tampilkan dialog kustom ketika "see_details" diklik
+//
+//                // Mendapatkan posisi elemen "see_details" pada layar
+//                int[] location = new int[2];
+//                v.getLocationOnScreen(location);
+//
+//                // Menentukan posisi vertikal dialog berdasarkan elemen "see_details"
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(dialogProdukTiga.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//                layoutParams.gravity = Gravity.TOP | Gravity.START;
+//                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "see_details"
+//                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "see_details"
+//
+//                dialogProdukTiga.getWindow().setAttributes(layoutParams);
+//                dialogProdukTiga.show();
+//            }
+//        });
+//
+//        arrowRekomProdukTiga.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Tampilkan dialog kustom ketika "arrow_rekom" diklik
+//
+//                // Mendapatkan posisi elemen "arrow_rekom" pada layar
+//                int[] location = new int[2];
+//                v.getLocationOnScreen(location);
+//
+//                // Menentukan posisi vertikal dialog berdasarkan elemen "arrow_rekom"
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(dialogProdukTiga.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//                layoutParams.gravity = Gravity.TOP | Gravity.START;
+//                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "arrow_rekom"
+//                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "arrow_rekom"
+//
+//                dialogProdukTiga.getWindow().setAttributes(layoutParams);
+//                dialogProdukTiga.show();
+//
+//
+//            }
+//        });
+//
+//        Button btnRekomTiga = dialogProdukTiga.findViewById(R.id.btn_rekomtiga);
+//        btnRekomTiga.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Intent untuk membuka link pada browser
+//                String shopeeLink = "https://tokopedia.link/7Xa2HOkCVEb";
+//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopeeLink));
+//                startActivity(intent);
+//
+//                // Tutup dialog setelah membuka link
+//                dialogProdukTiga.dismiss();
+//            }
+//        });
+//
+//
+//        final Dialog dialogProdukEmpat = new Dialog(this);
+//        dialogProdukEmpat.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialogProdukEmpat.setContentView(R.layout.activity_dialog_rekomempat);
+//
+//        dialogProdukEmpat.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//
+//        // Mendapatkan referensi elemen "see_details" dan "arrow_rekom"
+//        TextView seeDetailsProdukEmpat = findViewById(R.id.lihat_produkempat);
+//        ImageView arrowRekomProdukEmpat = findViewById(R.id.arw_produkempat);
+//
+//        // Menambahkan OnClickListener pada "see_details"
+//        seeDetailsProdukEmpat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Tampilkan dialog kustom ketika "see_details" diklik
+//
+//                // Mendapatkan posisi elemen "see_details" pada layar
+//                int[] location = new int[2];
+//                v.getLocationOnScreen(location);
+//
+//                // Menentukan posisi vertikal dialog berdasarkan elemen "see_details"
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(dialogProdukEmpat.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//                layoutParams.gravity = Gravity.TOP | Gravity.START;
+//                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "see_details"
+//                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "see_details"
+//
+//                dialogProdukEmpat.getWindow().setAttributes(layoutParams);
+//                dialogProdukEmpat.show();
+//            }
+//        });
+//
+//        arrowRekomProdukEmpat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Tampilkan dialog kustom ketika "arrow_rekom" diklik
+//
+//                // Mendapatkan posisi elemen "arrow_rekom" pada layar
+//                int[] location = new int[2];
+//                v.getLocationOnScreen(location);
+//
+//                // Menentukan posisi vertikal dialog berdasarkan elemen "arrow_rekom"
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(dialogProdukEmpat.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT; // Mengatur lebar dialog menjadi full layar
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//                layoutParams.gravity = Gravity.TOP | Gravity.START;
+//                layoutParams.x = location[0]; // Mengikuti posisi horizontal elemen "arrow_rekom"
+//                layoutParams.y = location[1] + v.getHeight(); // Menampilkan dialog di bawah elemen "arrow_rekom"
+//
+//                dialogProdukEmpat.getWindow().setAttributes(layoutParams);
+//                dialogProdukEmpat.show();
+//
+//
+//            }
+//        });
+//
+//        Button btnRekomEmpat = dialogProdukEmpat.findViewById(R.id.btn_rekomEmpat);
+//        btnRekomEmpat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Intent untuk membuka link pada browser
+//                String shopeeLink = "https://shopee.co.id/Proteina-LX-250-gr-Protein-Nabati-Vegetarian-Healthy-Food-i.1001474331.22742464977?sp_atk=c9f90000-cbd1-4915-83c6-0b2262b23f30&xptdk=c9f90000-cbd1-4915-83c6-0b2262b23f30";
+//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(shopeeLink));
+//                startActivity(intent);
+//
+//                // Tutup dialog setelah membuka link
+//                dialogProdukEmpat.dismiss();
+//            }
+//        });
 
         // Menambahkan OnClickListener pada "arrow_rekom"
 
@@ -417,6 +427,8 @@ public class HomeFoodyActivity extends AppCompatActivity {
 //                }
 //            });
 //        }
+
+        //      BAGIAN REKOMENDASI RPODUK AKHIR
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
@@ -568,6 +580,25 @@ public class HomeFoodyActivity extends AppCompatActivity {
 
     }
 
+    private void tampilkanProfil(UserData userData) {
+        if (userData.getGambar() != null && !userData.getGambar().isEmpty()) {
+            // Mendapatkan model dari ShapeAppearanceOverlay di XML
+            ShapeAppearanceModel shapeAppearanceModel = fotoProfil.getShapeAppearanceModel();
+
+            // Menggunakan Glide untuk memuat gambar
+            Glide.with(this)
+                    .load(userData.getGambar())
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(fotoProfil);
+
+            // Menetapkan ShapeAppearanceModel yang sama ke ImageView
+            fotoProfil.setShapeAppearanceModel(shapeAppearanceModel);
+        } else {
+            // Jika URL gambar kosong atau null, tampilkan gambar default
+            fotoProfil.setImageResource(R.drawable.profil_user);
+        }
+    }
+
     private void getDataDialyCatatan(){
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         String authToken = "Bearer " + getAuthToken();
@@ -580,6 +611,8 @@ public class HomeFoodyActivity extends AppCompatActivity {
                     UserProfile userProfile = response.body();
                     UserData userData = userProfile.getData();
                     SummaryData summaryData = userProfile.getSummary();
+                    tampilkanProfil(userData);
+
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");
 

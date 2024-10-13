@@ -1,16 +1,23 @@
 package com.example.foody;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,12 +36,28 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.shape.ShapeAppearanceModel;
+import com.google.gson.Gson;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,13 +85,20 @@ public class FiturProfil extends AppCompatActivity {
     private TextView karbohidratTextView, proteinTextView, garamTextView, gulaTextView;
     private TextView batasKarboTextView, batasProteinTextView, batasLemakTextView, kebutuhanKaloriTextView;
     private TextView aktivitasTextView;
-    private TextView namaAkun, emailAkun, usernameAkun, dateAkun, genderAkun;
+    private TextView namaAkun, emailAkun, dateAkun, genderAkun;
     private TextView editName, editEmail, editUsername, editDate;
     private EditText epNama, epEmail, epUsername, epDate;
     private Spinner aktivitasSpinner;
+    private static final int PICK_IMAGE_REQUEST = 1;
+
+    private ShapeableImageView fotoProfil;
+
+    private ImageView foto_profil;
 
     private List<String> aktivitasList;
-
+    private List<String> jenisKelaminList;
+    private Spinner jenisKelaminSpinner;
+    private ArrayAdapter<String> jenisKelaminAdapter;
     private String authToken;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,25 +130,40 @@ public class FiturProfil extends AppCompatActivity {
         batasLemakTextView = findViewById(R.id.hasil_bataslemak);
         kebutuhanKaloriTextView = findViewById(R.id.hasil_kebutuhankalori);
         aktivitasTextView = findViewById(R.id.hasil_aktivitas);
+        fotoProfil = findViewById(R.id.foto_profil);
 
         //Switch_Akun
         namaAkun = findViewById(R.id.akun_nama);
         emailAkun = findViewById(R.id.akun_email);
-        usernameAkun = findViewById(R.id.akun_username);
+//        usernameAkun = findViewById(R.id.akun_username);
         dateAkun = findViewById(R.id.akun_date);
         genderAkun = findViewById(R.id.akun_gender);
 
+        foto_profil = findViewById(R.id.foto_profil);
+
         // edit_profile
         editName = findViewById(R.id.ep_nama);
-        editEmail = findViewById(R.id.ep_email);
-        editUsername = findViewById(R.id.ep_username);
+//        editEmail = findViewById(R.id.ep_email);
+//        editUsername = findViewById(R.id.ep_username);
         editDate = findViewById(R.id.ep_date);
 
         authToken = getAuthToken();
 
+//        refreshUserProfile(authToken);
+
+        Button btnFoto = findViewById(R.id.btn_foto);
+        btnFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Pilih Gambar"), PICK_IMAGE_REQUEST);
+            }
+        });
+
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
-        // Melakukan permintaan profil pengguna dengan menyertakan token
         Call<UserProfile> call = apiService.getUserProfile("Bearer " + authToken);
         call.enqueue(new Callback<UserProfile>() {
             @Override
@@ -154,10 +199,12 @@ public class FiturProfil extends AppCompatActivity {
                     // Switch_Akun
                     namaAkun.setText(userData.getName());
                     emailAkun.setText(userData.getEmail());
-                    usernameAkun.setText(userData.getUsername());
+//                    usernameAkun.setText(userData.getUsername());
                     dateAkun.setText(userData.getTanggla_lahir());
                     genderAkun.setText(userData.getJenis_kelamin());
 
+
+                    tampilkanProfil(userData);
                     // ... (sisanya sesuaikan dengan atribut UserData dan SummaryData)
                 } else {
                     // Tangani kesalahan pada respons
@@ -237,7 +284,6 @@ public class FiturProfil extends AppCompatActivity {
         });
 
 
-
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
@@ -281,7 +327,8 @@ public class FiturProfil extends AppCompatActivity {
         aktivitasList.add("Tidak aktif (tidak berolahraga sama sekali)");
         aktivitasList.add("Cukup aktif (berolahraga 1-3x seminggu)");
         aktivitasList.add("Aktif (berolahraga 3-5x seminggu)");
-        aktivitasList.add("Sangat aktif (berolahraga atau 6-7x seminggu)");
+        aktivitasList.add("Sangat aktif (berolahraga 6-7x seminggu)");
+        aktivitasList.add("Super Aktif (berolahraga 1-2x setiap hari)");
 
 // Setelah itu, buat dan atur adapter
         aktivitasSpinner = myDialog.findViewById(R.id.spinner_aktivitas);
@@ -289,8 +336,94 @@ public class FiturProfil extends AppCompatActivity {
         aktivitasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         aktivitasSpinner.setAdapter(aktivitasAdapter);
 
+        // Initialize jenisKelaminAdapter with your data (similar to what you did in showCustomDialog)
+        jenisKelaminList = new ArrayList<>();
+        jenisKelaminList.add("Jenis Kelamin");
+        jenisKelaminList.add("Laki-laki");
+        jenisKelaminList.add("Perempuan");
+
+        jenisKelaminSpinner = myDialog.findViewById(R.id.spinner_jenis_kelamin);
+        jenisKelaminAdapter = new ArrayAdapter<>(this, R.layout.spinner_hint_item, jenisKelaminList);
+        jenisKelaminAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        jenisKelaminSpinner.setAdapter(jenisKelaminAdapter);
+
 // Terakhir, tampilkan dialog
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri selectedImageUri = data.getData();
+
+            // Set gambar ke ImageView
+            ShapeableImageView fotoProfil = findViewById(R.id.foto_profil);
+            fotoProfil.setImageURI(selectedImageUri);
+
+            // Mengirim gambar ke server
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                uploadImage(bitmap); // Metode untuk mengunggah gambar ke server
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void uploadImage(Bitmap bitmap) {
+        // Konversi Bitmap menjadi byte array
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+
+        // Buat RequestBody dari byte array
+        RequestBody requestFile = RequestBody.create(imageBytes, MediaType.parse("multipart/form-data"));
+
+        // Buat MultipartBody.Part untuk file
+        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("gambar", "profile_image.jpg", requestFile);
+
+        // Kirim gambar ke server menggunakan Retrofit
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        Call<ApiResponse<Void>> call = apiService.updateProfilePicture("Bearer " + authToken, imagePart);
+        call.enqueue(new Callback<ApiResponse<Void>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<Void>> call, Response<ApiResponse<Void>> response) {
+                if (response.isSuccessful()) {
+                    // Gambar berhasil diupload
+
+                    // Logcat untuk respons sukses
+                    Log.d("Response JSON", "Success");
+
+                    // Jika server memberikan data dalam respons, tambahkan logcat untuk menampilkan data tersebut
+                    ApiResponse<Void> apiResponse = response.body();
+                    if (apiResponse != null) {
+                        Log.d("Response JSON", apiResponse.toString());
+                    } else {
+                        Log.d("Response JSON", "Response body is null");
+                    }
+
+                    finish();
+                    overridePendingTransition(0,0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0,0);
+
+                    Toast.makeText(FiturProfil.this, "Gambar berhasil diupload", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Gagal mengupload gambar
+                    Toast.makeText(FiturProfil.this, "Gagal mengupload gambar", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<Void>> call, Throwable t) {
+                // Handle kesalahan jaringan atau server
+                Toast.makeText(FiturProfil.this, "Terjadi kesalahan: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void showCustomDialog() {
@@ -303,6 +436,7 @@ public class FiturProfil extends AppCompatActivity {
         aktivitasList.add("Cukup aktif (berolahraga 1-3x seminggu)");
         aktivitasList.add("Aktif (berolahraga 3-5x seminggu)");
         aktivitasList.add("Sangat aktif (berolahraga atau 6-7x seminggu)");
+        aktivitasList.add("Super Aktif (berolahraga 1-2x setiap hari)");
 
         ArrayList<Double> aktivitasValues = new ArrayList<>();
         aktivitasValues.add(0.0); // Placeholder untuk aktivitas
@@ -310,6 +444,42 @@ public class FiturProfil extends AppCompatActivity {
         aktivitasValues.add(1.375); // Cukup aktif
         aktivitasValues.add(1.550); // Aktif
         aktivitasValues.add(1.725); // Sangat aktif
+        aktivitasValues.add(1.9); // super
+
+        jenisKelaminSpinner = myDialog.findViewById(R.id.spinner_jenis_kelamin);
+        ArrayList<String> jenisKelaminList = new ArrayList<>();
+        jenisKelaminList.add("Jenis Kelamin");
+        jenisKelaminList.add("Laki-laki");
+        jenisKelaminList.add("Perempuan");
+
+        ArrayAdapter<String> jenisKelaminAdapter = new ArrayAdapter<String>(this, R.layout.spinner_hint_item, jenisKelaminList) {
+            @Override
+            public boolean isEnabled(int position) {
+                // Make the "Jenis Kelamin" item unselectable
+                return position != 0;
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView textView = (TextView) view;
+
+                if (position == 0) {
+                    // If it's the "Jenis Kelamin" item, set text color to gray
+                    textView.setTextColor(ContextCompat.getColor(getContext(), android.R.color.darker_gray));
+                } else {
+                    textView.setTextColor(ContextCompat.getColor(getContext(), android.R.color.black));
+                }
+
+                return view;
+            }
+        };
+
+        jenisKelaminAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        jenisKelaminSpinner.setAdapter(jenisKelaminAdapter);
+
+// Set the initial selection to the "Jenis Kelamin" item
+//        jenisKelaminSpinner.setSelection(0);
 
         ArrayAdapter<String> aktivitasAdapter = new ArrayAdapter<String>(this, R.layout.spinner_hint_item, aktivitasList) {
             @Override
@@ -355,17 +525,20 @@ public class FiturProfil extends AppCompatActivity {
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         }
 
+
+
         epNama = myDialog.findViewById(R.id.ep_nama);
-        epEmail = myDialog.findViewById(R.id.ep_email);
-        epUsername = myDialog.findViewById(R.id.ep_username);
+//        epEmail = myDialog.findViewById(R.id.ep_email);
+//        epUsername = myDialog.findViewById(R.id.ep_username);
         epDate = myDialog.findViewById(R.id.ep_date);
 
-        getProfileDetails(authToken);  // Mendapatkan data profil untuk diisi dalam form edit profil
+        getProfileDetails(authToken);
 
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         // Tampilkan dialog
         myDialog.show();
+
 
         Button btnSave = myDialog.findViewById(R.id.btn_ep_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -373,31 +546,52 @@ public class FiturProfil extends AppCompatActivity {
             public void onClick(View v) {
                 // Dapatkan nilai-nilai baru dari input pengguna
                 String newName = epNama.getText().toString();
-                String newEmail = epEmail.getText().toString();
-                String newUsername = epUsername.getText().toString();
+//                String newEmail = epEmail.getText().toString();
+//                String newUsername = epUsername.getText().toString();
                 String newBirthdate = epDate.getText().toString();
+
+                int selectedJenisKelaminPosition = jenisKelaminSpinner.getSelectedItemPosition();
+                String newJenisKelamin = jenisKelaminList.get(selectedJenisKelaminPosition);
 
                 int selectedAktivitasPosition = aktivitasSpinner.getSelectedItemPosition();
                 Double newAktivitas = aktivitasValues.get(selectedAktivitasPosition);
 
-
-                // Panggil metode pembaruan profil
-                updateProfile(authToken, newName, newEmail, newUsername, newBirthdate, newAktivitas);
-
-                // Sisanya dari dialog (menutup dialog, dll.)
+                updateProfile(authToken, newName, newBirthdate, newAktivitas, newJenisKelamin);
                 myDialog.dismiss();
             }
         });
+
 
         TextView batalButton = myDialog.findViewById(R.id.btn_close);
         batalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myDialog.dismiss();
+                refreshUserProfile(authToken);
             }
         });
     }
 
+    private void tampilkanProfil(UserData userData) {
+        if (userData.getGambar() != null && !userData.getGambar().isEmpty()) {
+            // Mendapatkan model dari ShapeAppearanceOverlay di XML
+            ShapeAppearanceModel shapeAppearanceModel = fotoProfil.getShapeAppearanceModel();
+
+            // Menggunakan Glide untuk memuat gambar
+            Glide.with(this)
+                    .load(userData.getGambar())
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(fotoProfil);
+
+            // Menetapkan ShapeAppearanceModel yang sama ke ImageView
+            fotoProfil.setShapeAppearanceModel(shapeAppearanceModel);
+        } else {
+            // Jika URL gambar kosong atau null, tampilkan gambar default
+            fotoProfil.setImageResource(R.drawable.profil_user);
+        }
+    }
+
+    // Perubahan pada fungsi getProfileDetails
     private void getProfileDetails(String authToken) {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
@@ -413,12 +607,25 @@ public class FiturProfil extends AppCompatActivity {
 
                     // Mengisi data dalam form edit profil
                     epNama.setText(userData.getName());
-                    epEmail.setText(userData.getEmail());
-                    epUsername.setText(userData.getUsername());
+//                    epEmail.setText(userData.getEmail());
+//                    epUsername.setText(userData.getUsername());
                     epDate.setText(userData.getTanggla_lahir());
+
+                    int positionGender = jenisKelaminAdapter.getPosition(userData.getJenis_kelamin());
+                    jenisKelaminSpinner.setSelection(positionGender);
 
                     int position = aktivitasAdapter.getPosition(getStringForAktivitas(summaryData.getAktivitas()));
                     aktivitasSpinner.setSelection(position);
+
+                    // Menyimpan dan menampilkan gambar pada foto_profil
+                    if (userData.getGambar() != null && !userData.getGambar().isEmpty()) {
+                        Glide.with(FiturProfil.this).load(userData.getGambar()).into(foto_profil);
+                    } else {
+                        // Handle jika tidak ada gambar profil
+                        // Contoh: Load default image
+                        Glide.with(FiturProfil.this).load(R.drawable.profil_user).into(foto_profil);
+                    }
+
                 } else {
                     // Tangani kesalahan pada respons
                     Toast.makeText(FiturProfil.this, "Gagal mengambil profil. Coba lagi.", Toast.LENGTH_SHORT).show();
@@ -434,21 +641,24 @@ public class FiturProfil extends AppCompatActivity {
         });
     }
 
+
     private String getStringForAktivitas(double aktivitasValue) {
         if (aktivitasValue == 1.200) {
             return "Tidak aktif (tidak berolahraga sama sekali)";
         } else if (aktivitasValue == 1.375) {
             return "Cukup aktif (berolahraga 1-3x seminggu)";
-        } else if (aktivitasValue == 1.550) {
+        } else if (aktivitasValue == 1.55) {
             return "Aktif (berolahraga 3-5x seminggu)";
         } else if (aktivitasValue == 1.725) {
-            return "Sangat aktif (berolahraga atau 6-7x seminggu)";
-        } else {
+            return "Sangat aktif (berolahraga 6-7x seminggu)";
+        } else if (aktivitasValue == 1.9) {
+            return "Super Aktif (berolahraga 1-2x setiap hari)";
+        }else {
             return "Aktivitas"; // Default atau jika aktivitas tidak ada
         }
     }
 
-    private void updateProfile(String authToken, String newName, String newEmail, String newUsername, String newBirthdate, Double newAktivitas) {
+    private void updateProfile(String authToken, String newName, String newBirthdate, Double newAktivitas, String newJenisKelamin) {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
         // Panggilan ini untuk mendapatkan data profil pengguna saat ini
@@ -464,21 +674,24 @@ public class FiturProfil extends AppCompatActivity {
 
                         // Memeriksa apakah ada perubahan pada nama, email, username, dan tanggal lahir
                         boolean isNameChanged = !TextUtils.isEmpty(newName) && !newName.equals(userData.getName());
-                        boolean isEmailChanged = !TextUtils.isEmpty(newEmail) && !newEmail.equals(userData.getEmail());
-                        boolean isUsernameChanged = !TextUtils.isEmpty(newUsername) && !newUsername.equals(userData.getUsername());
+//                        boolean isEmailChanged = !TextUtils.isEmpty(newEmail) && !newEmail.equals(userData.getEmail());
+//                        boolean isUsernameChanged = !TextUtils.isEmpty(newUsername) && !newUsername.equals(userData.getUsername());
                         boolean isBirthdateChanged = !TextUtils.isEmpty(newBirthdate) && !newBirthdate.equals(userData.getTanggla_lahir());
 
                         // Memeriksa apakah ada perubahan pada aktivitas
-                        boolean isAktivitasChanged = newAktivitas != null && !newAktivitas.equals(summaryData.getAktivitas());
+                        boolean isAktivitasChanged = !newAktivitas.equals(summaryData.getAktivitas());
 
-                        if (!isNameChanged && !isEmailChanged && !isUsernameChanged && !isBirthdateChanged && !isAktivitasChanged) {
-                            // Tidak ada perubahan pada profil
-                            Toast.makeText(FiturProfil.this, "Tidak ada perubahan pada profil.", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+                        // Check for changes in jenis_kelamin
+                        boolean isJenisKelaminChanged = !newJenisKelamin.equals(userData.getJenis_kelamin());
+
+//                        if (!isNameChanged && !isEmailChanged && !isBirthdateChanged && !isAktivitasChanged) {
+//                            // Tidak ada perubahan pada profil
+//                            Toast.makeText(FiturProfil.this, "Tidak ada perubahan pada profil.", Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
 
                         // Jika ada perubahan, lanjutkan dengan pembaruan profil
-                        performPartialUpdate(apiService, authToken, isNameChanged, isEmailChanged, isUsernameChanged, isBirthdateChanged, isAktivitasChanged, newName, newEmail, newUsername, newBirthdate, newAktivitas);
+                        performPartialUpdate(apiService, authToken, isNameChanged, isBirthdateChanged, isAktivitasChanged, isJenisKelaminChanged, newName, newBirthdate, newAktivitas, newJenisKelamin, userData.getName(), userData.getTanggla_lahir(), summaryData.getAktivitas(), userData.getJenis_kelamin());
                     } else {
                         Toast.makeText(FiturProfil.this, "Gagal memperbarui profil. Coba lagi.", Toast.LENGTH_SHORT).show();
                     }
@@ -496,23 +709,39 @@ public class FiturProfil extends AppCompatActivity {
         });
     }
 
-    private void performPartialUpdate(ApiService apiService, String authToken, boolean isNameChanged, boolean isEmailChanged, boolean isUsernameChanged, boolean isBirthdateChanged, boolean isAktivitasChanged, String newName, String newEmail, String newUsername, String newBirthdate, Double newAktivitas) {
+    private void performPartialUpdate(ApiService apiService, String authToken, boolean isNameChanged, boolean isBirthdateChanged, boolean isAktivitasChanged, boolean isJenisKelaminChanged, String newName, String newBirthdate, Double newAktivitas, String newJenisKelamin, String oldName, String oldBirthDate, double oldAktivitas, String oldJenisKelamin) {
         UpdateProfileRequest updateProfileRequest = new UpdateProfileRequest();
         if (isNameChanged) {
             updateProfileRequest.setName(newName);
         }
-        if (isEmailChanged) {
-            updateProfileRequest.setEmail(newEmail);
-        }
-        if (isUsernameChanged) {
-            updateProfileRequest.setUsername(newUsername);
-        }
+//        if (isEmailChanged) {
+//            updateProfileRequest.setEmail(newEmail);
+//        }
+//        if (isUsernameChanged) {
+//            updateProfileRequest.setUsername(newUsername);
+//        }
         if (isBirthdateChanged) {
             updateProfileRequest.setTanggal_lahir(newBirthdate);
+        }
+        if (isJenisKelaminChanged) {
+            updateProfileRequest.setJenisKelamin(newJenisKelamin);
         }
         if (isAktivitasChanged) {
             updateProfileRequest.setAktivitas(newAktivitas);
         }
+        if (!isNameChanged) {
+            updateProfileRequest.setName(oldName);
+        }
+        if (!isBirthdateChanged) {
+            updateProfileRequest.setTanggal_lahir(oldBirthDate);
+        }
+        if (!isJenisKelaminChanged || newJenisKelamin.equals("Jenis Kelamin")) {
+            updateProfileRequest.setJenisKelamin(oldJenisKelamin);
+        }
+        if (!isAktivitasChanged) {
+            updateProfileRequest.setAktivitas(oldAktivitas);
+        }
+
 
         Call<UpdateProfileResponse> call = apiService.updateProfile("Bearer " + authToken, updateProfileRequest);
         call.enqueue(new Callback<UpdateProfileResponse>() {
@@ -587,10 +816,11 @@ public class FiturProfil extends AppCompatActivity {
 
                     // Switch_Akun
                     namaAkun.setText(userData.getName());
-                    emailAkun.setText(userData.getEmail());
-                    usernameAkun.setText(userData.getUsername());
+//                    emailAkun.setText(userData.getEmail());
+//                    usernameAkun.setText(userData.getUsername());
                     dateAkun.setText(userData.getTanggla_lahir());
                     genderAkun.setText(userData.getJenis_kelamin());
+                    tampilkanProfil(userData);
                 } else {
                     // Tangani kesalahan pada respons
                     Toast.makeText(FiturProfil.this, "Gagal mengambil profil. Coba lagi.", Toast.LENGTH_SHORT).show();

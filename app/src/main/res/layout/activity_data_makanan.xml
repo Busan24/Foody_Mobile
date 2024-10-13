@@ -92,7 +92,7 @@
                             android:layout_marginTop="5dp"
                             android:textColor="@color/abupucet"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginRight="8dp"/>
+                            android:layout_marginRight="11dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -168,7 +168,7 @@
                             android:layout_marginTop="5dp"
                             android:textColor="@color/abupucet"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginRight="8dp"/>
+                            android:layout_marginRight="11dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -244,7 +244,7 @@
                             android:layout_marginTop="5dp"
                             android:textColor="@color/abupucet"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginRight="8dp"/>
+                            android:layout_marginRight="11dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -320,7 +320,7 @@
                             android:layout_marginTop="5dp"
                             android:textColor="@color/abupucet"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginRight="8dp"/>
+                            android:layout_marginRight="11dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

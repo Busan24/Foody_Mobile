@@ -49,22 +49,22 @@
                 android:orientation="horizontal">
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/search_makanan"
-                    android:layout_width="216dp"
+                    android:layout_width="236dp"
                     android:layout_height="50dp"
                     android:background="@drawable/button_birucerah"
                     app:queryHint="Search Here"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"/>
 
-                <Button
-                    android:id="@+id/filter_data"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/button_birucerah"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:drawableLeft="@drawable/filter_data"
-                    android:paddingLeft="12dp"/>
+<!--                <Button-->
+<!--                    android:id="@+id/filter_data"-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:background="@drawable/button_birucerah"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:drawableLeft="@drawable/filter_data"-->
+<!--                    android:paddingLeft="12dp"/>-->
             </LinearLayout>
 
             <TextView

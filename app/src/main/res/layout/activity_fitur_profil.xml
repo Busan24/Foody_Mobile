@@ -39,15 +39,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/foto_profil"
                     android:layout_width="124dp"
                     android:layout_height="124dp"
-                    android:background="@drawable/profil_user"
+                    app:shapeAppearanceOverlay="@style/circular"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"/>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,7 +62,7 @@
                         android:id="@+id/nama_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Balabala"
+                        android:text=""
                         android:textSize="22dp"
                         android:layout_marginTop="40dp"
                         />
@@ -76,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="4dp">
 
                     <TextView
                         android:id="@+id/gender_user"
@@ -85,7 +83,7 @@
                         android:text=""
                         android:textSize="16dp"
                         android:textColor="@color/abupucet"
-                        android:layout_marginLeft="165dp" />
+                        android:layout_marginLeft="166dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1119,9 +1117,21 @@
                 android:layout_height="36dp"
                 android:background="@drawable/btn_bulat_putih"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/pengaturan"
+                android:paddingLeft="5dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="25dp"/>
+
+            <Button
+                android:id="@+id/btn_foto"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/btn_bulat_putih"
+                android:layout_gravity="center"
                 android:layout_marginTop="110dp"
-                android:drawableLeft="@drawable/edit_profil"
-                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/camera_1"
+                android:paddingLeft="8dp"
                 android:layout_marginLeft="100dp"/>
 
         </RelativeLayout>

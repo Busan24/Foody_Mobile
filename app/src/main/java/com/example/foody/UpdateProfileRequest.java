@@ -8,6 +8,18 @@ public class UpdateProfileRequest {
     private String tanggal_lahir;
     private double aktivitas;
 
+    private String jenis_kelamin;
+
+    // existing methods...
+
+    public String getJenisKelamin() {
+        return jenis_kelamin;
+    }
+
+    public void setJenisKelamin(String jenis_kelamin) {
+        this.jenis_kelamin = jenis_kelamin;
+    }
+
     public String getName() {
         return name;
     }
