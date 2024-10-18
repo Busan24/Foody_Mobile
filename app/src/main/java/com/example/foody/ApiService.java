@@ -4,6 +4,7 @@ import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -67,7 +68,7 @@ public interface ApiService {
     @GET("produk")
     Call<ApiResponse<List<Produk>>> getProduk();
 
-    @GET("/bmi/chart")
+    @GET("bmi/chart")
     Call<ApiResponse<ChartData>> getBmiChartData(@Header("Authorization") String authToken);
 
     @POST("email-verification") // Sesuaikan dengan endpoint API verifikasi OTP
@@ -77,7 +78,7 @@ public interface ApiService {
     Call<ApiResponse<Void>> resendOtp(@Header("Authorization") String authToken);
 
     @Multipart
-    @POST("/user/image")
+    @POST("user/image")
     Call<ApiResponse<Void>> updateProfilePicture(
             @Header("Authorization") String authToken,
             @Part MultipartBody.Part image

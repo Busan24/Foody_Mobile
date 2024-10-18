@@ -23,13 +23,13 @@ public class PremiumActivity extends AppCompatActivity {
         berlangganan = findViewById(R.id.berlangganan);
 
         // Set tombol 1 bulan aktif di awal
-        setActiveButton(prem1Bulan, "Berlangganan Rp 15.000 / 1 Bulan", R.drawable.kotak_prem_pink);
+        setActiveButton(prem1Bulan, "Berlangganan 1 Bulan", R.drawable.kotak_prem_pink);
 
         // Klik tombol 1 bulan
         prem1Bulan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setActiveButton(prem1Bulan, "Berlangganan Rp 15.000 / 1 Bulan", R.drawable.kotak_prem_pink);
+                setActiveButton(prem1Bulan, "Berlangganan 1 Bulan", R.drawable.kotak_prem_pink);
                 setInactiveButton(prem3Bulan, R.drawable.kotak_prem_abu);
                 setInactiveButton(prem6Bulan, R.drawable.kotak_prem_abu);
             }
@@ -39,7 +39,7 @@ public class PremiumActivity extends AppCompatActivity {
         prem3Bulan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setActiveButton(prem3Bulan, "Berlangganan Rp 35.000 / 3 Bulan", R.drawable.kotak_prem_biru);
+                setActiveButton(prem3Bulan, "Berlangganan 3 Bulan", R.drawable.kotak_prem_biru);
                 setInactiveButton(prem1Bulan, R.drawable.kotak_prem_abu);
                 setInactiveButton(prem6Bulan, R.drawable.kotak_prem_abu);
             }
@@ -49,7 +49,7 @@ public class PremiumActivity extends AppCompatActivity {
         prem6Bulan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setActiveButton(prem6Bulan, "Berlangganan Rp 60.000 / 6 Bulan", R.drawable.kotak_prem_pink);
+                setActiveButton(prem6Bulan, "Berlangganan 6 Bulan", R.drawable.kotak_prem_pink);
                 setInactiveButton(prem1Bulan, R.drawable.kotak_prem_abu);
                 setInactiveButton(prem3Bulan, R.drawable.kotak_prem_abu);
             }

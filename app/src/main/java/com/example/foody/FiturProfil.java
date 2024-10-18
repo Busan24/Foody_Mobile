@@ -413,7 +413,15 @@ public class FiturProfil extends AppCompatActivity {
                     Toast.makeText(FiturProfil.this, "Gambar berhasil diupload", Toast.LENGTH_SHORT).show();
                 } else {
                     // Gagal mengupload gambar
-                    Toast.makeText(FiturProfil.this, "Gagal mengupload gambar", Toast.LENGTH_SHORT).show();
+                    try {
+                        // Coba ambil error body dari response
+                        String errorBody = response.errorBody().string();
+                        Log.e("Error Response", errorBody);
+                        Toast.makeText(FiturProfil.this, "Gagal mengupload gambar: " + errorBody, Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(FiturProfil.this, "Gagal membaca pesan error", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
