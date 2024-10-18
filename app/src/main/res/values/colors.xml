@@ -13,5 +13,8 @@
     <color name="grey">#6C6A85</color>
     <color name="warna_bbkurang">#1270EE</color>
     <color name="warna_bbnormal">#33A14D</color>
+    <color name="pink_transparent_20">#33FDCED0</color>
+    <color name="abupucet_opacity_20">#33E4E4E3</color>
+    <color name="biru_opacity_20">#33D9F4FF</color>
 
 </resources>

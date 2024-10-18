@@ -27,22 +27,22 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profilhome"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:src="@drawable/profil_user"
+                android:id="@+id/goto_premium"
+                android:layout_width="149.12dp"
+                android:layout_height="44.12dp"
+                android:src="@drawable/gabung_premium"
                 app:shapeAppearanceOverlay="@style/circular"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="18dp"/>
 
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@drawable/elipse_profil_home"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="22dp"
-                android:layout_marginTop="15dp"/>
+<!--            <ImageView-->
+<!--                android:layout_width="22dp"-->
+<!--                android:layout_height="22dp"-->
+<!--                android:src="@drawable/elipse_profil_home"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginRight="22dp"-->
+<!--                android:layout_marginTop="15dp"/>-->
 
         </RelativeLayout>
     </LinearLayout>

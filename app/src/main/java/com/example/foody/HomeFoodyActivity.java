@@ -49,6 +49,8 @@ public class HomeFoodyActivity extends AppCompatActivity {
 
     private ShapeableImageView fotoProfil;
 
+    private ShapeableImageView gotoPremium;
+
     private WebView webView;
     private TextView karbohidratTextView, proteinTextView, garamTextView, gulaTextView, lemakTextView;
     private TextView batasKarbohidrat, batasProtein, batasGula, batasLemak, batasGaram;
@@ -61,9 +63,13 @@ public class HomeFoodyActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
-        fotoProfil = findViewById(R.id.profilhome);
+//        fotoProfil = findViewById(R.id.profilhome);
+//
+//        ImageView profilHome = findViewById(R.id.)profilhome;
 
-        ImageView profilHome = findViewById(R.id.profilhome);
+        gotoPremium = findViewById(R.id.goto_premium);
+
+        ImageView gotoPremium = findViewById(R.id.goto_premium);
 
         webView = findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
@@ -86,10 +92,19 @@ public class HomeFoodyActivity extends AppCompatActivity {
         });
 
 
-        profilHome.setOnClickListener(new View.OnClickListener() {
+//        profilHome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomeFoodyActivity.this, FiturProfil.class);
+//                startActivity(intent);
+//            }
+//        });
+
+
+        gotoPremium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeFoodyActivity.this, FiturProfil.class);
+                Intent intent = new Intent(HomeFoodyActivity.this, PremiumActivity.class);
                 startActivity(intent);
             }
         });
@@ -580,24 +595,24 @@ public class HomeFoodyActivity extends AppCompatActivity {
 
     }
 
-    private void tampilkanProfil(UserData userData) {
-        if (userData.getGambar() != null && !userData.getGambar().isEmpty()) {
-            // Mendapatkan model dari ShapeAppearanceOverlay di XML
-            ShapeAppearanceModel shapeAppearanceModel = fotoProfil.getShapeAppearanceModel();
-
-            // Menggunakan Glide untuk memuat gambar
-            Glide.with(this)
-                    .load(userData.getGambar())
-                    .apply(RequestOptions.circleCropTransform())
-                    .into(fotoProfil);
-
-            // Menetapkan ShapeAppearanceModel yang sama ke ImageView
-            fotoProfil.setShapeAppearanceModel(shapeAppearanceModel);
-        } else {
-            // Jika URL gambar kosong atau null, tampilkan gambar default
-            fotoProfil.setImageResource(R.drawable.profil_user);
-        }
-    }
+//    private void tampilkanProfil(UserData userData) {
+//        if (userData.getGambar() != null && !userData.getGambar().isEmpty()) {
+//            // Mendapatkan model dari ShapeAppearanceOverlay di XML
+//            ShapeAppearanceModel shapeAppearanceModel = fotoProfil.getShapeAppearanceModel();
+//
+//            // Menggunakan Glide untuk memuat gambar
+//            Glide.with(this)
+//                    .load(userData.getGambar())
+//                    .apply(RequestOptions.circleCropTransform())
+//                    .into(fotoProfil);
+//
+//            // Menetapkan ShapeAppearanceModel yang sama ke ImageView
+//            fotoProfil.setShapeAppearanceModel(shapeAppearanceModel);
+//        } else {
+//            // Jika URL gambar kosong atau null, tampilkan gambar default
+//            fotoProfil.setImageResource(R.drawable.profil_user);
+//        }
+//    }
 
     private void getDataDialyCatatan(){
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
@@ -611,7 +626,7 @@ public class HomeFoodyActivity extends AppCompatActivity {
                     UserProfile userProfile = response.body();
                     UserData userData = userProfile.getData();
                     SummaryData summaryData = userProfile.getSummary();
-                    tampilkanProfil(userData);
+//                    tampilkanProfil(userData);
 
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");

@@ -21,6 +21,16 @@ public class SummaryData {
     private double daily_garam;
     private double daily_gula;
 
+    private double progres_kalori;
+
+    public double getProgres_kalori() {
+        return progres_kalori;
+    }
+
+    public void setProgres_kalori(double progres_kalori) {
+        this.progres_kalori = progres_kalori;
+    }
+
     public double getRata_rata_bmi() {
         return rata_rata_bmi;
     }

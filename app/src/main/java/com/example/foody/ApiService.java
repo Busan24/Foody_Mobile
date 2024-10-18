@@ -16,19 +16,19 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface ApiService {
-    @POST("users") // sesuaikan dengan endpoint API Anda
+    @POST("user") // sesuaikan dengan endpoint API Anda
     Call<RegistrationRequestModel>registerUser(@Body RegistrationRequestModel requestModel);
 
-    @POST("users/login") // sesuaikan dengan endpoint API login
+    @POST("user/login") // sesuaikan dengan endpoint API login
     Call<LoginResponseModel> loginUser(@Body LoginRequestModel requestModel);
 
-    @POST("users/logout") // sesuaikan dengan endpoint API logout
+    @POST("user/logout") // sesuaikan dengan endpoint API logout
     Call<Void> logoutUser(); // Sesuaikan dengan respons API logout
 
-    @GET("users/profile")
+    @GET("user")
     Call<UserProfile> getUserProfile(@Header("Authorization") String authToken);
 
-    @PUT("users/update")
+    @PUT("user")
     Call<UpdateProfileResponse> updateProfile(@Header("Authorization") String authToken, @Body UpdateProfileRequest request);
 
     @GET("makanan")
@@ -37,10 +37,10 @@ public interface ApiService {
     @GET("makanan/{id}")
     Call<ApiResponse<MakananModel>> getMakananById(@Path("id") String id);
 
-    @GET("users/summary")
+    @GET("user/summary")
     Call<ApiResponse<SummaryData>> getUserSummary(@Header("Authorization") String authToken);
 
-    @POST("catatanku/store")
+    @POST("catatanku")
     Call<ApiResponse<CatatanMakananModel>> simpanCatatanMakanan(@Header("Authorization") String authToken, @Body CatatanMakananModel catatanMakanan);
 
     @GET("catatanku/daily")
@@ -52,10 +52,10 @@ public interface ApiService {
     @GET("bmi/recent")
     Call<ApiResponse<List<BmiHistoryModel>>> getRecentBmiData(@Header("Authorization") String authToken);
 
-    @DELETE("bmi/delete/{id}")
+    @DELETE("bmi/{id}")
     Call<ApiResponse<Void>> deleteBmiData(@Header("Authorization") String authToken, @Path("id") String bmiId);
 
-    @DELETE("catatanku/delete/{id}")
+    @DELETE("catatanku/{id}")
     Call<ApiResponse<Void>> hapusCatatanMakanan(@Header("Authorization") String authToken, @Path("id") String catatanId);
 
     @GET("bmi/history")
@@ -77,7 +77,7 @@ public interface ApiService {
     Call<ApiResponse<Void>> resendOtp(@Header("Authorization") String authToken);
 
     @Multipart
-    @POST("profile/update-gambar")
+    @POST("/user/image")
     Call<ApiResponse<Void>> updateProfilePicture(
             @Header("Authorization") String authToken,
             @Part MultipartBody.Part image

@@ -1,10 +1,20 @@
 package com.example.foody;
 
 public class ApiResponse<T> {
+
+    private boolean success;
     private String status;
     private T data;
 
     private String message;
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
 
     public String getStatus() {
         return status;
