@@ -24,7 +24,7 @@ public interface ApiService {
     Call<LoginResponseModel> loginUser(@Body LoginRequestModel requestModel);
 
     @POST("user/logout") // sesuaikan dengan endpoint API logout
-    Call<Void> logoutUser(); // Sesuaikan dengan respons API logout
+    Call<Void> logoutUser(@Header("Authorization") String authToken); // Sesuaikan dengan respons API logout
 
     @GET("user")
     Call<UserProfile> getUserProfile(@Header("Authorization") String authToken);

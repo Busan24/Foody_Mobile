@@ -225,7 +225,7 @@ public class FiturProfil extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Memanggil metode untuk melakukan logout
-                logoutUser();
+                logoutUser(authToken);
             }
         });
 
@@ -233,7 +233,7 @@ public class FiturProfil extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Memanggil metode untuk melakukan logout
-                logoutUser();
+                logoutUser(authToken);
             }
         });
 
@@ -879,12 +879,12 @@ public class FiturProfil extends AppCompatActivity {
     }
 
     // Metode untuk melakukan logout
-    private void logoutUser() {
+    private void logoutUser(String authToken) {
         // Mendapatkan objek ApiService
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
         // Melakukan permintaan logout
-        Call<Void> call = apiService.logoutUser();
+        Call<Void> call = apiService.logoutUser("Bearer " + authToken);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
