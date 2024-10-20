@@ -77,14 +77,21 @@ public interface ApiService {
     @POST("resend-otp")
     Call<ApiResponse<Void>> resendOtp(@Header("Authorization") String authToken);
 
+    @GET("langganan")
+    Call<LanggananResponse> getLangganan(@Header("Authorization") String authToken);
+
+    @POST("transaksi")
+    Call<ApiResponse<TransaksiResponseModel>> createTransaction(
+            @Header("Authorization") String authToken,
+            @Body TransaksiResuestModel transaksiResuestModel
+    );
+
     @Multipart
     @POST("user/image")
     Call<ApiResponse<Void>> updateProfilePicture(
             @Header("Authorization") String authToken,
             @Part MultipartBody.Part image
     );
-
-
 
 }
 

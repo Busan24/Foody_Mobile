@@ -12,6 +12,25 @@ public class UserData {
 
     private String gambar;
 
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
+
+    private boolean verified;
+    private boolean premium;
+
     public String getName() {
         return name;
     }
