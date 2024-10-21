@@ -79,9 +79,28 @@ public class TransaksiActivity extends AppCompatActivity {
 
         });
 
+        // Mengaktifkan JavaScript
+        webView.getSettings().setJavaScriptEnabled(true);
+
+        // Menambahkan interface yang akan digunakan oleh JavaScript di halaman web
+        webView.addJavascriptInterface(new WebAppInterface(), "Android");
+
+        // Memuat halaman web
+        webView.loadUrl(url);
+
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.loadUrl(url);
+    }
+
+    public class WebAppInterface {
+        @android.webkit.JavascriptInterface
+        public void closeActivity() {
+            // Pindah ke HomeFoodyActivity saat tombol di halaman web ditekan
+            Intent intent = new Intent(TransaksiActivity.this, HomeFoodyActivity.class);
+            startActivity(intent);
+            finish(); // Menutup TransaksiActivity jika diinginkan
+        }
     }
 }

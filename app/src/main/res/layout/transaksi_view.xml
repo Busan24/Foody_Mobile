@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,27 +7,59 @@
     android:background="@color/white_c"
     tools:context=".MyWebView">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_closeSnap"
-        android:layout_width="51dp"
-        android:layout_height="24dp"
-        android:layout_x="189dp"
-        android:layout_y="631dp"
-        android:background="@drawable/pay_button"
-        android:text="Close"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/myWebView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/myWebView"
-        app:layout_constraintTop_toTopOf="@+id/myWebView"
-        app:layout_constraintVertical_bias="0.01999998" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/white">
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/pp_birucerah"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back_arrow"
+            android:paddingLeft="12dp"
+            android:id="@+id/btn_closeSnap"
+            android:onClick="kembaliKalkulatorBmi"
+            android:layout_gravity="start|top"/>
+
+
+        <TextView
+            android:id="@+id/text_hs_ctt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TRANSAKSI"
+            android:textSize="20dp"
+            android:textColor="@color/birutua"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="start|top"/>
+    </RelativeLayout>
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btn_closeSnap"-->
+<!--        android:layout_width="51dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_x="189dp"-->
+<!--        android:layout_y="631dp"-->
+<!--        android:background="@drawable/pay_button"-->
+<!--        android:text="Close"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="10sp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/myWebView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/myWebView"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/myWebView"-->
+<!--        app:layout_constraintVertical_bias="0.01999998" />-->
 
     <WebView
         android:id="@+id/myWebView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,4 +69,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

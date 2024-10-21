@@ -6,7 +6,9 @@
     android:layout_height="180dp"
     tools:context=".DataBmi"
     android:background="@drawable/outline_abu"
-    android:layout_marginBottom="15dp">
+    android:layout_marginBottom="15dp"
+    android:clipChildren="true"
+    android:clipToPadding="true">
 
     <View
         android:id="@+id/view_seling"
