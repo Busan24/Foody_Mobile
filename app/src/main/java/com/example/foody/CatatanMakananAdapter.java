@@ -100,7 +100,7 @@ public class CatatanMakananAdapter extends RecyclerView.Adapter<CatatanMakananAd
 
             DecimalFormat decimalFormat = new DecimalFormat("#.#");
             // Set data ke tampilan masing-masing
-            namaMakananDaily.setText(catatanMakanan.getNama_makanan());
+            namaMakananDaily.setText(catatanMakanan.getNama());
             txtWaktu.setText(catatanMakanan.getWaktu());
             txtJumlahPorsi.setText(String.valueOf(catatanMakanan.getJumlah()));
 

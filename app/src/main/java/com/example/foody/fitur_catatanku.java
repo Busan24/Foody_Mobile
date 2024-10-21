@@ -219,16 +219,59 @@ public class fitur_catatanku extends AppCompatActivity {
             public void onClick(View v) {
                 // Mendapatkan data dari dialog
                 EditText edtNamaMakanan = myDialog.findViewById(R.id.nama_makanan);
-                Spinner spinnerWaktuNyatat = myDialog.findViewById(R.id.waktu_nyatat);
+
+                EditText edtJumlahKarbohidrat = myDialog.findViewById(R.id.jmlh_karbohidrat);
+                EditText edtJumlahProtein = myDialog.findViewById(R.id.jmlh_protein);
+                EditText edtJumlahLemak = myDialog.findViewById(R.id.jmlh_lemak);
+                EditText edtJumlahGula = myDialog.findViewById(R.id.jmlh_gula);
+                EditText edtJumlahGaram = myDialog.findViewById(R.id.jmlh_garam);
                 EditText edtJumlahPorsi = myDialog.findViewById(R.id.jmlh_porsi);
+
+                Spinner spinnerWaktuNyatat = myDialog.findViewById(R.id.waktu_nyatat);
+
 
                 String namaMakanan = edtNamaMakanan.getText().toString();
                 String waktuMakan = spinnerWaktuNyatat.getSelectedItem().toString();
+                String jumlahKarbohidratStr = edtJumlahKarbohidrat.getText().toString();
+                String jumlahProteinStr = edtJumlahProtein.getText().toString();
+                String jumlahLemakStr = edtJumlahLemak.getText().toString();
+                String jumlahGulaStr = edtJumlahGula.getText().toString();
+                String jumlahGaramStr = edtJumlahGaram.getText().toString();
                 String jumlahPorsiStr = edtJumlahPorsi.getText().toString();
 
                 if (TextUtils.isEmpty(namaMakanan)) {
                     edtNamaMakanan.setError("Nama Makanan harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Nama Makanan harus diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(jumlahKarbohidratStr)) {
+                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    Toast.makeText(fitur_catatanku.this, "Jumlah Karbohidrat harus diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(jumlahProteinStr)) {
+                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    Toast.makeText(fitur_catatanku.this, "Jumlah Protein harus diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(jumlahLemakStr)) {
+                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    Toast.makeText(fitur_catatanku.this, "Jumlah Lemak harus diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(jumlahGulaStr)) {
+                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    Toast.makeText(fitur_catatanku.this, "Jumlah Gula harus diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(jumlahGaramStr)) {
+                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    Toast.makeText(fitur_catatanku.this, "Jumlah Garam harus diisi", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -238,17 +281,113 @@ public class fitur_catatanku extends AppCompatActivity {
                     return;
                 }
 
+                Double jumlahKarbohidrat = Double.valueOf(jumlahKarbohidratStr);
+                Double jumlahProtein = Double.valueOf(jumlahProteinStr);
+                Double jumlahLemak = Double.valueOf(jumlahLemakStr);
+                Double jumlahGula = Double.valueOf(jumlahGulaStr);
+                Double jumlahGaram = Double.valueOf(jumlahGaramStr);
                 int jumlahPorsi = Integer.parseInt(jumlahPorsiStr);
 
                 // Buat objek CatatanMakananModel
                 CatatanMakananModel catatanMakanan = new CatatanMakananModel();
                 catatanMakanan.setNama(namaMakanan);
+
+                catatanMakanan.setKarbohidrat(jumlahKarbohidrat);
+                catatanMakanan.setProtein(jumlahProtein);
+                catatanMakanan.setLemak(jumlahLemak);
+                catatanMakanan.setGula(jumlahGula);
+                catatanMakanan.setGaram(jumlahGaram);
+
                 catatanMakanan.setWaktu(waktuMakan);
                 catatanMakanan.setJumlah(jumlahPorsi);
 
                 // Panggil Retrofit untuk menyimpan catatan makanan
                 simpanCatatanMakanan(catatanMakanan);
             }
+        });
+
+        Button btnGenerateMakanan = myDialog.findViewById(R.id.btn_generate_makanan);
+        btnGenerateMakanan.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                // Menampilkan dialog loading
+                Dialog loadingDialog = new Dialog(fitur_catatanku.this);
+                loadingDialog.setContentView(R.layout.dialog_loading);
+
+                // Atur atribut dialog (opsional)
+                Window window = loadingDialog.getWindow();
+                if (window != null) {
+                    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                }
+
+                // Menampilkan loading dialog
+                loadingDialog.show();
+
+                EditText edtNamaMakanan = myDialog.findViewById(R.id.nama_makanan);
+
+                String namaMakanan = edtNamaMakanan.getText().toString();
+
+                GenerateMakananRequestModel generateMakananRequestModel = new GenerateMakananRequestModel(namaMakanan, "");
+
+                ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+                String authToken = "Bearer " + getAuthToken();
+
+                Call<ApiResponse<MakananModel>> call = apiService.generateMakanan("Bearer " + authToken, generateMakananRequestModel);
+                call.enqueue(new Callback<ApiResponse<MakananModel>>() {
+                    @Override
+                    public void onResponse(Call<ApiResponse<MakananModel>> call, Response<ApiResponse<MakananModel>> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+
+                            MakananModel makananModel = response.body().getData();
+
+                            EditText edtJumlahKarbohidrat = myDialog.findViewById(R.id.jmlh_karbohidrat);
+                            EditText edtJumlahProtein = myDialog.findViewById(R.id.jmlh_protein);
+                            EditText edtJumlahLemak = myDialog.findViewById(R.id.jmlh_lemak);
+                            EditText edtJumlahGula = myDialog.findViewById(R.id.jmlh_gula);
+                            EditText edtJumlahGaram = myDialog.findViewById(R.id.jmlh_garam);
+
+                            edtJumlahKarbohidrat.setText(String.valueOf(makananModel.getKarbohidrat()));
+                            edtJumlahProtein.setText(String.valueOf(makananModel.getProtein()));
+                            edtJumlahLemak.setText(String.valueOf(makananModel.getLemak()));
+                            edtJumlahGula.setText(String.valueOf(makananModel.getGula()));
+                            edtJumlahGaram.setText(String.valueOf(makananModel.getGaram()));
+
+                            // Menutup loading dialog dengan penundaan
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    loadingDialog.dismiss();
+
+                                    // Tampilkan dialog sukses setelah penutupan dialog loading
+                                    showSuccessDialog();
+
+                                    getCatatanMakananDaily();
+
+                                    myDialog.dismiss();
+
+
+                                }
+                            }, DELAY_MILLIS);
+
+
+                        }
+
+                        else {
+                            loadingDialog.dismiss();
+                            Toast.makeText(fitur_catatanku.this, "Gagal mendapatkan data kandungan makanan", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    public void  onFailure(Call<ApiResponse<MakananModel>> call, Throwable t) {
+                        loadingDialog.dismiss();
+                        Log.e("RetrofitError", "Error: " + t.getMessage(), t);
+                    }
+
+                });
+
+            }
+
         });
 
         myDialog.show();
@@ -321,6 +460,67 @@ public class fitur_catatanku extends AppCompatActivity {
             }
         });
     }
+
+//    private MakananModel getGeneratedMakanan(String makanan, String detail) {
+//        GenerateMakananRequestModel generateMakananRequestModel = new GenerateMakananRequestModel(makanan, detail);
+//
+//        // Menampilkan dialog loading
+//        Dialog loadingDialog = new Dialog(fitur_catatanku.this);
+//        loadingDialog.setContentView(R.layout.dialog_loading);
+//
+//        // Atur atribut dialog (opsional)
+//        Window window = loadingDialog.getWindow();
+//        if (window != null) {
+//            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//        }
+//
+//        // Menampilkan loading dialog
+//        loadingDialog.show();
+//
+//        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+//        String authToken = "Bearer " + getAuthToken();
+//
+//        Call<ApiResponse<MakananModel>> call = apiService.generateMakanan("Bearer " + authToken, generateMakananRequestModel);
+//        call.enqueue(new Callback<ApiResponse<MakananModel>>() {
+//            @Override
+//            public void onResponse(Call<ApiResponse<MakananModel>> call1, Response<ApiResponse<MakananModel>> response) {
+//                if (response.isSuccessful()) {
+//                    ApiResponse<MakananModel> apiResponse = response.body();
+//                    MakananModel makananModel = apiResponse.getData();
+//
+//                    // Menutup loading dialog dengan penundaan
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            loadingDialog.dismiss();
+//
+//                            // Tampilkan dialog sukses setelah penutupan dialog loading
+//                            showSuccessDialog();
+//
+//                            getCatatanMakananDaily();
+//
+//                            myDialog.dismiss();
+//
+//
+//                        }
+//                    }, DELAY_MILLIS);
+//
+//                    return makananModel;
+//                }
+//
+//                else {
+//                    loadingDialog.dismiss();
+//                    Toast.makeText(fitur_catatanku.this, "Gagal mendapatkan data kandungan makanan", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            public void  onFailure(Call<ApiResponse<MakananModel>> call, Throwable t) {
+//                loadingDialog.dismiss();
+//                Log.e("RetrofitError", "Error: " + t.getMessage(), t);
+//            }
+//
+//        });
+//    }
 
     private void getSummaryData(){
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);

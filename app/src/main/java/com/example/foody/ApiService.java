@@ -86,6 +86,12 @@ public interface ApiService {
             @Body TransaksiResuestModel transaksiResuestModel
     );
 
+    @POST("makanan/create")
+    Call<ApiResponse<MakananModel>> generateMakanan(
+            @Header("Authorization") String authToken,
+            @Body GenerateMakananRequestModel generateMakananRequestModel
+    );
+
     @Multipart
     @POST("user/image")
     Call<ApiResponse<Void>> updateProfilePicture(
