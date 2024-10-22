@@ -53,6 +53,9 @@ public interface ApiService {
     @GET("bmi/recent")
     Call<ApiResponse<List<BmiHistoryModel>>> getRecentBmiData(@Header("Authorization") String authToken);
 
+    @GET("bmi/chart")
+    Call<ApiResponse<Void>> getBmiChart(@Header("Authorization") String authToken);
+
     @DELETE("bmi/{id}")
     Call<ApiResponse<Void>> deleteBmiData(@Header("Authorization") String authToken, @Path("id") String bmiId);
 

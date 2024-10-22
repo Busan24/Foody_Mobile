@@ -60,6 +60,8 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
 
     private WebView webView;
 
+    private int bmiHariIni;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +78,8 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setBuiltInZoomControls(false);
         webView.getSettings().setDisplayZoomControls(false);
+
+        showBmiChart();
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -134,7 +138,7 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
             @Override
             public void onClick(View v) {
 
-                if (!getPremiumStatus()) {
+                if (!getPremiumStatus() && bmiHariIni >= 1) {
                     showPremiumDialog();
                     return;
                 }
@@ -326,8 +330,6 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         dialog.show();
     }
 
-
-
     private void fetchRecentBmiData() {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         String authToken = "Bearer " + getAuthToken();
@@ -342,10 +344,9 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
                         List<BmiHistoryModel> bmiList = apiResponse.getData();
                         // Update RecyclerView with the new data
                         bmiRecentAdapter.setBmiList(bmiList);
+                        bmiHariIni = Integer.valueOf(apiResponse.getMessage());
                     }
-                    if (apiResponse != null) {
-                        showChartInWebView(apiResponse.getMessage());
-                    }
+
                     else {
                         Toast.makeText(KalkulatorBmi.this, "Data null in response body", Toast.LENGTH_SHORT).show();
                     }
@@ -356,6 +357,30 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
 
             @Override
             public void onFailure(Call<ApiResponse<List<BmiHistoryModel>>> call, Throwable t) {
+                Log.e("API Error", "Failed to contact the server: " + t.getMessage());
+                Toast.makeText(KalkulatorBmi.this, "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void showBmiChart() {
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        String authToken = "Bearer " + getAuthToken();
+
+        Call<ApiResponse<Void>> call = apiService.getBmiChart(authToken);
+        call.enqueue(new Callback<ApiResponse<Void>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<Void>> call, Response<ApiResponse<Void>> response) {
+                if (response.isSuccessful()) {
+                    ApiResponse apiResponse = response.body();
+                    String link = apiResponse.getMessage();
+
+                    showChartInWebView(link);
+                }
+            };
+
+            @Override
+            public void onFailure(Call<ApiResponse<Void>> call, Throwable t) {
                 Log.e("API Error", "Failed to contact the server: " + t.getMessage());
                 Toast.makeText(KalkulatorBmi.this, "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }

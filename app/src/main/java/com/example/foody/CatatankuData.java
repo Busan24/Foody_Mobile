@@ -2,7 +2,7 @@ package com.example.foody;
 
 public class CatatankuData {
     private String id;
-    private String nama_makanan;
+    private String nama;
     private int jumlah;
     private String waktu;
     private double karbohidrat;
@@ -20,11 +20,11 @@ public class CatatankuData {
     }
 
     public String getNama_makanan() {
-        return nama_makanan;
+        return nama;
     }
 
     public void setNama_makanan(String nama_makanan) {
-        this.nama_makanan = nama_makanan;
+        this.nama = nama_makanan;
     }
 
     public int getJumlah() {

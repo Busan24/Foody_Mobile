@@ -19,7 +19,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.LayoutInflater;
 import android.view.WindowManager;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -29,8 +32,11 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
@@ -49,6 +55,8 @@ public class fitur_catatanku extends AppCompatActivity {
     private AutoCompleteTextView edtNamaMakanan;
     private ArrayAdapter<MakananModel> adapter;
     private List<MakananModel> daftarMakanan;
+
+    private int catatanHariIni;
 
     private static final int DELAY_MILLIS = 3000;
 
@@ -222,6 +230,12 @@ public class fitur_catatanku extends AppCompatActivity {
         btnSaveCatatan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!getPremiumStatus() && catatanHariIni >=  3) {
+                    showPremiumDialog();
+                    return;
+                }
+
                 // Mendapatkan data dari dialog
                 EditText edtNamaMakanan = myDialog.findViewById(R.id.nama_makanan);
 
@@ -315,6 +329,11 @@ public class fitur_catatanku extends AppCompatActivity {
         btnGenerateMakanan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                if (!getPremiumStatus() && catatanHariIni >=  3) {
+                    showPremiumDialog();
+                    return;
+                }
+
                 EditText edtNamaMakanan = myDialog.findViewById(R.id.nama_makanan);
                 String namaMakanan = edtNamaMakanan.getText().toString();
 
@@ -338,7 +357,7 @@ public class fitur_catatanku extends AppCompatActivity {
                 // Menampilkan loading dialog
                 loadingDialog.show();
 
-                GenerateMakananRequestModel generateMakananRequestModel = new GenerateMakananRequestModel(namaMakanan, "ditambah samebel 2 sendok");
+                GenerateMakananRequestModel generateMakananRequestModel = new GenerateMakananRequestModel(namaMakanan);
 
                 ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
                 String authToken = "Bearer " + getAuthToken();
@@ -429,23 +448,7 @@ public class fitur_catatanku extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body() != null) {
 
-
-                    // Menutup loading dialog dengan penundaan
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-//                            loadingDialog.dismiss();
-
-                            // Tampilkan dialog sukses setelah penutupan dialog loading
-//                            showSuccessDialog();
-
-                            getCatatanMakananDaily();
-
-
-
-                        }
-                    }, DELAY_MILLIS);
-
+                    getCatatanMakananDaily();
                     myDialog.dismiss();
 
                 } else {
@@ -618,6 +621,7 @@ public class fitur_catatanku extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     List<CatatanMakananModel> catatanMakananList = response.body().getData();
                     // Tampilkan data ke RecyclerView
+                    catatanHariIni = catatanMakananList.size();
                     displayCatatanMakanan(catatanMakananList);
                 } else {
                     // Handle kesalahan respons
@@ -788,6 +792,61 @@ public class fitur_catatanku extends AppCompatActivity {
                 Log.e("RetrofitError", "Error: " + t.getMessage(), t);
             }
         });
+    }
+
+    private void showPremiumDialog() {
+        BottomSheetDialog premiumDialog = new BottomSheetDialog(this);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.popup_premium, null);
+
+        // Atur layout untuk tampil full screen
+        premiumDialog.setContentView(dialogView);
+        BottomSheetBehavior<FrameLayout> behavior = premiumDialog.getBehavior();
+        behavior.setState(BottomSheetBehavior.STATE_EXPANDED); // Full screen
+        behavior.setPeekHeight(BottomSheetBehavior.PEEK_HEIGHT_AUTO, true);
+
+        // Mencegah dialog ditutup saat di-scroll
+        behavior.setHideable(false); // Dialog tidak dapat ditutup dengan scroll
+        behavior.setDraggable(false); // Nonaktifkan scroll dialog
+
+        // Mengubah layout root agar tinggi menjadi full screen
+        ViewGroup.LayoutParams params = dialogView.getLayoutParams();
+        params.height = ViewGroup.LayoutParams.MATCH_PARENT; // Full screen height
+        dialogView.setLayoutParams(params);
+
+        // Menghapus bayangan (dimming) di belakang dialog
+        if (premiumDialog.getWindow() != null) {
+            premiumDialog.getWindow().setDimAmount(0f); // Tanpa bayangan
+            premiumDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        // Temukan TextView dan Button dalam layout
+        TextView btnTutup = dialogView.findViewById(R.id.text_tutup);
+        Button btnUpgrade = dialogView.findViewById(R.id.btn_upgrade);
+
+        btnTutup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Dismiss the dialog when close button is clicked
+                premiumDialog.dismiss();
+            }
+        });
+
+        btnUpgrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(fitur_catatanku.this, PremiumActivity.class));
+            }
+        });
+
+        // Menampilkan dialog
+        premiumDialog.show();
+    }
+
+    private boolean getPremiumStatus() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("premium_status", MODE_PRIVATE);
+        boolean premium = sharedPreferences.getBoolean("is_premium", false);
+        Log.d("Premium", "status: " + premium); // Tambahkan log ini
+        return premium;
     }
 
 }
