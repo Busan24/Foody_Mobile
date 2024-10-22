@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="370dp"
     android:layout_height="310dp"
-    android:background="@color/white"
+    android:background="@drawable/pp_putih"
     android:layout_gravity="center"
     tools:context=".DialogSuccess">
 

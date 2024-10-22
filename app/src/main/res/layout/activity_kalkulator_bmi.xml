@@ -45,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp">
 
@@ -61,12 +62,14 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/button_birucerah">
 
                             <WebView
                                 android:id="@+id/webView"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                />
                     </LinearLayout>
             </LinearLayout>
                 <TextView
@@ -180,7 +183,7 @@
                     android:layout_width="150dp"
                     android:layout_height="46dp"
                     android:background="@drawable/button_birutua"
-                    android:text="Count"
+                    android:text="Hitung"
                     android:textAllCaps="false"
                     android:textSize="16dp"
                     android:textColor="@color/birucerah"

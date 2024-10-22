@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="370dp"
     android:layout_height="340dp"
-    android:background="@color/merahcerah"
+    android:background="@drawable/pp_pink"
     android:layout_gravity="center">
 
     <LinearLayout
@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Makanan Tidak di Temukan\n dan Gagal Mencatat"
+            android:text="Data Makanan Tidak di Temukan"
             android:textSize="20dp"
             android:gravity="center"
             android:textColor="@color/birutua"

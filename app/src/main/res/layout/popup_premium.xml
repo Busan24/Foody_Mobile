@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="101dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/logo_prem"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:id="@+id/text_judul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginHorizontal="20dp"
+                android:textAlignment="center"
+                android:text="Upgrade untuk menikmati semua fitur tanpa batas"
+                android:textSize="28sp"
+                android:textColor="@color/birutua"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/text_deskripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="Fitur ini hanya dapat digunakan tanpa batas oleh pengguna premium. Pengguna non-premium dapat menggunakan fitur ini dengan batasan perhari.\n\n Segera berlangganan untuk menikmati fitur tanpa batas."
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="@color/abupucet"
+                android:layout_gravity="center"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="384dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/gradient_pink_biru">
+
+                <!--             Fitur Tanpa Iklan          -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp">
+                    <RelativeLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_fitur_prem_pink">
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/g_tanpa_iklan"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tanpa Iklan"
+                            android:fontFamily="sans-serif"
+                            android:textSize="16dp"
+                            android:textColor="@color/birutua"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nikmati pengalaman tanpa gangguan dengan tampilan bersih dan bebas iklan"
+                            android:fontFamily="sans-serif"
+                            android:textSize="12dp"
+                            android:textColor="@color/abupucet"
+                            android:layout_marginLeft="1dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--             Fitur Catatan Tanpa Batas          -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp">
+                    <RelativeLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_fitur_prem_biru">
+                        <ImageView
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
+                            android:src="@drawable/icon_notes_prem"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Catatan Tanpa Batas"
+                            android:fontFamily="sans-serif"
+                            android:textSize="16dp"
+                            android:textColor="@color/birutua"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Premium Catat makanan tanpa batas. Non-premium dibatasi hingga 3 kali sehari"
+                            android:fontFamily="sans-serif"
+                            android:textSize="12dp"
+                            android:textColor="@color/abupucet"
+                            android:layout_marginLeft="1dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--             Fitur AI Nutrisi          -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp">
+                    <RelativeLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_fitur_prem_pink">
+                        <ImageView
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:src="@drawable/icon_ai"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AI Nutrisi"
+                            android:fontFamily="sans-serif"
+                            android:textSize="16dp"
+                            android:textColor="@color/birutua"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gunakan AI untuk otomatis mendeteksi kandungan nutrisi makanan yang kamu konsumsi"
+                            android:fontFamily="sans-serif"
+                            android:textSize="12dp"
+                            android:textColor="@color/abupucet"
+                            android:layout_marginLeft="1dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--             Fitur Pengingat Nutrisi          -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp">
+                    <RelativeLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_fitur_prem_biru">
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:src="@drawable/icon_report"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pengingat Nutrisi"
+                            android:fontFamily="sans-serif"
+                            android:textSize="16dp"
+                            android:textColor="@color/birutua"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dapatkan peringatan otomatis jika kandungan nutrisi melebihi batas saat mencatat makanan"
+                            android:fontFamily="sans-serif"
+                            android:textSize="12dp"
+                            android:textColor="@color/abupucet"
+                            android:layout_marginLeft="1dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--             Laporan PDF          -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp">
+                    <RelativeLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_fitur_prem_pink">
+                        <ImageView
+                            android:layout_width="31dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/icon_laporan_pdf"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Laporan PDF"
+                            android:fontFamily="sans-serif"
+                            android:textSize="16dp"
+                            android:textColor="@color/birutua"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dapatkan ringkasan nutrisi harian dalam format PDF yang mudah dibaca"
+                            android:fontFamily="sans-serif"
+                            android:textSize="12dp"
+                            android:textColor="@color/abupucet"
+                            android:layout_marginLeft="1dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"/>
+            <Button
+                android:id="@+id/btn_upgrade"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.9"
+                android:background="@drawable/button_birutua"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:text="Upgrade Sekarang"
+                android:textColor="@color/birucerah"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_tutup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="Nanti saja"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/abupucet"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

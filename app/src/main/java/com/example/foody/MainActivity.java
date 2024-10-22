@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                     // Misalnya, Anda dapat menyimpan token atau ID pengguna di sini
                     // ...
                     saveAuthToken(authToken);
-                    saveLoginStatus(true);
                     // Simpan status login
                     saveLoginStatus(true);
 

@@ -65,7 +65,7 @@ public class fitur_catatanku extends AppCompatActivity {
         btnNyatat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCustomDialog("PAGI", "#FDCED0"); // Teks "PAGI" dan latar belakang pink
+                showCustomDialog("PAGI", R.drawable.pp_pink , "#131049", R.drawable.button_birucerah); // Teks "PAGI" dan latar belakang pink
             }
         });
 
@@ -73,7 +73,7 @@ public class fitur_catatanku extends AppCompatActivity {
         btnNyatatSiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCustomDialog("SIANG", "#D9F4FF"); // Teks "SIANG" dan latar belakang biru cerah
+                showCustomDialog("SIANG", R.drawable.pp_birucerah, "#131049", R.drawable.button_merahcerah); // Teks "SIANG" dan latar belakang biru cerah
             }
         });
 
@@ -81,7 +81,7 @@ public class fitur_catatanku extends AppCompatActivity {
         btnNyatatSore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCustomDialog("SORE", "#FDCED0");
+                showCustomDialog("SORE", R.drawable.pp_pink, "#131049", R.drawable.button_birucerah);
             }
         });
 
@@ -89,7 +89,7 @@ public class fitur_catatanku extends AppCompatActivity {
         btnNyatatMalam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCustomDialog("MALAM", "#D9F4FF");
+                showCustomDialog("MALAM", R.drawable.pp_birucerah, "#131049", R.drawable.button_merahcerah);
             }
         });
 
@@ -176,7 +176,7 @@ public class fitur_catatanku extends AppCompatActivity {
 
     }
 
-    private void showCustomDialog(String text, String backgroundColor) {
+    private void showCustomDialog(String text, int backgroundColor, String generateButtonTextColor, int drawable) {
         // Membuat dialog
         myDialog.setContentView(R.layout.popup_catatanku);
 
@@ -186,7 +186,12 @@ public class fitur_catatanku extends AppCompatActivity {
 
         // Mengubah teks dan latar belakang sesuai dengan tombol yang ditekan
         txtNyatatHari.setText(text);
-        bgPopup.setBackgroundColor(Color.parseColor(backgroundColor));
+        bgPopup.setBackgroundResource(backgroundColor);
+
+        // Mengubah warna teks dan background tombol generate data makanan
+        Button generateButton = myDialog.findViewById(R.id.btn_generate_makanan);
+        generateButton.setBackgroundResource(drawable);
+        generateButton.setTextColor(Color.parseColor(generateButtonTextColor));
 
         // Inisialisasi Spinner waktu_nyatat sesuai dengan waktu yang diinginkan
         Spinner spinnerWaktuNyatat = myDialog.findViewById(R.id.waktu_nyatat);
@@ -246,31 +251,31 @@ public class fitur_catatanku extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(jumlahKarbohidratStr)) {
-                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    edtJumlahKarbohidrat.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Karbohidrat harus diisi", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahProteinStr)) {
-                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    edtJumlahProtein.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Protein harus diisi", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahLemakStr)) {
-                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    edtJumlahLemak.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Lemak harus diisi", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahGulaStr)) {
-                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    edtJumlahGula.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Gula harus diisi", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahGaramStr)) {
-                    edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
+                    edtJumlahGaram.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Garam harus diisi", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -310,6 +315,16 @@ public class fitur_catatanku extends AppCompatActivity {
         btnGenerateMakanan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                EditText edtNamaMakanan = myDialog.findViewById(R.id.nama_makanan);
+                String namaMakanan = edtNamaMakanan.getText().toString();
+
+//                Validasi apakah nama makanan sudah diisi atau belum
+                if (TextUtils.isEmpty(namaMakanan)) {
+                    edtNamaMakanan.setError("Nama Makanan harus diisi");
+                    Toast.makeText(fitur_catatanku.this, "Nama Makanan harus diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Menampilkan dialog loading
                 Dialog loadingDialog = new Dialog(fitur_catatanku.this);
                 loadingDialog.setContentView(R.layout.dialog_loading);
@@ -323,16 +338,12 @@ public class fitur_catatanku extends AppCompatActivity {
                 // Menampilkan loading dialog
                 loadingDialog.show();
 
-                EditText edtNamaMakanan = myDialog.findViewById(R.id.nama_makanan);
-
-                String namaMakanan = edtNamaMakanan.getText().toString();
-
-                GenerateMakananRequestModel generateMakananRequestModel = new GenerateMakananRequestModel(namaMakanan, "");
+                GenerateMakananRequestModel generateMakananRequestModel = new GenerateMakananRequestModel(namaMakanan, "ditambah samebel 2 sendok");
 
                 ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
                 String authToken = "Bearer " + getAuthToken();
 
-                Call<ApiResponse<MakananModel>> call = apiService.generateMakanan("Bearer " + authToken, generateMakananRequestModel);
+                Call<ApiResponse<MakananModel>> call = apiService.generateMakanan(authToken, generateMakananRequestModel);
                 call.enqueue(new Callback<ApiResponse<MakananModel>>() {
                     @Override
                     public void onResponse(Call<ApiResponse<MakananModel>> call, Response<ApiResponse<MakananModel>> response) {
@@ -359,12 +370,7 @@ public class fitur_catatanku extends AppCompatActivity {
                                     loadingDialog.dismiss();
 
                                     // Tampilkan dialog sukses setelah penutupan dialog loading
-                                    showSuccessDialog();
-
-                                    getCatatanMakananDaily();
-
-                                    myDialog.dismiss();
-
+//                                    showSuccessDialog();
 
                                 }
                             }, DELAY_MILLIS);
@@ -374,7 +380,11 @@ public class fitur_catatanku extends AppCompatActivity {
 
                         else {
                             loadingDialog.dismiss();
+
+                            showFailedDialog();
                             Toast.makeText(fitur_catatanku.this, "Gagal mendapatkan data kandungan makanan", Toast.LENGTH_SHORT).show();
+                            Log.e("RetrofitError", "Response code: " + response.code());
+                            Log.e("RetrofitError", "Error body: " + response.body());
                         }
 
                     }
@@ -396,17 +406,17 @@ public class fitur_catatanku extends AppCompatActivity {
 
     private void simpanCatatanMakanan(CatatanMakananModel catatanMakanan) {
         // Menampilkan dialog loading
-        Dialog loadingDialog = new Dialog(fitur_catatanku.this);
-        loadingDialog.setContentView(R.layout.dialog_loading);
+//        Dialog loadingDialog = new Dialog(fitur_catatanku.this);
+//        loadingDialog.setContentView(R.layout.dialog_loading);
 
         // Atur atribut dialog (opsional)
-        Window window = loadingDialog.getWindow();
-        if (window != null) {
-            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        }
+//        Window window = loadingDialog.getWindow();
+//        if (window != null) {
+//            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//        }
 
         // Menampilkan loading dialog
-        loadingDialog.show();
+//        loadingDialog.show();
 
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         String authToken = "Bearer " + getAuthToken();
@@ -424,22 +434,23 @@ public class fitur_catatanku extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            loadingDialog.dismiss();
+//                            loadingDialog.dismiss();
 
                             // Tampilkan dialog sukses setelah penutupan dialog loading
-                            showSuccessDialog();
+//                            showSuccessDialog();
 
                             getCatatanMakananDaily();
 
-                            myDialog.dismiss();
 
 
                         }
                     }, DELAY_MILLIS);
 
+                    myDialog.dismiss();
+
                 } else {
                     showFailedDialog();
-                    loadingDialog.dismiss();
+//                    loadingDialog.dismiss();
                     myDialog.dismiss();
                     // Gagal disimpan
                     Toast.makeText(fitur_catatanku.this, "Gagal Menyimpan Catatan Makanan", Toast.LENGTH_SHORT).show();
@@ -455,7 +466,7 @@ public class fitur_catatanku extends AppCompatActivity {
                 Log.e("RetrofitError", "Error: " + t.getMessage(), t);
 
                 showFailedDialog();
-                loadingDialog.dismiss();
+//                loadingDialog.dismiss();
                 myDialog.dismiss();
             }
         });

@@ -628,6 +628,16 @@ public class HomeFoodyActivity extends AppCompatActivity {
                     SummaryData summaryData = userProfile.getSummary();
 //                    tampilkanProfil(userData);
 
+                    Log.d("Verification Status", "User isVerified: " + userData.isVerified());
+                    if (!userData.isVerified()) {
+                        Intent intent = new Intent(HomeFoodyActivity.this, VerifikasiOtp.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    }
+
+                    // Save premium status
+                    savePremiumStatus(userData.isPremium());
+//                    SharedPrefManager.savePremiumStatus(userData.isPremium());
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
@@ -750,5 +760,12 @@ public class HomeFoodyActivity extends AppCompatActivity {
         String authToken = sharedPreferences.getString("token", "");
         Log.d("AuthToken", "Token: " + authToken); // Tambahkan log ini
         return authToken;
+    }
+
+    private void savePremiumStatus(boolean premium) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("premium_status", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("is_premium", premium);
+        editor.apply();
     }
 }

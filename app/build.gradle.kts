@@ -58,4 +58,8 @@ dependencies {
     // Tambahkan dependensi Kotlin di sini jika diperlukan
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.22") // Pastikan hanya ada satu versi Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22") // Konsisten dengan kotlin-stdlib
+
+    // Cardview
+    implementation("androidx.cardview:cardview:1.0.0")
+
 }

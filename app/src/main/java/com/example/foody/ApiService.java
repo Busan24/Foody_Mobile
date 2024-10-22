@@ -86,7 +86,7 @@ public interface ApiService {
             @Body TransaksiResuestModel transaksiResuestModel
     );
 
-    @POST("makanan/create")
+    @POST("makanan/generate")
     Call<ApiResponse<MakananModel>> generateMakanan(
             @Header("Authorization") String authToken,
             @Body GenerateMakananRequestModel generateMakananRequestModel

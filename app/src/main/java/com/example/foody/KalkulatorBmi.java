@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.LayoutInflater;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -24,15 +25,23 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.FrameLayout;
 import android.app.Dialog;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.graphics.drawable.Drawable;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import java.util.List;
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,13 +76,6 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setBuiltInZoomControls(false);
         webView.getSettings().setDisplayZoomControls(false);
-
-
-
-
-//        webView.loadUrl("https//:foody.azurewebsites.net");
-
-//        String chartUrl =
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -131,6 +133,12 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         btnCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!getPremiumStatus()) {
+                    showPremiumDialog();
+                    return;
+                }
+
                 // Ambil tinggi badan dan berat badan dari EditText
                 if (validateInput(etTinggiBadan) && validateInput(etBeratBadan)) {
                     double tinggiBadan = Double.parseDouble(etTinggiBadan.getText().toString());
@@ -403,7 +411,18 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
                         Toast.makeText(KalkulatorBmi.this, "Data null in response body", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(KalkulatorBmi.this, "Gagal menghitung BMI", Toast.LENGTH_SHORT).show();
+                    // Parsing error body menjadi ApiError<String>
+                    try {
+                        // Gunakan Gson untuk parsing error body
+                        Gson gson = new Gson();
+                        ApiError<String> apiError = gson.fromJson(response.errorBody().charStream(), ApiError.class);
+
+                        // Menampilkan pesan error
+                        Toast.makeText(KalkulatorBmi.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    } catch (JsonSyntaxException e) {
+                        e.printStackTrace();
+                        Toast.makeText(KalkulatorBmi.this, "Failed to parse error response", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -456,12 +475,67 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         dialog.show();
     }
 
+    private void showPremiumDialog() {
+        BottomSheetDialog premiumDialog = new BottomSheetDialog(this);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.popup_premium, null);
+
+        // Atur layout untuk tampil full screen
+        premiumDialog.setContentView(dialogView);
+        BottomSheetBehavior<FrameLayout> behavior = premiumDialog.getBehavior();
+        behavior.setState(BottomSheetBehavior.STATE_EXPANDED); // Full screen
+        behavior.setPeekHeight(BottomSheetBehavior.PEEK_HEIGHT_AUTO, true);
+
+        // Mencegah dialog ditutup saat di-scroll
+        behavior.setHideable(false); // Dialog tidak dapat ditutup dengan scroll
+        behavior.setDraggable(false); // Nonaktifkan scroll dialog
+
+        // Mengubah layout root agar tinggi menjadi full screen
+        ViewGroup.LayoutParams params = dialogView.getLayoutParams();
+        params.height = ViewGroup.LayoutParams.MATCH_PARENT; // Full screen height
+        dialogView.setLayoutParams(params);
+
+        // Menghapus bayangan (dimming) di belakang dialog
+        if (premiumDialog.getWindow() != null) {
+            premiumDialog.getWindow().setDimAmount(0f); // Tanpa bayangan
+            premiumDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        // Temukan TextView dan Button dalam layout
+        TextView btnTutup = dialogView.findViewById(R.id.text_tutup);
+        Button btnUpgrade = dialogView.findViewById(R.id.btn_upgrade);
+
+        btnTutup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Dismiss the dialog when close button is clicked
+                premiumDialog.dismiss();
+            }
+        });
+
+        btnUpgrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(KalkulatorBmi.this, PremiumActivity.class));
+            }
+        });
+
+        // Menampilkan dialog
+        premiumDialog.show();
+    }
+
 
     private String getAuthToken() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("auth_token", MODE_PRIVATE);
         String authToken = sharedPreferences.getString("token", "");
         Log.d("AuthToken", "Token: " + authToken); // Tambahkan log ini
         return authToken;
+    }
+
+    private boolean getPremiumStatus() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("premium_status", MODE_PRIVATE);
+        boolean premium = sharedPreferences.getBoolean("is_premium", false);
+        Log.d("Premium", "status: " + premium); // Tambahkan log ini
+        return premium;
     }
 
     private void closeKeyboard() {

@@ -358,12 +358,13 @@ public class VerifikasiOtp extends AppCompatActivity {
                     } else {
                         progressDialog.dismiss();
                         // Menampilkan pesan error jika verifikasi gagal
-                        Toast.makeText(VerifikasiOtp.this, "Verifikasi OTP gagal", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VerifikasiOtp.this, "Verifikasi OTP tidak sukses", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     progressDialog.dismiss();
                     // Menampilkan pesan error jika respons API tidak sukses
                     Toast.makeText(VerifikasiOtp.this, "Verifikasi OTP gagal", Toast.LENGTH_SHORT).show();
+                    Log.e("OTP", "Satatus: " + response.code());
                 }
             }
 

@@ -43,6 +43,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:paddingLeft="10dp"
+            android:paddingRight="20dp"
             android:textSize="12dp"
             android:completionThreshold="1"
             android:inputType="text"/>
@@ -73,6 +74,7 @@
                     android:layout_height="41dp"
                     android:background="@drawable/pp_putih"
                     android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
                     android:hint="gram"
                     android:layout_marginTop="5dp"
                     android:textSize="12dp"
@@ -101,6 +103,7 @@
                     android:layout_height="41dp"
                     android:background="@drawable/pp_putih"
                     android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
                     android:hint="gram"
                     android:layout_marginTop="5dp"
                     android:textSize="12dp"
@@ -135,6 +138,7 @@
                     android:layout_height="41dp"
                     android:background="@drawable/pp_putih"
                     android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
                     android:hint="gram"
                     android:layout_marginTop="5dp"
                     android:textSize="12dp"
@@ -163,6 +167,7 @@
                     android:layout_height="41dp"
                     android:background="@drawable/pp_putih"
                     android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
                     android:hint="gram"
                     android:layout_marginTop="5dp"
                     android:textSize="12dp"
@@ -198,6 +203,7 @@
                     android:layout_height="41dp"
                     android:background="@drawable/pp_putih"
                     android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
                     android:hint="gram"
                     android:layout_marginTop="5dp"
                     android:textSize="12dp"
@@ -226,6 +232,7 @@
                     android:layout_height="41dp"
                     android:background="@drawable/pp_putih"
                     android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
                     android:hint="porsi"
                     android:layout_marginTop="5dp"
                     android:textSize="12dp"
@@ -263,27 +270,42 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_save_ctt"
-            android:layout_width="301dp"
-            android:layout_height="40dp"
-            android:background="@drawable/button_birutua"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
-            android:text="SIMPAN"
-            android:textColor="@color/birucerah"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_generate_makanan"
-            android:layout_width="301dp"
-            android:layout_height="40dp"
-            android:background="@drawable/button_birucerah"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_gravity="center"
-            android:text="CARI DATA MAKANAN"
-            android:textColor="@color/birutua"/>
+            <Button
+                android:id="@+id/btn_generate_makanan"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button_birucerah"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:text="Cari Data Makanan"
+                android:textColor="@color/birutua"/>
+
+            <Button
+                android:id="@+id/btn_save_ctt"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button_birutua"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:text="Simpan"
+                android:textColor="@color/birucerah"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

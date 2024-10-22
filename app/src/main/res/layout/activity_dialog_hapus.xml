@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/pp_putih"
     android:padding="10dp"
     android:layout_gravity="center"
     tools:context=".DialogHapus">
@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/pp_putih"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="12dp"

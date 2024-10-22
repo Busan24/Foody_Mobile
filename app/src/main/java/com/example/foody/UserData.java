@@ -7,10 +7,10 @@ public class UserData {
     private int usia;
     private int berat_badan;
     private int tinggi_badan;
-    private String username;
     private String tanggla_lahir;
-
     private String gambar;
+    private boolean verified;
+    private boolean premium;
 
     public boolean isVerified() {
         return verified;
@@ -27,9 +27,6 @@ public class UserData {
     public void setPremium(boolean premium) {
         this.premium = premium;
     }
-
-    private boolean verified;
-    private boolean premium;
 
     public String getName() {
         return name;
@@ -77,14 +74,6 @@ public class UserData {
 
     public void setTinggi_badan(int tinggi_badan) {
         this.tinggi_badan = tinggi_badan;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getTanggla_lahir() {

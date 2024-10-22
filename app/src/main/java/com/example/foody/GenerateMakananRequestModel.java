@@ -13,8 +13,15 @@ public class GenerateMakananRequestModel {
         return makanan;
     }
 
-    public void setMakanan(java.lang.String makanan) {
+    public void setMakanan(String makanan) {
         this.makanan = makanan;
     }
 
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(java.lang.String detail) {
+        this.detail = detail;
+    }
 }
