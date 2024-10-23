@@ -304,12 +304,14 @@
                                     android:layout_height="144dp"
                                     android:progress="0"
                                     android:max="100"
-                                    android:layout_marginLeft="10dp"/> 
+                                    android:layout_marginLeft="10dp"/>
 
-                                <WebView
-                                    android:id="@+id/webView"
+                                <ImageView
+                                    android:id="@+id/imageView"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:adjustViewBounds="true"
+                                    />
 
                                 <!--                                <TextView-->
                                 <!--                                    android:id="@+id/total_gram"-->

@@ -33,10 +33,10 @@ public interface ApiService {
     Call<UpdateProfileResponse> updateProfile(@Header("Authorization") String authToken, @Body UpdateProfileRequest request);
 
     @GET("makanan")
-    Call<ApiResponse<List<MakananModel>>> getMakanan();
+    Call<ApiResponse<List<MakananModel>>> getMakanan(@Header("Authorization") String authToken);
 
     @GET("makanan/{id}")
-    Call<ApiResponse<MakananModel>> getMakananById(@Path("id") String id);
+    Call<ApiResponse<MakananModel>> getMakananById(@Header("Authorization") String authToken, @Path("id") String id);
 
     @GET("user/summary")
     Call<ApiResponse<SummaryData>> getUserSummary(@Header("Authorization") String authToken);

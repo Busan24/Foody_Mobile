@@ -78,7 +78,7 @@ public class CatatankuDataAdapter extends RecyclerView.Adapter<CatatankuDataAdap
 
             DecimalFormat decimalFormat = new DecimalFormat("#.#");
             // Set data ke tampilan
-            tvNamaCatatan.setText(catatankuData.getNama_makanan());
+            tvNamaCatatan.setText(catatankuData.getNama());
             tvJumlahMakanan.setText(String.valueOf(catatankuData.getJumlah()));
             tvWaktuCatatan.setText(catatankuData.getWaktu());
 

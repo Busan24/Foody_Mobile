@@ -53,8 +53,7 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.ViewHold
 
         // Load gambar menggunakan Glide
         Glide.with(holder.itemView.getContext())
-                .load(makanan.getGambar().contains("upload/") ? "https://foody.azurewebsites.net/storage/" + makanan.getGambar() :
-                        makanan.getGambar())
+                .load(makanan.getGambar())
 //                .placeholder(R.drawable.sweet_potato)
                 .into(holder.gambarMakananImageView);
 

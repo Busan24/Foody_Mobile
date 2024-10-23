@@ -35,37 +35,116 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/foto_profil"
-                    android:layout_width="124dp"
-                    android:layout_height="124dp"
-                    app:shapeAppearanceOverlay="@style/circular"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/bawah_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="165dp">
+                    >
 
-                    <TextView
-                        android:id="@+id/nama_user"
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+
+                        android:layout_marginRight="20dp"
+
+                        >
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/foto_profil"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            app:shapeAppearanceOverlay="@style/circular"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_foto"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/btn_bulat_putih"
+                            android:drawableLeft="@drawable/camera_1"
+                            android:paddingLeft="8dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginRight="2dp" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="22dp"
-                        android:layout_marginTop="40dp"
-                        />
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        >
+
+                        <TextView
+                            android:id="@+id/nama_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name"
+                            android:textSize="22dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/email_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="email@gmail.com"
+                            android:textSize="16dp"
+                            android:textColor="@color/abupucet"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/btn_logout"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/logout_profil"
+                                android:layout_marginTop="15dp"/>
+                            <TextView
+                                android:id="@+id/logout_profil"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Logout"
+                                android:textSize="16dp"
+                                android:textColor="@color/merah"
+                                android:layout_marginTop="11dp"
+                                android:layout_marginLeft="7dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_edit_profile"-->
+<!--                        android:layout_width="36dp"-->
+<!--                        android:layout_height="36dp"-->
+<!--                        android:layout_gravity="top|end"-->
+<!--                        android:background="@drawable/btn_bulat_putih"-->
+<!--                        android:drawableLeft="@drawable/pengaturan"-->
+<!--                        android:paddingLeft="5dp"-->
+<!--                        android:layout_alignParentBottom="true"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        />-->
 
                 </LinearLayout>
 
@@ -76,95 +155,131 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="4dp">
 
-                    <TextView
-                        android:id="@+id/gender_user"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="16dp"
-                        android:textColor="@color/abupucet"
-                        android:layout_marginLeft="166dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=","
-                        android:textSize="16dp"
-                        android:textColor="@color/abupucet" />
-                    <TextView
-                        android:id="@+id/umur_user"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="16dp"
-                        android:textColor="@color/abupucet"
-                        android:layout_marginLeft="5dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tahun"
-                        android:textSize="16dp"
-                        android:textColor="@color/abupucet"
-                        android:layout_marginLeft="5dp"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    
-                    <ImageView
-                        android:id="@+id/btn_logout"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:background="@drawable/logout_profil"
-                        android:layout_marginLeft="165dp"
-                        android:layout_marginTop="15dp"/>
-                    <TextView
-                        android:id="@+id/logout_profil"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Logout"
-                        android:textSize="16dp"
-                        android:textColor="@color/merah"
-                        android:layout_marginTop="11dp"
-                        android:layout_marginLeft="7dp"/>
-                    
+                        android:layout_gravity="center"
+                        >
+
+                        <TextView
+                            android:id="@+id/kalori_harian"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2358,8"
+                            android:textSize="32sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/birutua"
+                            android:layout_marginLeft="5dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="kal/hari"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/birutua"
+                            android:layout_marginLeft="5dp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:text="Total kalori hari ini"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/abupucet"
+                        />
+
+                    <TextView
+                        android:id="@+id/persentase_kalori"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="start"
+                        android:text="60%"
+                        android:textSize="14sp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/abupucet"
+                        android:layout_marginStart="20dp"/>
+
+                    <ProgressBar
+                        android:id="@+id/bar_kalori"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:progress="60"
+                        android:max="100"
+                        android:progressDrawable="@drawable/barpre_kalori"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <!--                                <TextView-->
+                    <!--                                    android:id="@+id/progres_kebutuhan_kalori"-->
+                    <!--                                    android:layout_width="wrap_content"-->
+                    <!--                                    android:layout_height="wrap_content"-->
+                    <!--                                    android:layout_marginBottom="20dp"-->
+                    <!--                                    android:text="2358/400 kal"-->
+                    <!--                                    android:textSize="14sp"-->
+                    <!--                                    android:textColor="@color/birutua"-->
+                    <!--                                    android:layout_marginHorizontal="20dp"/>-->
+
                 </LinearLayout>
-                <RelativeLayout
+
+                <LinearLayout
                     android:layout_width="208dp"
                     android:layout_height="45dp"
                     android:background="@drawable/pp_oval_birucerah"
                     android:layout_gravity="center"
-                    android:layout_marginTop="50dp">
+                    android:layout_marginTop="20dp">
 
                     <Button
                         android:id="@+id/btn_summary"
-                        android:layout_width="87dp"
+                        android:layout_width="0dp"
                         android:layout_height="31dp"
+                        android:layout_weight="1"
                         android:background="@drawable/pp_oval_birutua"
                         android:layout_marginTop="7dp"
                         android:layout_marginLeft="10dp"
-                        android:text="Summary"
+                        android:layout_marginRight="5dp"
+                        android:text="Ringkasan"
                         android:textColor="@color/birucerah"
                         android:textSize="16dp"
                         android:textAllCaps="false"
-                        android:paddingBottom="2dp"/>
+                        android:paddingBottom="2dp"
+                        />
 
                     <Button
                         android:id="@+id/btn_Account"
-                        android:layout_width="87dp"
+                        android:layout_width="0dp"
                         android:layout_height="31dp"
+                        android:layout_weight="1"
                         android:background="@drawable/pp_oval_birucerah"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="110dp"
-                        android:text="Account"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Akun"
                         android:textColor="@color/birutua"
                         android:textSize="16dp"
                         android:textAllCaps="false"
                         android:paddingBottom="2dp"/>
-                </RelativeLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linear_summary"
@@ -185,211 +300,20 @@
                             android:orientation="vertical"
                             android:layout_gravity="center">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <androidx.cardview.widget.CardView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="213dp"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginRight="10dp"
-                                    android:background="@drawable/outline_abu"
-                                    app:cardCornerRadius="10dp"
-                                    app:cardElevation="10dp"
-                                    android:layout_marginBottom="20dp">
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <RelativeLayout
-                                            android:layout_width="64dp"
-                                            android:layout_height="64dp"
-                                            android:background="@drawable/bulat_pink"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginTop="50dp">
-
-                                            <ImageView
-                                                android:id="@+id/gf_mean_bmi"
-                                                android:layout_width="20dp"
-                                                android:layout_height="10dp"
-                                                android:src="@drawable/ic_grafik_naik"
-                                                android:layout_marginTop="26dp"
-                                                android:layout_marginLeft="22dp"/>
-                                        </RelativeLayout>
-
-                                        <TextView
-                                            android:id="@+id/hasil_mean_bmi"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text=""
-                                            android:textSize="26dp"
-                                            android:textColor="@color/birutua"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="20dp"
-                                            android:textStyle="bold"/>
-
-                                        <TextView
-                                            android:id="@+id/txt_mean_bmi"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Rata-Rata BMI"
-                                            android:textColor="@color/abupucet"
-                                            android:textSize="14dp"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="5dp"/>
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="213dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginRight="20dp"
-                                    android:background="@drawable/outline_abu"
-                                    app:cardCornerRadius="10dp"
-                                    app:cardElevation="10dp">
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <RelativeLayout
-                                            android:layout_width="64dp"
-                                            android:layout_height="64dp"
-                                            android:background="@drawable/bulat_birucerah"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginTop="50dp">
-
-                                            <ImageView
-                                                android:id="@+id/gf_berat"
-                                                android:layout_width="20dp"
-                                                android:layout_height="10dp"
-                                                android:src="@drawable/ic_grafik_naik"
-                                                android:layout_marginTop="26dp"
-                                                android:layout_marginLeft="22dp"/>
-                                        </RelativeLayout>
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="horizontal">
-                                            <TextView
-                                                android:id="@+id/hasil_berat"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text=""
-                                                android:textSize="26dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="22dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="kg"
-                                                android:textSize="16dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                        </LinearLayout>
-                                        <TextView
-                                            android:id="@+id/txt_berat_terakhir"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Berat Terakhir"
-                                            android:textColor="@color/abupucet"
-                                            android:textSize="14dp"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="5dp"/>
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
-
-
-
-                            </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
-
                                 <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_tinggi_terakhir"
+                                    android:id="@+id/card_kebutuhankalori"
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
                                     android:layout_height="213dp"
                                     android:layout_marginLeft="20dp"
-                                    android:layout_marginRight="10dp"
-                                    android:background="@drawable/outline_abu"
-                                    app:cardCornerRadius="10dp"
-                                    app:cardElevation="10dp"
-                                    android:layout_marginBottom="20dp">
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <RelativeLayout
-                                            android:layout_width="64dp"
-                                            android:layout_height="64dp"
-                                            android:background="@drawable/bulat_birucerah"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginTop="50dp">
-
-                                            <ImageView
-                                                android:id="@+id/gf_tinggi_terakhir"
-                                                android:layout_width="20dp"
-                                                android:layout_height="10dp"
-                                                android:src="@drawable/ic_grafik_naik"
-                                                android:layout_marginTop="26dp"
-                                                android:layout_marginLeft="22dp"/>
-                                        </RelativeLayout>
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="horizontal">
-                                            <TextView
-                                                android:id="@+id/hasil_tinggi"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text=""
-                                                android:textSize="26dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="22dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="cm"
-                                                android:textSize="16dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:id="@+id/txt_tinggi_terakhir"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Tinggi Terakhir"
-                                            android:textColor="@color/abupucet"
-                                            android:textSize="14dp"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="5dp"/>
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_fat"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="213dp"
-                                    android:layout_marginLeft="10dp"
                                     android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp">
@@ -405,7 +329,7 @@
                                             android:layout_marginTop="50dp">
 
                                             <ImageView
-                                                android:id="@+id/gf_lemak"
+                                                android:id="@+id/gf_kebutuhankalori"
                                                 android:layout_width="20dp"
                                                 android:layout_height="10dp"
                                                 android:src="@drawable/ic_grafik_naik"
@@ -418,7 +342,7 @@
                                             android:layout_height="wrap_content"
                                             android:orientation="horizontal">
                                             <TextView
-                                                android:id="@+id/hasil_lemak"
+                                                android:id="@+id/hasil_kebutuhankalori"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text=""
@@ -430,7 +354,7 @@
                                             <TextView
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:text="gr"
+                                                android:text="kal/hari"
                                                 android:textSize="16dp"
                                                 android:textColor="@color/birutua"
                                                 android:layout_marginLeft="5dp"
@@ -438,18 +362,16 @@
                                                 android:textStyle="bold"/>
                                         </LinearLayout>
                                         <TextView
-                                            android:id="@+id/txt_fat"
+                                            android:id="@+id/txt_kebutuhankalori"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="Lemak"
+                                            android:text="Kebutuhan Kalori"
                                             android:textColor="@color/abupucet"
                                             android:textSize="14dp"
                                             android:layout_marginLeft="22dp"
                                             android:layout_marginTop="5dp"/>
                                     </LinearLayout>
                                 </androidx.cardview.widget.CardView>
-
-
 
                             </LinearLayout>
 
@@ -526,226 +448,9 @@
                                     </LinearLayout>
                                 </androidx.cardview.widget.CardView>
                                 <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_protein"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="213dp"
-                                    android:layout_marginRight="20dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:background="@drawable/outline_abu"
-                                    app:cardCornerRadius="10dp"
-                                    app:cardElevation="10dp">
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <RelativeLayout
-                                            android:layout_width="64dp"
-                                            android:layout_height="64dp"
-                                            android:background="@drawable/bulat_birucerah"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginTop="50dp">
-
-                                            <ImageView
-                                                android:id="@+id/gf_protein"
-                                                android:layout_width="20dp"
-                                                android:layout_height="10dp"
-                                                android:src="@drawable/ic_grafik_naik"
-                                                android:layout_marginTop="26dp"
-                                                android:layout_marginLeft="22dp"/>
-                                        </RelativeLayout>
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="horizontal">
-                                            <TextView
-                                                android:id="@+id/hasil_protein"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text=""
-                                                android:textSize="26dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="22dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="gr"
-                                                android:textSize="16dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                        </LinearLayout>
-                                        <TextView
-                                            android:id="@+id/txt_protein"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Protein"
-                                            android:textColor="@color/abupucet"
-                                            android:textSize="14dp"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="5dp"/>
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
-
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_garam"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="213dp"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginRight="10dp"
-                                    android:background="@drawable/outline_abu"
-                                    app:cardCornerRadius="10dp"
-                                    app:cardElevation="10dp"
-                                    android:layout_marginBottom="20dp">
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <RelativeLayout
-                                            android:layout_width="64dp"
-                                            android:layout_height="64dp"
-                                            android:background="@drawable/bulat_birucerah"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginTop="50dp">
-
-                                            <ImageView
-                                                android:id="@+id/gf_garam"
-                                                android:layout_width="20dp"
-                                                android:layout_height="10dp"
-                                                android:src="@drawable/ic_grafik_naik"
-                                                android:layout_marginTop="26dp"
-                                                android:layout_marginLeft="22dp"/>
-                                        </RelativeLayout>
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="horizontal">
-                                            <TextView
-                                                android:id="@+id/hasil_garam"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text=""
-                                                android:textSize="26dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="22dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="gr"
-                                                android:textSize="16dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                        </LinearLayout>
-
-                                        <TextView
-                                            android:id="@+id/txt_garam"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Garam"
-                                            android:textColor="@color/abupucet"
-                                            android:textSize="14dp"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="5dp"/>
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_gula"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="213dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginRight="20dp"
-                                    android:background="@drawable/outline_abu"
-                                    app:cardCornerRadius="10dp"
-                                    app:cardElevation="10dp">
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <RelativeLayout
-                                            android:layout_width="64dp"
-                                            android:layout_height="64dp"
-                                            android:background="@drawable/bulat_pink"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginTop="50dp">
-
-                                            <ImageView
-                                                android:id="@+id/gf_gula"
-                                                android:layout_width="20dp"
-                                                android:layout_height="10dp"
-                                                android:src="@drawable/ic_grafik_naik"
-                                                android:layout_marginTop="26dp"
-                                                android:layout_marginLeft="22dp"/>
-                                        </RelativeLayout>
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="horizontal">
-                                            <TextView
-                                                android:id="@+id/hasil_gula"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text=""
-                                                android:textSize="26dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="22dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="gr"
-                                                android:textSize="16dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                        </LinearLayout>
-                                        <TextView
-                                            android:id="@+id/txt_gula"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Gula"
-                                            android:textColor="@color/abupucet"
-                                            android:textSize="14dp"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="5dp"/>
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
-
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.cardview.widget.CardView
                                     android:id="@+id/card_bataskarbo"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginRight="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="20dp"
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
                                     android:layout_height="213dp"
@@ -802,7 +507,81 @@
                                             android:id="@+id/txt_bataskarbo"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="Batas Karbo"
+                                            android:text="Batas Karbohidrat"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/card_protein"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_pink"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:id="@+id/gf_protein"
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_protein"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="gr"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+                                        <TextView
+                                            android:id="@+id/txt_protein"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Protein"
                                             android:textColor="@color/abupucet"
                                             android:textSize="14dp"
                                             android:layout_marginLeft="22dp"
@@ -816,6 +595,7 @@
                                     android:layout_height="213dp"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="20dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
                                     app:cardElevation="10dp">
@@ -826,7 +606,7 @@
                                         <RelativeLayout
                                             android:layout_width="64dp"
                                             android:layout_height="64dp"
-                                            android:background="@drawable/bulat_pink"
+                                            android:background="@drawable/bulat_birucerah"
                                             android:layout_marginLeft="20dp"
                                             android:layout_marginTop="50dp">
 
@@ -875,8 +655,6 @@
                                     </LinearLayout>
                                 </androidx.cardview.widget.CardView>
 
-
-
                             </LinearLayout>
 
                             <LinearLayout
@@ -885,11 +663,76 @@
                                 android:orientation="horizontal">
 
                                 <androidx.cardview.widget.CardView
+                                    android:id="@+id/card_fat"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_pink"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:id="@+id/gf_lemak"
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_lemak"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="gr"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+                                        <TextView
+                                            android:id="@+id/txt_fat"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Lemak"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
                                     android:id="@+id/card_bataslemak"
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginRight="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="20dp"
                                     android:layout_height="213dp"
                                     android:background="@drawable/outline_abu"
                                     app:cardCornerRadius="10dp"
@@ -945,6 +788,482 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Batas lemak"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/card_gula"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_pink"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:id="@+id/gf_gula"
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_gula"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="gr"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Gula"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/card_batasgula"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_birucerah"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_batasgula"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="gr/hari"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+                                        <TextView
+                                            android:id="@+id/txt_gula"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Batas gula"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/card_garam"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp"
+                                    android:layout_marginBottom="20dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_pink"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_garam"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="gr"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:id="@+id/txt_garam"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Garam"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/card_batasgaram"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp"
+                                    android:layout_marginBottom="20dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_birucerah"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_batasgaram"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="gr/hari"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Batas garam"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/card_tinggi_terakhir"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp"
+                                    android:layout_marginBottom="20dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_pink"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:id="@+id/gf_tinggi_terakhir"
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_tinggi"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="cm"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:id="@+id/txt_tinggi_terakhir"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tinggi Terakhir"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_birucerah"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:id="@+id/gf_berat"
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:id="@+id/hasil_berat"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text=""
+                                                android:textSize="26dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="22dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="kg"
+                                                android:textSize="16dp"
+                                                android:textColor="@color/birutua"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="20dp"
+                                                android:textStyle="bold"/>
+                                        </LinearLayout>
+                                        <TextView
+                                            android:id="@+id/txt_berat_terakhir"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Berat Terakhir"
+                                            android:textColor="@color/abupucet"
+                                            android:textSize="14dp"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="5dp"/>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="213dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="10dp"
+                                    android:background="@drawable/outline_abu"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="10dp"
+                                    android:layout_marginBottom="20dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <RelativeLayout
+                                            android:layout_width="64dp"
+                                            android:layout_height="64dp"
+                                            android:background="@drawable/bulat_pink"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="50dp">
+
+                                            <ImageView
+                                                android:id="@+id/gf_mean_bmi"
+                                                android:layout_width="20dp"
+                                                android:layout_height="10dp"
+                                                android:src="@drawable/ic_grafik_naik"
+                                                android:layout_marginTop="26dp"
+                                                android:layout_marginLeft="22dp"/>
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:id="@+id/hasil_mean_bmi"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text=""
+                                            android:textSize="26dp"
+                                            android:textColor="@color/birutua"
+                                            android:layout_marginLeft="22dp"
+                                            android:layout_marginTop="20dp"
+                                            android:textStyle="bold"/>
+
+                                        <TextView
+                                            android:id="@+id/txt_mean_bmi"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Rata-Rata BMI"
                                             android:textColor="@color/abupucet"
                                             android:textSize="14dp"
                                             android:layout_marginLeft="22dp"
@@ -1011,89 +1330,9 @@
                                     </LinearLayout>
                                 </androidx.cardview.widget.CardView>
 
-
-
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/card_kebutuhankalori"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="213dp"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginRight="20dp"
-                                    android:layout_marginBottom="20dp"
-                                    android:background="@drawable/outline_abu"
-                                    app:cardCornerRadius="10dp"
-                                    app:cardElevation="10dp">
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <RelativeLayout
-                                            android:layout_width="64dp"
-                                            android:layout_height="64dp"
-                                            android:background="@drawable/bulat_pink"
-                                            android:layout_marginLeft="20dp"
-                                            android:layout_marginTop="50dp">
-
-                                            <ImageView
-                                                android:id="@+id/gf_kebutuhankalori"
-                                                android:layout_width="20dp"
-                                                android:layout_height="10dp"
-                                                android:src="@drawable/ic_grafik_naik"
-                                                android:layout_marginTop="26dp"
-                                                android:layout_marginLeft="22dp"/>
-                                        </RelativeLayout>
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="horizontal">
-                                            <TextView
-                                                android:id="@+id/hasil_kebutuhankalori"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text=""
-                                                android:textSize="26dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="22dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="kal/hari"
-                                                android:textSize="16dp"
-                                                android:textColor="@color/birutua"
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginTop="20dp"
-                                                android:textStyle="bold"/>
-                                        </LinearLayout>
-                                        <TextView
-                                            android:id="@+id/txt_kebutuhankalori"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Kebutuhan Kalori"
-                                            android:textColor="@color/abupucet"
-                                            android:textSize="14dp"
-                                            android:layout_marginLeft="22dp"
-                                            android:layout_marginTop="5dp"/>
-                                    </LinearLayout>
-                                </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-                            </LinearLayout>
-
-                            <View
+                        <View
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="80dp"/>
@@ -1110,29 +1349,6 @@
 
                 </LinearLayout>
             </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_edit_profile"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/btn_bulat_putih"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:drawableLeft="@drawable/pengaturan"
-                android:paddingLeft="5dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="25dp"/>
-
-            <Button
-                android:id="@+id/btn_foto"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/btn_bulat_putih"
-                android:layout_gravity="center"
-                android:layout_marginTop="110dp"
-                android:drawableLeft="@drawable/camera_1"
-                android:paddingLeft="8dp"
-                android:layout_marginLeft="100dp"/>
 
         </RelativeLayout>
 

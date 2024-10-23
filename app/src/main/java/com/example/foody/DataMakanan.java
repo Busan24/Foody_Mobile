@@ -80,7 +80,7 @@ public class DataMakanan extends AppCompatActivity {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
         // Panggil dua request API secara bersamaan menggunakan enqueue
-        Call<ApiResponse<MakananModel>> callMakanan = apiService.getMakananById(idMakanan);
+        Call<ApiResponse<MakananModel>> callMakanan = apiService.getMakananById("Bearer " + authToken, idMakanan);
         Call<ApiResponse<SummaryData>> callSummary = apiService.getUserSummary("Bearer " + authToken);
 
         // Menggunakan `enqueue` secara bersamaan untuk mendapatkan hasil secara simultan
@@ -213,7 +213,7 @@ public class DataMakanan extends AppCompatActivity {
 
         // Load gambar menggunakan Glide
         Glide.with(this)
-                .load(makanan.getGambar().contains("upload/") ? "https://foody.azurewebsites.net/storage/" + makanan.getGambar() : makanan.getGambar())
+                .load(makanan.getGambar())
                 .into(gambarMakananImageView);
     }
 

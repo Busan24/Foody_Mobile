@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.HorizontalScrollView;
-
+import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -108,8 +108,8 @@ public class FiturMakanan extends AppCompatActivity {
         // Cari SearchView berdasarkan ID
         SearchView searchView = findViewById(R.id.search_makanan);
 
-        TextView txtKandunganMakanan = findViewById(R.id.txt_kandungan_makanan);
-        HorizontalScrollView hrScroll = findViewById(R.id.hr_scroll);
+//        TextView txtKandunganMakanan = findViewById(R.id.txt_kandungan_makanan);
+//        HorizontalScrollView hrScroll = findViewById(R.id.hr_scroll);
 
         // Atur listener pencarian
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -124,15 +124,15 @@ public class FiturMakanan extends AppCompatActivity {
                 // Panggil metode untuk menyaring data berdasarkan teks pencarian
                 filterMakanan(newText);
                 // Ubah visibilitas elemen-elemen sesuai kebutuhan
-                if (newText.isEmpty()) {
-                    // Teks pencarian kosong, tampilkan kembali elemen-elemen yang disembunyikan
-                    txtKandunganMakanan.setVisibility(View.VISIBLE);
-                    hrScroll.setVisibility(View.VISIBLE);
-                } else {
-                    // Teks pencarian tidak kosong, sembunyikan elemen-elemen
-                    txtKandunganMakanan.setVisibility(View.GONE);
-                    hrScroll.setVisibility(View.GONE);
-                }
+//                if (newText.isEmpty()) {
+//                    // Teks pencarian kosong, tampilkan kembali elemen-elemen yang disembunyikan
+//                    txtKandunganMakanan.setVisibility(View.VISIBLE);
+//                    hrScroll.setVisibility(View.VISIBLE);
+//                } else {
+//                    // Teks pencarian tidak kosong, sembunyikan elemen-elemen
+//                    txtKandunganMakanan.setVisibility(View.GONE);
+//                    hrScroll.setVisibility(View.GONE);
+//                }
 
                 return true;
             }
@@ -142,7 +142,7 @@ public class FiturMakanan extends AppCompatActivity {
     private void getDataMakananFromApi() {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
-        Call<ApiResponse<List<MakananModel>>> call = apiService.getMakanan();
+        Call<ApiResponse<List<MakananModel>>> call = apiService.getMakanan("Bearer " + getAuthToken());
         call.enqueue(new Callback<ApiResponse<List<MakananModel>>>() {
             @Override
             public void onResponse(Call<ApiResponse<List<MakananModel>>> call, Response<ApiResponse<List<MakananModel>>> response) {
@@ -189,6 +189,13 @@ public class FiturMakanan extends AppCompatActivity {
 
         // Setel filteredList sebagai data untuk RecyclerView
         makananAdapter.filterList(filteredList);
+    }
+
+    private String getAuthToken() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("auth_token", MODE_PRIVATE);
+        String authToken = sharedPreferences.getString("token", "");
+        Log.d("AuthToken", "Token: " + authToken); // Tambahkan log ini
+        return authToken;
     }
 
 //    private void loadMakananData(String makananId) {

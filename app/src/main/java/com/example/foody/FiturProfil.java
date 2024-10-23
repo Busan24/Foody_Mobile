@@ -1,7 +1,6 @@
 package com.example.foody;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -34,6 +33,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
+import android.widget.ProgressBar;
+import android.widget.LinearLayout;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
@@ -47,7 +48,6 @@ import com.google.gson.Gson;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -80,15 +80,18 @@ public class FiturProfil extends AppCompatActivity {
 
     private TextView logoutProfil;
 
-    private TextView namaUserTextView, genderUserTextView, umurUserTextView;
+    private TextView namaUserTextView, emailUserTextView;
     private TextView meanBmiTextView, beratTextView, tinggiTextView, lemakTextView;
     private TextView karbohidratTextView, proteinTextView, garamTextView, gulaTextView;
-    private TextView batasKarboTextView, batasProteinTextView, batasLemakTextView, kebutuhanKaloriTextView;
+    private TextView batasKarboTextView, batasProteinTextView, batasLemakTextView, batasGulaTextView, batasGaramTextView, kebutuhanKaloriTextView;
     private TextView aktivitasTextView;
     private TextView namaAkun, emailAkun, dateAkun, genderAkun;
     private TextView editName, editEmail, editUsername, editDate;
     private EditText epNama, epEmail, epUsername, epDate;
     private Spinner aktivitasSpinner;
+    private TextView kalori_harian, persentase_kalori;
+//    private TextView progres_kebutuhan_kalori;
+    private ProgressBar barKalori;
     private static final int PICK_IMAGE_REQUEST = 1;
 
     private ShapeableImageView fotoProfil;
@@ -107,7 +110,8 @@ public class FiturProfil extends AppCompatActivity {
         myDialog = new Dialog(this);
 
 
-        Button btnEpProfile = findViewById(R.id.btn_edit_profile);
+//        Button btnEpProfile = findViewById(R.id.btn_edit_profile);
+        LinearLayout btnEpProfile = findViewById(R.id.profile);
         summarySwitcher = findViewById(R.id.summary_switcher);
         btnAccount = findViewById(R.id.btn_Account);
         btnSummary = findViewById(R.id.btn_summary);
@@ -115,8 +119,7 @@ public class FiturProfil extends AppCompatActivity {
         logoutProfil = findViewById(R.id.logout_profil);
 
         namaUserTextView = findViewById(R.id.nama_user);
-        genderUserTextView = findViewById(R.id.gender_user);
-        umurUserTextView = findViewById(R.id.umur_user);
+        emailUserTextView = findViewById(R.id.email_user);
         meanBmiTextView = findViewById(R.id.hasil_mean_bmi);
         beratTextView = findViewById(R.id.hasil_berat);
         tinggiTextView = findViewById(R.id.hasil_tinggi);
@@ -132,12 +135,20 @@ public class FiturProfil extends AppCompatActivity {
         aktivitasTextView = findViewById(R.id.hasil_aktivitas);
         fotoProfil = findViewById(R.id.foto_profil);
 
+        kalori_harian = findViewById(R.id.kalori_harian);
+        persentase_kalori = findViewById(R.id.persentase_kalori);
+//        progres_kebutuhan_kalori = findViewById(R.id.progres_kebutuhan_kalori);
+        barKalori = findViewById(R.id.bar_kalori);
+
+        batasGulaTextView = findViewById(R.id.hasil_batasgula);
+        batasGaramTextView = findViewById(R.id.hasil_batasgaram);
+
         //Switch_Akun
-        namaAkun = findViewById(R.id.akun_nama);
-        emailAkun = findViewById(R.id.akun_email);
+//        namaAkun = findViewById(R.id.akun_nama);
+//        emailAkun = findViewById(R.id.akun_email);
 //        usernameAkun = findViewById(R.id.akun_username);
-        dateAkun = findViewById(R.id.akun_date);
-        genderAkun = findViewById(R.id.akun_gender);
+//        dateAkun = findViewById(R.id.akun_date);
+//        genderAkun = findViewById(R.id.akun_gender);
 
         foto_profil = findViewById(R.id.foto_profil);
 
@@ -177,8 +188,7 @@ public class FiturProfil extends AppCompatActivity {
 
                     // Tampilkan data ke TextView
                     namaUserTextView.setText(userData.getName());
-                    genderUserTextView.setText(userData.getJenis_kelamin());
-                    umurUserTextView.setText(String.valueOf(userData.getUsia()));
+                    emailUserTextView.setText(userData.getEmail());
                     // Sesuaikan dengan atribut UserData dan SummaryData yang lain
                     meanBmiTextView.setText(decimalFormat.format(summaryData.getRata_rata_bmi()));;
                     beratTextView.setText(String.valueOf(userData.getBerat_badan()));
@@ -196,12 +206,20 @@ public class FiturProfil extends AppCompatActivity {
                     kebutuhanKaloriTextView.setText(decimalFormat.format(summaryData.getKebutuhan_kalori()));
                     aktivitasTextView.setText(String.valueOf(summaryData.getAktivitas()));
 
+                    batasGulaTextView.setText(decimalFormat.format(summaryData.getBatas_gula()));
+                    batasGaramTextView.setText(decimalFormat.format(summaryData.getBatas_garam()));
+
+                    kalori_harian.setText(decimalFormat.format(summaryData.getProgres_kalori()));
+                    persentase_kalori.setText("Progres: " + decimalFormat.format((summaryData.getProgres_kalori() / summaryData.getKebutuhan_kalori() * 100)) + "%");
+//                    progres_kebutuhan_kalori.setText(decimalFormat.format(summaryData.getProgres_kalori()) + "/" + decimalFormat.format(summaryData.getKebutuhan_kalori()) + " kal");
+                    barKalori.setProgress((int)((double) summaryData.getProgres_kalori() / summaryData.getKebutuhan_kalori() * 100));
+
                     // Switch_Akun
-                    namaAkun.setText(userData.getName());
-                    emailAkun.setText(userData.getEmail());
+//                    namaAkun.setText(userData.getName());
+//                    emailAkun.setText(userData.getEmail());
 //                    usernameAkun.setText(userData.getUsername());
-                    dateAkun.setText(userData.getTanggla_lahir());
-                    genderAkun.setText(userData.getJenis_kelamin());
+//                    dateAkun.setText(userData.getTanggla_lahir());
+//                    genderAkun.setText(userData.getJenis_kelamin());
 
 
                     tampilkanProfil(userData);
@@ -570,7 +588,7 @@ public class FiturProfil extends AppCompatActivity {
         });
 
 
-        TextView batalButton = myDialog.findViewById(R.id.btn_close);
+        Button batalButton = myDialog.findViewById(R.id.btn_close);
         batalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -803,8 +821,7 @@ public class FiturProfil extends AppCompatActivity {
 
                     // Tampilkan data ke TextView
                     namaUserTextView.setText(userData.getName());
-                    genderUserTextView.setText(userData.getJenis_kelamin());
-                    umurUserTextView.setText(String.valueOf(userData.getUsia()));
+                    emailUserTextView.setText(userData.getEmail());
                     // Sesuaikan dengan atribut UserData dan SummaryData yang lain
                     meanBmiTextView.setText(decimalFormat.format(summaryData.getRata_rata_bmi()));;
                     beratTextView.setText(String.valueOf(userData.getBerat_badan()));
@@ -823,11 +840,11 @@ public class FiturProfil extends AppCompatActivity {
                     aktivitasTextView.setText(String.valueOf(summaryData.getAktivitas()));
 
                     // Switch_Akun
-                    namaAkun.setText(userData.getName());
+//                    namaAkun.setText(userData.getName());
 //                    emailAkun.setText(userData.getEmail());
 //                    usernameAkun.setText(userData.getUsername());
-                    dateAkun.setText(userData.getTanggla_lahir());
-                    genderAkun.setText(userData.getJenis_kelamin());
+//                    dateAkun.setText(userData.getTanggla_lahir());
+//                    genderAkun.setText(userData.getJenis_kelamin());
                     tampilkanProfil(userData);
                 } else {
                     // Tangani kesalahan pada respons

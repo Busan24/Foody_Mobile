@@ -19,12 +19,12 @@ public class CatatankuData {
         this.id = id;
     }
 
-    public String getNama_makanan() {
+    public String getNama() {
         return nama;
     }
 
-    public void setNama_makanan(String nama_makanan) {
-        this.nama = nama_makanan;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public int getJumlah() {

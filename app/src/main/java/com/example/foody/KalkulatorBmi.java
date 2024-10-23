@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.graphics.drawable.Drawable;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -70,15 +71,15 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_kalkulator);
 
-        webView = findViewById(R.id.webView);
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setBuiltInZoomControls(false);
-        webView.getSettings().setDisplayZoomControls(false);
-
+//        webView = findViewById(R.id.webView);
+//        WebSettings webSettings = webView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
+//
+//        webView.getSettings().setLoadWithOverviewMode(true);
+//        webView.getSettings().setUseWideViewPort(true);
+//        webView.getSettings().setBuiltInZoomControls(false);
+//        webView.getSettings().setDisplayZoomControls(false);
+//
         showBmiChart();
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -281,6 +282,7 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
                         // Hapus item dari RecyclerView
                         bmiRecentAdapter.removeBmiItem(position);
                         Toast.makeText(KalkulatorBmi.this, "Data BMI berhasil dihapus", Toast.LENGTH_SHORT).show();
+                        showBmiChart();
                     } else {
                         Toast.makeText(KalkulatorBmi.this, "Gagal menghapus data BMI", Toast.LENGTH_SHORT).show();
                     }
@@ -375,7 +377,11 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
                     ApiResponse apiResponse = response.body();
                     String link = apiResponse.getMessage();
 
-                    showChartInWebView(link);
+                        ImageView imageView = findViewById(R.id.imageView);
+                        Glide.with(KalkulatorBmi.this)
+                                .load(link)
+                                .into(imageView);
+//                    showChartInWebView(link);
                 }
             };
 
@@ -428,6 +434,7 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
 
                         // Display notification dialog
                         showBmiNotification(bmiResponse);
+                        showBmiChart();
 
                         fetchRecentBmiData();
                         etTinggiBadan.setText("");

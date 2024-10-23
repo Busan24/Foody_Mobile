@@ -185,6 +185,11 @@ public class fitur_catatanku extends AppCompatActivity {
     }
 
     private void showCustomDialog(String text, int backgroundColor, String generateButtonTextColor, int drawable) {
+        if (!getPremiumStatus() && catatanHariIni >=  3) {
+            showPremiumDialog();
+            return;
+        }
+
         // Membuat dialog
         myDialog.setContentView(R.layout.popup_catatanku);
 
@@ -230,11 +235,6 @@ public class fitur_catatanku extends AppCompatActivity {
         btnSaveCatatan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (!getPremiumStatus() && catatanHariIni >=  3) {
-                    showPremiumDialog();
-                    return;
-                }
 
                 // Mendapatkan data dari dialog
                 EditText edtNamaMakanan = myDialog.findViewById(R.id.nama_makanan);
@@ -328,11 +328,6 @@ public class fitur_catatanku extends AppCompatActivity {
         Button btnGenerateMakanan = myDialog.findViewById(R.id.btn_generate_makanan);
         btnGenerateMakanan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                if (!getPremiumStatus() && catatanHariIni >=  3) {
-                    showPremiumDialog();
-                    return;
-                }
 
                 EditText edtNamaMakanan = myDialog.findViewById(R.id.nama_makanan);
                 String namaMakanan = edtNamaMakanan.getText().toString();
@@ -671,7 +666,7 @@ public class fitur_catatanku extends AppCompatActivity {
 
     private void getDaftarMakanan() {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-        Call<ApiResponse<List<MakananModel>>> call = apiService.getMakanan();
+        Call<ApiResponse<List<MakananModel>>> call = apiService.getMakanan("Bearer " + getAuthToken());
 
         call.enqueue(new Callback<ApiResponse<List<MakananModel>>>() {
             @Override

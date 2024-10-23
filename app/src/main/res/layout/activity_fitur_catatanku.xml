@@ -274,7 +274,7 @@
                     android:id="@+id/btn_recent"
                     android:layout_width="wrap_content"
                     android:layout_height="46dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/button_birutua"
                     android:text="  Recent"
                     android:textSize="16dp"
@@ -289,7 +289,7 @@
                     android:id="@+id/btn_hs_catatan"
                     android:layout_width="wrap_content"
                     android:layout_height="46dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/button_birucerah"
                     android:text="  History"
                     android:textSize="16dp"
@@ -310,7 +310,6 @@
                 android:layout_marginRight="25dp">
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
                 android:id="@+id/rvcatatanku_daily"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

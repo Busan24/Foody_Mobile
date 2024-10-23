@@ -71,25 +71,25 @@ public class HomeFoodyActivity extends AppCompatActivity {
 
         ImageView gotoPremium = findViewById(R.id.goto_premium);
 
-        webView = findViewById(R.id.webView);
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        webView.setBackgroundColor(0);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setBuiltInZoomControls(false);
-        webView.getSettings().setDisplayZoomControls(false);
-
-        webView.post(new Runnable() {
-            @Override
-            public void run() {
-                int width = webView.getWidth();
-                ViewGroup.LayoutParams params = webView.getLayoutParams();
-                params.height = width;
-                webView.setLayoutParams(params);
-            }
-        });
+//        webView = findViewById(R.id.webView);
+//        WebSettings webSettings = webView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
+//
+//        webView.setBackgroundColor(0);
+//        webView.getSettings().setLoadWithOverviewMode(true);
+//        webView.getSettings().setUseWideViewPort(true);
+//        webView.getSettings().setBuiltInZoomControls(false);
+//        webView.getSettings().setDisplayZoomControls(false);
+//
+//        webView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                int width = webView.getWidth();
+//                ViewGroup.LayoutParams params = webView.getLayoutParams();
+//                params.height = width;
+//                webView.setLayoutParams(params);
+//            }
+//        });
 
 
 //        profilHome.setOnClickListener(new View.OnClickListener() {
@@ -592,6 +592,7 @@ public class HomeFoodyActivity extends AppCompatActivity {
         authToken = getAuthToken();
 
         getDataDialyCatatan();
+        getCatatanMakananDaily();
 
     }
 
@@ -705,8 +706,6 @@ public class HomeFoodyActivity extends AppCompatActivity {
                     hpGula.setText(String.valueOf(hasilGulaPersen));
                     hpLemak.setText(String.valueOf(hasilLemakPersen));
                     hpGaram.setText(String.valueOf(hasilGaramPersen));
-
-                    getCatatanMakananDaily();
                     // ... (sisanya sesuaikan dengan atribut UserData dan SummaryData)
                 } else {
                     // Tangani kesalahan pada respons
@@ -734,7 +733,12 @@ public class HomeFoodyActivity extends AppCompatActivity {
             public void onResponse(Call<ApiResponse<List<CatatanMakananModel>>> call, Response<ApiResponse<List<CatatanMakananModel>>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<CatatanMakananModel> catatanMakananList = response.body().getData();
-                    showChartInWebView(response.body().getMessage());
+//                    showChartInWebView(response.body().getMessage());
+                    ImageView imageView = findViewById(R.id.imageView);
+                    Glide.with(HomeFoodyActivity.this)
+                            .load(response.body().getMessage())
+                            .into(imageView);
+//                    showChartInWebView(link);
                 } else {
                     // Handle kesalahan respons
                     Toast.makeText(HomeFoodyActivity.this, "Gagal mendapatkan catatan makanan harian", Toast.LENGTH_SHORT).show();
