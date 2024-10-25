@@ -263,7 +263,9 @@ public class FiturProfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Panggil metode showCustomDialog() ketika tombol btn_edit_profile ditekan
-                showCustomDialog();
+//                showCustomDialog();
+                Intent intent = new Intent(FiturProfil.this, PopupEditProfileActivity.class);
+                startActivity(intent);
             }
         });
 

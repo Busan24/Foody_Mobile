@@ -7,11 +7,40 @@
     android:layout_gravity="center"
     tools:context=".PopupEditProfileActivity"
     android:id="@+id/bg_popup_ep"
-    android:background="@drawable/pp_putih">
+    android:background="@drawable/pp_putih"
+    android:orientation="vertical">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="70dp"
+        android:background="@color/white">
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/pp_birucerah"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back_arrow"
+            android:paddingLeft="12dp"
+            android:id="@+id/btn_close"
+            android:layout_gravity="start|top"/>
+
+
+        <TextView
+            android:id="@+id/text_hs_ctt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPDATE PROFILE"
+            android:textSize="20dp"
+            android:textColor="@color/birutua"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="start|top"/>
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,17 +57,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white_background"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/txt_nyatat_hari"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EDIT PROFILE"
-                android:textSize="22dp"
-                android:textColor="@color/birutua"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"/>
 
 <!--            <com.google.android.material.imageview.ShapeableImageView-->
 <!--                android:id="@+id/foto_profil"-->
@@ -184,7 +204,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/button_birutua"
                 android:layout_marginTop="17dp"
-                android:text="SAVE"
+                android:text="Simpan"
                 android:textColor="@color/birucerah"
                 android:textSize="16dp"/>
 
@@ -194,18 +214,8 @@
                 android:layout_marginTop="20dp"/>
 
         </LinearLayout>
-        <Button
-            android:id="@+id/btn_close"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_bulat_putih"
-            android:drawableLeft="@drawable/icon_close_24"
-            android:layout_alignParentEnd="true" />
 
 
     </RelativeLayout>
-    </ScrollView>
 
 </LinearLayout>
