@@ -7,6 +7,7 @@
     tools:context=".PremiumActivity">
     
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
@@ -16,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+
+            >
              <ImageView
                  android:layout_width="120dp"
                  android:layout_height="101dp"
@@ -27,6 +28,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:text="Gabung Foody Premium dan nikmati fitur lengkap untuk membantu mencapai tujuan kesehatanmu"
                 android:fontFamily="sans-serif"
                 android:textSize="18dp"
@@ -42,12 +45,14 @@
                 android:scrollbars="none"
                 android:layout_marginTop="20dp">
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="20dp"
                         android:id="@+id/card_prem_1bulan"
                         app:cardCornerRadius="10dp">
                         <Button
@@ -199,7 +204,9 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/card_prem_6bulan"
                         app:cardCornerRadius="10dp"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        >
                         <Button
                             android:id="@+id/prem_6bulan"
                             android:layout_width="166dp"
@@ -275,7 +282,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="384dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="vertical"
                 android:background="@drawable/gradient_pink_biru">
 
@@ -504,6 +513,8 @@
                 android:id="@+id/berlangganan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_gravity="center"
                 android:width="340dp"
                 android:height="65dp"

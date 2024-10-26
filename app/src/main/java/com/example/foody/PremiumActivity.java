@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -19,6 +20,7 @@ import java.util.List;
 public class PremiumActivity extends AppCompatActivity {
 
     private Button prem1Bulan, prem3Bulan, prem6Bulan, berlangganan;
+    private ScrollView scroll;
     private String idLanggananDipilih;
     List<LanggananModel> listLangganan;
 
@@ -32,6 +34,7 @@ public class PremiumActivity extends AppCompatActivity {
         prem3Bulan = findViewById(R.id.prem_3bulan);
         prem6Bulan = findViewById(R.id.prem_6bulan);
         berlangganan = findViewById(R.id.berlangganan);
+        scroll = findViewById(R.id.scroll);
 
         getLanggananData();
 
@@ -46,6 +49,12 @@ public class PremiumActivity extends AppCompatActivity {
                 setInactiveButton(prem3Bulan, R.drawable.kotak_prem_abu);
                 setInactiveButton(prem6Bulan, R.drawable.kotak_prem_abu);
                 setIdLanggananDipilih(getListLangganan().get(0).getId());
+                scroll.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scroll.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
             }
         });
 
@@ -57,6 +66,12 @@ public class PremiumActivity extends AppCompatActivity {
                 setInactiveButton(prem1Bulan, R.drawable.kotak_prem_abu);
                 setInactiveButton(prem6Bulan, R.drawable.kotak_prem_abu);
                 setIdLanggananDipilih(getListLangganan().get(1).getId());
+                scroll.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scroll.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
             }
         });
 
@@ -68,6 +83,12 @@ public class PremiumActivity extends AppCompatActivity {
                 setInactiveButton(prem1Bulan, R.drawable.kotak_prem_abu);
                 setInactiveButton(prem3Bulan, R.drawable.kotak_prem_abu);
                 setIdLanggananDipilih(getListLangganan().get(2).getId());
+                scroll.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scroll.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
             }
         });
 

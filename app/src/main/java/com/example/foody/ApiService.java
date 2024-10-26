@@ -95,6 +95,12 @@ public interface ApiService {
             @Body GenerateMakananRequestModel generateMakananRequestModel
     );
 
+    @PUT("user/password")
+    Call<ApiResponse<UserData>> changePassword(
+            @Header("Authorization")  String authToken,
+            @Body ResetPasswordRequest resetPasswordRequest
+    );
+
     @Multipart
     @POST("user/image")
     Call<ApiResponse<Void>> updateProfilePicture(

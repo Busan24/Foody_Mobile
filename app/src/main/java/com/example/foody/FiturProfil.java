@@ -114,6 +114,8 @@ public class FiturProfil extends AppCompatActivity {
     private TextView premiumSelesai;
     private ImageView iconPremium;
 
+    private LinearLayout resetPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,6 +172,8 @@ public class FiturProfil extends AppCompatActivity {
         perpanjangPremium = findViewById(R.id.perpanjang_premium);
         premiumSelesai = findViewById(R.id.premium_selesai);
 
+        resetPassword = findViewById(R.id.ganti_password);
+
         if (!getPremiumStatus()) {
             iconPremium.setVisibility(View.GONE);
         }
@@ -186,6 +190,14 @@ public class FiturProfil extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FiturProfil.this, PremiumActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FiturProfil.this, ResetPasswordActivity.class);
                 startActivity(intent);
             }
         });
