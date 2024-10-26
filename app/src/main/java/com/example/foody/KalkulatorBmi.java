@@ -33,6 +33,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.graphics.drawable.Drawable;
 
+import androidx.cardview.widget.CardView;
+
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -480,11 +482,11 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         kategoriBmi.setText(bmiModel.getKategori());
 
         // Set background color
-        RelativeLayout backgroundNotifBmi = dialog.findViewById(R.id.background_notif_bmi);
+        CardView backgroundNotifBmi = dialog.findViewById(R.id.background_notif_bmi);
 
         // Periksa null sebelum menggunakan warna tebal
         if (bmiModel.getWarna() != null) {
-            backgroundNotifBmi.setBackgroundColor(Color.parseColor(bmiModel.getWarna()));
+            backgroundNotifBmi.setCardBackgroundColor(Color.parseColor(bmiModel.getWarna()));
         } else {
             Log.e("Color Error", "WarnaTebal is null");
         }

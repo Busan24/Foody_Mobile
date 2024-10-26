@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="370dp"
     android:id="@+id/background_notif_bmi"
-    android:layout_height="370dp"
-    android:background="@drawable/pp_putih"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    android:background="@color/white"
     android:layout_gravity="center"
     tools:context=".NotifBmi">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="20dp"
         android:orientation="vertical">
         <pl.droidsonroids.gif.GifImageView
-            android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
             android:src="@drawable/animasi_bmi"
             android:layout_gravity="center"/>
         <LinearLayout
@@ -28,8 +32,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bmi Berhasil dicatat. Nilai BMI anda"
+                android:text="BMI Berhasil dicatat. Nilai BMI anda"
                 android:textSize="20dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textAlignment="center"
                 android:textColor="@color/birutua"
                 android:layout_centerHorizontal="true"/>
             </RelativeLayout>
@@ -39,43 +45,50 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="2dp"
-            android:layout_gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="adalah "
-                    android:textSize="20dp"
-                    android:textColor="@color/birutua" />
-                <TextView
-                    android:id="@+id/hasil_bmi_notif"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="22.5"
-                    android:textSize="20dp"
-                    android:textColor="@color/birutua"
-                    android:textStyle="bold"/>
+            android:layout_gravity="center"
+            >
             <TextView
+                android:id="@+id/hasil_bmi_notif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" dengan kategori"
-                android:textSize="20dp"
-                android:textColor="@color/birutua"/>
+                android:text="22.5"
+                android:textSize="32sp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/birutua"
+                android:textStyle="bold"/>
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="2dp"
-        android:layout_gravity="center">
-        <TextView
-            android:id="@+id/kategori_bmi"
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="2dp"-->
+<!--            android:layout_gravity="center">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="kategori"-->
+<!--                android:textSize="20dp"-->
+<!--                android:textColor="@color/birutua"/>-->
+<!--        </LinearLayout>-->
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Berat badan normal"
-            android:textSize="20dp"
-            android:textColor="@color/birutua"
-            android:textStyle="bold"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/kategori_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Berat badan normal"
+                android:textSize="20dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/birutua"
+                android:textStyle="bold"/>
+        </LinearLayout>
         <Button
             android:id="@+id/success_close"
             android:layout_width="258dp"
@@ -88,4 +101,4 @@
             android:textSize="18dp"/>
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -3,27 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="610dp"
+    android:layout_height="wrap_content"
     tools:context=".PopupEditProfileActivity"
     android:id="@+id/switch_akun"
     android:background="@color/white_background">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/profile"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginHorizontal="20dp"
-                android:background="@drawable/ot_kotak_abu"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@drawable/garis_biru"
                 >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/icon_profile_akun" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -31,26 +36,35 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"
                     android:text="Profil"
-                    android:textColor="@color/abupucet"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableRight="@drawable/icon_arrow_forward_ios_24"
-                    android:background="@color/white_background"
+                    android:textColor="@color/birutua"
+                    android:textSize="16sp"
+                    android:fontWeight="700"
+                    android:lineHeight="32dp"
                     />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/icon_arrow_forward_ios_24" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/transaksi"
+                android:id="@+id/transksi"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginHorizontal="20dp"
-                android:background="@drawable/ot_kotak_abu"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@drawable/garis_biru"
                 >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/icon_transaksi_akun" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -58,114 +72,268 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"
                     android:text="Transaksi"
-                    android:textColor="@color/abupucet"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableRight="@drawable/icon_arrow_forward_ios_24"
-                    android:background="@color/white_background"
+                    android:textColor="@color/birutua"
+                    android:textSize="16sp"
+                    android:fontWeight="700"
+                    android:lineHeight="32dp"
                     />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/icon_arrow_forward_ios_24" />
 
             </LinearLayout>
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Name"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:textSize="16dp"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:layout_marginTop="20dp"/>-->
+            <LinearLayout
+                android:id="@+id/ganti_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@drawable/garis_biru"
+                >
 
-<!--            <TextView-->
-<!--                android:id="@+id/akun_nama"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_height="65dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:background="@drawable/input_abupucet"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:text="Go Yoon Jung"-->
-<!--                android:textSize="16dp"-->
-<!--                android:paddingTop="20dp"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:paddingLeft="15dp"/>-->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/icon_gantipassword_akun" />
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Email"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:textSize="16dp"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:layout_marginTop="20dp"/>-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Ganti Password"
+                    android:textColor="@color/birutua"
+                    android:textSize="16sp"
+                    android:fontWeight="700"
+                    android:lineHeight="32dp"
+                    />
 
-<!--            <TextView-->
-<!--                android:id="@+id/akun_email"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_height="65dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:background="@drawable/input_abupucet"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:text="goyonjung123@gmail.com"-->
-<!--                android:textSize="16dp"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:paddingTop="20dp"-->
-<!--                android:paddingLeft="15dp"/>-->
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/icon_arrow_forward_ios_24" />
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Tanggal Lahir"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:textSize="16dp"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:layout_marginTop="20dp" />-->
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/report_pdf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:background="@drawable/garis_biru"
+                >
 
-<!--            <TextView-->
-<!--                android:id="@+id/akun_date"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_height="65dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:background="@drawable/input_abupucet"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:text=""-->
-<!--                android:textSize="16dp"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:paddingLeft="15dp"-->
-<!--                android:paddingTop="20dp"/>-->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/icon_reportpdf_akun" />
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Gender"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:textSize="16dp"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:layout_marginTop="20dp" />-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Report PDF"
+                    android:textColor="@color/birutua"
+                    android:textSize="16sp"
+                    android:fontWeight="700"
+                    android:lineHeight="32dp"
+                    />
 
-<!--            <TextView-->
-<!--                android:id="@+id/akun_gender"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_marginHorizontal="20dp"-->
-<!--                android:layout_height="65dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:background="@drawable/input_abupucet"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:text="Perempuan"-->
-<!--                android:textSize="16dp"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:paddingLeft="15dp"-->
-<!--                android:paddingTop="20dp"/>-->
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/icon_arrow_forward_ios_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/logoutMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingVertical="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/icon_logout_akun" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Logout"
+                    android:textColor="@color/birutua"
+                    android:textSize="16sp"
+                    android:fontWeight="700"
+                    android:lineHeight="32dp"
+                    />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/icon_arrow_forward_ios_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/banner_nonpremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_marginBottom="10dp"
+
+                android:background="@drawable/pp_pink"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:text="Upgrade Foody Premium nikmati fitur eksklusih &amp; dapatkan akses penuh"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textStyle="normal"
+                        android:fontWeight="800"
+                        android:textColor="@color/birutua"
+                        />
+
+                    <Button
+                        android:id="@+id/join_premium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Upgrade Sekarang"
+                        android:textColor="@color/birucerah"
+                        android:fontFamily="@font/poppins_regular"
+                        android:fontWeight="600"
+                        android:textSize="10sp"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_birutua"
+                        />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="105dp"
+                    android:layout_height="79dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/logo_prem">
+
+                </ImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/banner_premium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/pp_birucerah"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Foody Premium"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textStyle="normal"
+                        android:fontWeight="800"
+                        android:textColor="@color/birutua"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Berlaku hingga "
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textStyle="normal"
+                            android:textColor="@color/birutua"
+                            />
+                        <TextView
+                            android:id="@+id/premium_selesai"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="2024-12-12"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textStyle="normal"
+                            android:textColor="@color/birutua"
+                            />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/perpanjang_premium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Perpanjan Premium"
+                        android:textColor="@color/birucerah"
+                        android:fontFamily="@font/poppins_regular"
+                        android:fontWeight="600"
+                        android:textSize="10sp"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_birutua"
+                        />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="105dp"
+                    android:layout_height="79dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/logo_prem">
+
+                </ImageView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </RelativeLayout>
 
 
 </LinearLayout>

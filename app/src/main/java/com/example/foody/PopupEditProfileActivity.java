@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,8 +65,7 @@ public class PopupEditProfileActivity extends AppCompatActivity {
         buttonBack = findViewById(R.id.btn_close);
 
         buttonBack.setOnClickListener(view -> {
-            Intent intent = new  Intent(this, FiturProfil.class);
-            startActivity(intent);
+            finish();
         });
 
         epDate = findViewById(R.id.ep_date);
@@ -404,6 +404,7 @@ public class PopupEditProfileActivity extends AppCompatActivity {
                         // Tanggapi jika pesan adalah null (sesuaikan dengan kebutuhan Anda)
                         Toast.makeText(PopupEditProfileActivity.this, "Profil berhasil diperbarui.", Toast.LENGTH_SHORT).show();
                     }
+                    new Handler().postDelayed(() -> finish(), 1000);
 
                     // Refresh tampilan profil setelah berhasil memperbarui
 //                    refreshUserProfile(authToken);

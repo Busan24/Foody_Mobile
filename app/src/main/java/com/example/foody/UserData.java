@@ -11,6 +11,7 @@ public class UserData {
     private String gambar;
     private boolean verified;
     private boolean premium;
+    private String premium_until;
 
     public boolean isVerified() {
         return verified;
@@ -90,5 +91,13 @@ public class UserData {
 
     public void setGambar(String gambar) {
         this.gambar = gambar;
+    }
+
+    public java.lang.String getPremium_until() {
+        return premium_until;
+    }
+
+    public void setPremium_until(java.lang.String premium_until) {
+        this.premium_until = premium_until;
     }
 }

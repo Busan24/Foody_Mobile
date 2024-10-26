@@ -32,10 +32,9 @@
         android:layout_height="wrap_content">
 
     <ScrollView
+        android:id="@+id/profil_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -46,13 +45,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:layout_marginHorizontal="20dp"-->
+<!--                    app:cardCornerRadius="10dp"-->
+<!--                    app:cardElevation="10dp"-->
+<!--                    >-->
                 <LinearLayout
                     android:id="@+id/bawah_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_margin="20dp"
                     android:orientation="horizontal"
                     >
 
@@ -98,6 +104,7 @@
                             android:layout_height="wrap_content"
                             android:text="Name"
                             android:textSize="22dp"
+                            android:maxLines="1"
                             />
 
                         <TextView
@@ -109,30 +116,17 @@
                             android:textColor="@color/abupucet"
                             />
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
 
-                            <ImageView
-                                android:id="@+id/btn_logout"
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:background="@drawable/logout_profil"
-                                android:layout_marginTop="15dp"/>
-                            <TextView
-                                android:id="@+id/logout_profil"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Logout"
-                                android:textSize="16dp"
-                                android:textColor="@color/merah"
-                                android:layout_marginTop="11dp"
-                                android:layout_marginLeft="7dp"/>
+                        <ImageView
+                            android:id="@+id/icon_premium"
+                            android:layout_width="85dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/iconpremiummember"
+                            />
 
-                        </LinearLayout>
+                </LinearLayout>
 
-                    </LinearLayout>
+
 
 <!--                    <Button-->
 <!--                        android:id="@+id/btn_edit_profile"-->
@@ -147,6 +141,7 @@
 <!--                        />-->
 
                 </LinearLayout>
+<!--                </androidx.cardview.widget.CardView>-->
 
                 <LinearLayout
                     android:id="@+id/txt_jk_th"
@@ -159,6 +154,15 @@
 
                 </LinearLayout>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp"
+                    >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -241,6 +245,7 @@
                     <!--                                    android:layout_marginHorizontal="20dp"/>-->
 
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_width="208dp"
@@ -270,7 +275,7 @@
                         android:layout_width="0dp"
                         android:layout_height="31dp"
                         android:layout_weight="1"
-                        android:background="@drawable/pp_oval_birucerah"
+                        android:background="@android:color/transparent"
                         android:layout_marginTop="7dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="10dp"
