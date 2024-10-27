@@ -89,6 +89,11 @@ public interface ApiService {
             @Body TransaksiResuestModel transaksiResuestModel
     );
 
+    @GET("transaksi")
+    Call<ApiResponse<List<TransactionData>>> getTransactions(
+            @Header("Authorization") String authToken
+    );
+
     @POST("makanan/generate")
     Call<ApiResponse<MakananModel>> generateMakanan(
             @Header("Authorization") String authToken,
