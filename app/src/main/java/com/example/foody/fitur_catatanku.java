@@ -439,6 +439,7 @@ public class fitur_catatanku extends AppCompatActivity {
 
                     getCatatanMakananDaily();
                     myDialog.dismiss();
+                    getSummaryData();
 
                 } else {
                     showFailedDialog();
@@ -529,6 +530,8 @@ public class fitur_catatanku extends AppCompatActivity {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         String authToken = "Bearer " + getAuthToken();
 
+        ArrayList<String> kelebihan = new ArrayList<String>();
+
         Call<ApiResponse<SummaryData>> callSummary = apiService.getUserSummary("Bearer " + authToken);
         callSummary.enqueue(new Callback<ApiResponse<SummaryData>>() {
             @Override
@@ -539,15 +542,42 @@ public class fitur_catatanku extends AppCompatActivity {
                         SummaryData summaryData = apiResponseSummary.getData();
                         if (summaryData != null) {
                             if (summaryData.getDaily_garam() > summaryData.getBatas_garam()){
-                                showWarningDialog("garam");
+                                kelebihan.add("garam");
                             }if (summaryData.getDaily_gula() > summaryData.getBatas_gula()){
-                                showWarningDialog("gula");
+                                kelebihan.add("gula");
                             }if (summaryData.getDaily_karbohidrat() > summaryData.getBatas_karbohidrat()){
-                                showWarningDialog("karbohidrat");
+                                kelebihan.add("karbohidrat");
                             }if (summaryData.getDaily_protein() > summaryData.getBatas_protein()){
-                                showWarningDialog("protein");
+                                kelebihan.add("protein");
                             }if (summaryData.getDaily_lemak() > summaryData.getBatas_lemak()){
-                                showWarningDialog("lemak");
+                                kelebihan.add("lemak");
+                            }
+
+                            String kandungan = "";
+
+                            if (!kelebihan.isEmpty()) {
+
+                                if (kelebihan.size() == 1){
+                                    kandungan = kelebihan.get(0);
+                                }
+
+                                if (kelebihan.size() == 2) {
+                                    kandungan += kelebihan.get(0) + " dan " + kelebihan;
+                                }
+
+                                else {
+                                    for (int i = 0; i < kelebihan.size(); i++) {
+                                        if (i == kelebihan.size() - 2 ) {
+                                            kandungan = kandungan.concat(kelebihan.get(i) + ", dan ");
+                                        }
+                                        else {
+                                            kandungan = kandungan.concat(kelebihan.get(i) + ", ");
+                                        }
+                                    }
+                                }
+
+                                Log.d("Kandunga", kandungan);
+                                showWarningDialog(kandungan);
                             }
 
                         } else {
@@ -579,15 +609,15 @@ public class fitur_catatanku extends AppCompatActivity {
 
         // Access elements in the dialog
         TextView peringatanKandungan = warningDialog.findViewById(R.id.peringatan_kandungan);
-        TextView solusiKandungan = warningDialog.findViewById(R.id.solusi_kandungan);
-        Button gagalCloseButton = warningDialog.findViewById(R.id.gagal_close);
+        TextView nanti = warningDialog.findViewById(R.id.nanti);
+        Button rekomendasiMakanan = findViewById(R.id.rekomendasi_makanan);
 
         // Set text based on the exceeded values
-        peringatanKandungan.setText(kandungan);
-        solusiKandungan.setText(kandungan);
+        String warningText = "Konsumsi " + kandungan + " telah melebihi batas normal harian. Konsumi makanan dengan kandunga " + kandungan + " yang rendah.";
+        peringatanKandungan.setText(warningText);
 
         // Close the warning dialog
-        gagalCloseButton.setOnClickListener(new View.OnClickListener() {
+        nanti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 warningDialog.dismiss();

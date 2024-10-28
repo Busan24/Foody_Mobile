@@ -1,96 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="@color/merahcerah"
     android:layout_width="match_parent"
-    android:layout_height="340dp"
-    android:background="@color/merahcerah"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    tools:context=".NotifPeringatan"
-    android:layout_marginHorizontal="10dp">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="250dp"
-            android:layout_height="150dp"
-            android:src="@drawable/error_baru"
-            android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:src="@drawable/error_baru"
+                android:layout_gravity="center"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Konsumsi "
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="@color/birutua" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/peringatan_kandungan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Garam"
+                android:text="Konsumsi "
                 android:textSize="20dp"
-                android:gravity="center"
-                android:textColor="@color/birutua" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="telah melebihi batas harian! "
-                android:textSize="20dp"
+                android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
                 android:textColor="@color/birutua" />
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pilih makanan"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:textColor="@color/birutua" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="yang rendah "
-                android:textSize="20dp"
-                android:gravity="center"
-                android:textColor="@color/birutua" />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/solusi_kandungan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Garam"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="@color/birutua"
-            android:layout_gravity="center"/>
 
         <Button
-            android:id="@+id/gagal_close"
-            android:layout_width="258dp"
+            android:id="@+id/rekomendasi_makanan"
+            android:layout_width="wrap_content"
             android:layout_height="49dp"
+            android:paddingHorizontal="10dp"
             android:background="@drawable/button_birutua"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:textColor="@color/birucerah"
-            android:text="ok"
+            android:text="Cari rekomendasi makanan"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/nanti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:text="Nanti"
+            android:textSize="16sp"
+            android:textColor="@color/abupucet"
+            android:fontFamily="@font/poppins_semibold"
+            />
+
     </LinearLayout>
-</RelativeLayout>
+</androidx.cardview.widget.CardView>
