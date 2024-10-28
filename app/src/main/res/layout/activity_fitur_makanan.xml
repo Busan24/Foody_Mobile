@@ -56,170 +56,174 @@
                     android:background="@drawable/button_birucerah"
                     android:queryHint="Cari makanan..."
                     android:iconifiedByDefault="false"
-                    android:layout_margin="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:focusable="true"
+                    app:iconifiedByDefault="false"
+                    android:focusableInTouchMode="true"
                     />
 
-<!--                <Button-->
-<!--                    android:id="@+id/filter_data"-->
-<!--                    android:layout_width="50dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:background="@drawable/button_birutua"-->
-<!--                    android:layout_marginTop="20dp"-->
-<!--                    android:layout_marginRight="20dp"-->
-<!--                    android:drawableLeft="@drawable/icon_search_24"-->
-<!--                    android:paddingLeft="12dp"/>-->
+                <Button
+                    android:id="@+id/restart"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/button_birutua"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:drawableLeft="@drawable/icon_restart"
+                    android:paddingLeft="12dp"
+                    android:visibility="gone"
+                    />
             </LinearLayout>
 
-<!--            <TextView-->
-<!--                android:id="@+id/txt_kandungan_makanan"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Kandungan Makanan"-->
-<!--                android:textSize="16dp"-->
-<!--                android:textColor="@color/birutua"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:layout_marginLeft="20dp"/>-->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                >
 
-<!--            <HorizontalScrollView-->
-<!--                android:id="@+id/hr_scroll"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="10dp">-->
-<!--                -->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:paddingBottom="10dp">-->
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical">-->
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="134dp"-->
-<!--                            android:layout_height="134dp"-->
-<!--                            android:background="@drawable/pp_oval_birucerah"-->
-<!--                            android:layout_marginLeft="20dp">-->
-<!--                            <ImageView-->
-<!--                                android:layout_width="91dp"-->
-<!--                                android:layout_height="59dp"-->
-<!--                                android:src="@drawable/karbohidrat"-->
-<!--                                android:layout_marginTop="30dp"-->
-<!--                                android:layout_marginLeft="20dp"/>-->
-<!--                        </RelativeLayout>-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/tinggi_karbohidrat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingHorizontal="15dp"
+                        android:text="Tinggi Karbohidrat"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:background="@drawable/rounded_button"
+                        />
 
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Karbohidrat"-->
-<!--                            android:textSize="14dp"-->
-<!--                            android:textColor="@color/birutua"-->
-<!--                            android:layout_marginLeft="51dp"-->
-<!--                            android:layout_marginTop="10dp"/>-->
-<!--                    </LinearLayout>-->
+                    <Button
+                        android:id="@+id/rendah_karbohidrat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:paddingHorizontal="15dp"
+                        android:text="Rendah Karbohidrat"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:background="@drawable/rounded_button"
+                        />
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical">-->
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="134dp"-->
-<!--                            android:layout_height="134dp"-->
-<!--                            android:background="@drawable/pp_oval_birucerah"-->
-<!--                            android:layout_marginLeft="20dp">-->
-<!--                            <ImageView-->
-<!--                                android:layout_width="91dp"-->
-<!--                                android:layout_height="73dp"-->
-<!--                                android:src="@drawable/lemak"-->
-<!--                                android:layout_marginTop="27dp"-->
-<!--                                android:layout_marginLeft="20dp"/>-->
-<!--                        </RelativeLayout>-->
+                    <Button
+                        android:id="@+id/tinggi_protein"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingHorizontal="15dp"
+                        android:text="Tinggi Protein"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
 
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Lemak"-->
-<!--                            android:textSize="14dp"-->
-<!--                            android:textColor="@color/birutua"-->
-<!--                            android:layout_marginLeft="67dp"-->
-<!--                            android:layout_marginTop="10dp"/>-->
-<!--                    </LinearLayout>-->
+                    <Button
+                        android:id="@+id/rendah_protein"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:paddingHorizontal="15dp"
+                        android:text="Rendah Protein"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:background="@drawable/rounded_button"
+                        />
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical">-->
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="134dp"-->
-<!--                            android:layout_height="134dp"-->
-<!--                            android:background="@drawable/pp_oval_birucerah"-->
-<!--                            android:layout_marginLeft="20dp">-->
-<!--                            <ImageView-->
-<!--                                android:layout_width="91dp"-->
-<!--                                android:layout_height="65dp"-->
-<!--                                android:src="@drawable/protein"-->
-<!--                                android:layout_marginTop="27dp"-->
-<!--                                android:layout_marginLeft="20dp"/>-->
-<!--                        </RelativeLayout>-->
+                    <Button
+                        android:id="@+id/tinggi_lemak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:paddingHorizontal="15dp"
+                        android:text="Tinggi Lemak"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:background="@drawable/rounded_button"
+                        />
 
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Protein"-->
-<!--                            android:textSize="14dp"-->
-<!--                            android:textColor="@color/birutua"-->
-<!--                            android:layout_marginLeft="67dp"-->
-<!--                            android:layout_marginTop="10dp"/>-->
-<!--                    </LinearLayout>-->
+                    <Button
+                        android:id="@+id/rendah_lemak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:paddingHorizontal="15dp"
+                        android:text="Rendah Lemak"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:background="@drawable/rounded_button"
+                        />
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical">-->
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="134dp"-->
-<!--                            android:layout_height="134dp"-->
-<!--                            android:background="@drawable/pp_oval_birucerah"-->
-<!--                            android:layout_marginLeft="20dp">-->
-<!--                            <ImageView-->
-<!--                                android:layout_width="91dp"-->
-<!--                                android:layout_height="65dp"-->
-<!--                                android:src="@drawable/serat"-->
-<!--                                android:layout_marginTop="27dp"-->
-<!--                                android:layout_marginLeft="20dp"/>-->
-<!--                        </RelativeLayout>-->
+                </LinearLayout>
 
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Serat"-->
-<!--                            android:textSize="14dp"-->
-<!--                            android:textColor="@color/birutua"-->
-<!--                            android:layout_marginLeft="75dp"-->
-<!--                            android:layout_marginTop="10dp"/>-->
-<!--                    </LinearLayout>-->
-<!--                </LinearLayout>-->
+            </HorizontalScrollView>
 
-<!--            </HorizontalScrollView>-->
-            
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="49dp"-->
-<!--                android:background="@color/birucerah"-->
-<!--                android:layout_marginTop="15dp">-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Pencarian Terkait"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    android:layout_marginLeft="25dp"-->
-<!--                    android:textSize="14dp"-->
-<!--                    android:textColor="@color/birutua"/>-->
-<!--            </RelativeLayout>-->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvmakanan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvmakanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/illustrasi_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ilustrasi_makanan_notfound"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Data makan belum tersedia. Anda bisa menggunakan AI untuk mencari makanan"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/poppins_medium"
+                    />
+                
+                <Button
+                    android:id="@+id/generate_makanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="20dp"
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@drawable/icon_ai_birucerah"
+                    android:text="Cari Makanan"
+                    android:textSize="14sp"
+                    android:textColor="@color/birucerah"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_birutua"
+
+                    />
+
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

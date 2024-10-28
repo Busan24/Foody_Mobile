@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.HorizontalScrollView;
@@ -16,7 +19,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
+import android.graphics.drawable.ColorDrawable;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -33,6 +39,12 @@ public class FiturMakanan extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MakananAdapter makananAdapter;
     private List<MakananModel> makananList;
+    private Button tinggiKarbohidrat, tinggiProtein, tinggiLemak, rendahKarbohidrat, rendahProtein, rendahLemak;
+    private Button reset;
+    private Button generateMakanan;
+    private LinearLayout illustrasiEmpty;
+
+    private String makananDicari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +53,80 @@ public class FiturMakanan extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
+
+        tinggiKarbohidrat = findViewById(R.id.tinggi_karbohidrat);
+        tinggiProtein   =  findViewById(R.id.tinggi_protein);
+        tinggiLemak = findViewById(R.id.tinggi_lemak);
+        rendahKarbohidrat = findViewById(R.id.rendah_karbohidrat);
+        rendahProtein   =  findViewById(R.id.rendah_protein);
+        rendahLemak = findViewById(R.id.rendah_lemak);
+        illustrasiEmpty = findViewById(R.id.illustrasi_empty);
+        generateMakanan = findViewById(R.id.generate_makanan);
+
+        reset = findViewById(R.id.restart);
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetBackground();
+                reset.setVisibility(View.GONE);
+                getDataMakananFromApi("");
+            }
+        });
+
+        tinggiKarbohidrat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetBackground();
+                tinggiKarbohidrat.setBackgroundResource(R.drawable.rounded_button_border);
+                getDataMakananFromApi("tinggi-karbohidrat");
+            }
+        });
+
+        rendahKarbohidrat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetBackground();
+                rendahKarbohidrat.setBackgroundResource(R.drawable.rounded_button_border);
+                getDataMakananFromApi("rendah-karbohidrat");
+            }
+        });
+
+        tinggiProtein.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetBackground();
+                tinggiProtein.setBackgroundResource(R.drawable.rounded_button_border);
+                getDataMakananFromApi("tinggi-protein");
+            }
+        });
+
+        rendahProtein.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetBackground();
+                rendahProtein.setBackgroundResource(R.drawable.rounded_button_border);
+                getDataMakananFromApi("rendah-protein");
+            }
+        });
+
+        tinggiLemak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetBackground();
+                tinggiLemak.setBackgroundResource(R.drawable.rounded_button_border);
+                getDataMakananFromApi("tinggi-lemak");
+            }
+        });
+
+        rendahLemak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetBackground();
+                rendahLemak.setBackgroundResource(R.drawable.rounded_button_border);
+                getDataMakananFromApi("rendah-lemak");
+            }
+        });
 
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() { // Ganti menjadi setOnItemSelectedListener
@@ -97,16 +183,26 @@ public class FiturMakanan extends AppCompatActivity {
             }
         });
 
+        // Cari SearchView berdasarkan ID
+        SearchView searchView = findViewById(R.id.search_makanan);
+        searchView.setQueryHint("Cari makanan...");
+
+        generateMakanan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!makananDicari.isEmpty()) {
+                    generateMakanan(makananDicari);
+                }
+            }
+        });
+
         // Konfigurasi RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(makananAdapter);
 
         // Panggil method untuk mengambil data dari API
-        getDataMakananFromApi();
-
-        // Cari SearchView berdasarkan ID
-        SearchView searchView = findViewById(R.id.search_makanan);
+        getDataMakananFromApi("");
 
 //        TextView txtKandunganMakanan = findViewById(R.id.txt_kandungan_makanan);
 //        HorizontalScrollView hrScroll = findViewById(R.id.hr_scroll);
@@ -116,6 +212,7 @@ public class FiturMakanan extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Pencarian selesai (mis., ketika pengguna menekan tombol "Enter" pada keyboard)
+                makananDicari = query;
                 return false;
             }
 
@@ -123,6 +220,7 @@ public class FiturMakanan extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 // Panggil metode untuk menyaring data berdasarkan teks pencarian
                 filterMakanan(newText);
+                makananDicari = newText;
                 // Ubah visibilitas elemen-elemen sesuai kebutuhan
 //                if (newText.isEmpty()) {
 //                    // Teks pencarian kosong, tampilkan kembali elemen-elemen yang disembunyikan
@@ -139,10 +237,21 @@ public class FiturMakanan extends AppCompatActivity {
         });
 
     }
-    private void getDataMakananFromApi() {
+
+    private void resetBackground()  {
+        reset.setVisibility(View.VISIBLE);
+        tinggiKarbohidrat.setBackgroundResource(R.drawable.rounded_button);
+        tinggiProtein.setBackgroundResource(R.drawable.rounded_button);
+        tinggiLemak.setBackgroundResource(R.drawable.rounded_button);
+        rendahKarbohidrat.setBackgroundResource(R.drawable.rounded_button);
+        rendahProtein.setBackgroundResource(R.drawable.rounded_button);
+        rendahLemak.setBackgroundResource(R.drawable.rounded_button);
+    }
+
+    private void getDataMakananFromApi(String kategori) {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
-        Call<ApiResponse<List<MakananModel>>> call = apiService.getMakanan("Bearer " + getAuthToken());
+        Call<ApiResponse<List<MakananModel>>> call = apiService.getMakanan("Bearer " + getAuthToken(), kategori);
         call.enqueue(new Callback<ApiResponse<List<MakananModel>>>() {
             @Override
             public void onResponse(Call<ApiResponse<List<MakananModel>>> call, Response<ApiResponse<List<MakananModel>>> response) {
@@ -150,11 +259,13 @@ public class FiturMakanan extends AppCompatActivity {
                     ApiResponse<List<MakananModel>> apiResponse = response.body();
                     if (apiResponse != null && apiResponse.getStatus().equals("success")) {
                         List<MakananModel> makananModels = apiResponse.getData();
+                        makananList.clear();
                         if (makananModels != null && makananModels.size() > 0) {
                             makananList.addAll(makananModels);
                             makananAdapter.notifyDataSetChanged();
                         } else {
                             // Tampilkan pesan bahwa tidak ada data makanan
+                            makananAdapter.notifyDataSetChanged();
                             Toast.makeText(FiturMakanan.this, "Tidak ada data makanan", Toast.LENGTH_SHORT).show();
                         }
                     } else {
@@ -187,8 +298,68 @@ public class FiturMakanan extends AppCompatActivity {
             }
         }
 
+        if (filteredList.isEmpty()) {
+            illustrasiEmpty.setVisibility(View.VISIBLE);
+        }
+
+        else {
+            illustrasiEmpty.setVisibility(View.GONE);
+        }
+
         // Setel filteredList sebagai data untuk RecyclerView
         makananAdapter.filterList(filteredList);
+    }
+
+    private void generateMakanan(String makanan) {
+
+        Dialog loadingDialog = new Dialog(FiturMakanan.this);
+        loadingDialog.setContentView(R.layout.dialog_loading);
+
+        // Mengatur latar belakang dialog agar transparan
+        loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        Window window = loadingDialog.getWindow();
+        if (window != null) {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
+
+        // Menampilkan loading dialog
+        loadingDialog.show();
+
+        GenerateMakananRequestModel generateMakananRequestModel = new GenerateMakananRequestModel(makanan);
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+
+        Call<ApiResponse<MakananModel>> call = apiService.createMakanan("Bearer " + getAuthToken(), generateMakananRequestModel);
+        call.enqueue(new Callback<ApiResponse<MakananModel>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<MakananModel>> call, Response<ApiResponse<MakananModel>> response) {
+                if (response.isSuccessful()) {
+                    ApiResponse<MakananModel> apiResponse = response.body();
+                    MakananModel dataMakanan = apiResponse.getData();
+
+                    makananList.add(dataMakanan);
+                    makananAdapter.notifyDataSetChanged();
+                    filterMakanan(makanan);
+
+                    String idMakanan = dataMakanan.getId();
+                    Intent intent = new Intent(FiturMakanan.this, DataMakanan.class);
+                    intent.putExtra("ID_MAKANAN", idMakanan);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(FiturMakanan.this, "Makanan tidak ditemukan. Periksa kembali nama makanan", Toast.LENGTH_SHORT).show();
+                }
+
+                loadingDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<MakananModel>> call, Throwable t) {
+                Toast.makeText(FiturMakanan.this, "Terjadi kesalaha. Perika koneksi internet anda.", Toast.LENGTH_SHORT).show();
+                loadingDialog.dismiss();
+            }
+        });
+
     }
 
     private String getAuthToken() {
@@ -198,92 +369,5 @@ public class FiturMakanan extends AppCompatActivity {
         return authToken;
     }
 
-//    private void loadMakananData(String makananId) {
-//        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-//        Call<ApiResponse<MakananModel>> call = apiService.getDetailMakanan(makananId);
-//        call.enqueue(new Callback<ApiResponse<MakananModel>>() {
-//            @Override
-//            public void onResponse(Call<ApiResponse<MakananModel>> call, Response<ApiResponse<MakananModel>> response) {
-//                if (response.isSuccessful()) {
-//                    ApiResponse<MakananModel> apiResponse = response.body();
-//                    if (apiResponse != null && apiResponse.getStatus().equals("success")) {
-//                        MakananModel makananModel = apiResponse.getData();
-//                        if (makananModel != null) {
-//                            // Lakukan sesuatu dengan data makananModel
-//                            // Contoh: Setel data ke tampilan
-//                            setMakananDataToViews(makananModel);
-//                        } else {
-//                            // Tampilkan pesan bahwa tidak ada data makanan
-//                            Toast.makeText(FiturMakanan.this, "Tidak ada data makanan", Toast.LENGTH_SHORT).show();
-//                        }
-//                    } else {
-//                        // Tampilkan pesan bahwa respons tidak sukses
-//                        Toast.makeText(FiturMakanan.this, "Respons tidak sukses", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    // Tampilkan pesan bahwa terjadi kesalahan saat mengambil data makanan
-//                    Toast.makeText(FiturMakanan.this, "Gagal mengambil data makanan", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ApiResponse<MakananModel>> call, Throwable t) {
-//                // Tampilkan pesan bahwa terjadi kesalahan jaringan
-//                Toast.makeText(FiturMakanan.this, "Terjadi kesalahan jaringan", Toast.LENGTH_SHORT).show();
-//                Log.e("FiturMakanan", "Kesalahan jaringan", t);
-//            }
-//        });
-//    }
-//
-//    private void setMakananDataToViews(MakananModel makananModel) {
-//        ImageView imageViewMakanan = findViewById(R.id.gambar_makanan); // Sesuaikan dengan ID ImageView pada layout XML Anda
-//        TextView textViewNamaMakanan = findViewById(R.id.nm_data); // Sesuaikan dengan ID TextView untuk nama makanan pada layout XML Anda
-////        TextView textViewDeskripsiMakanan = findViewById(R.id.text_deskripsi_makanan);
-//        TextView textKarbohidrat = findViewById(R.id.hasil_carbo); // Sesuaikan dengan ID TextView untuk hasil karbohidrat pada layout XML Anda
-//        TextView textProtein = findViewById(R.id.hasil_protein); // Sesuaikan dengan ID TextView untuk hasil protein pada layout XML Anda
-//        TextView textGaram = findViewById(R.id.hasil_garam); // Sesuaikan dengan ID TextView untuk hasil garam pada layout XML Anda
-//        TextView textGula = findViewById(R.id.hasil_gula); // Sesuaikan dengan ID TextView untuk hasil gula pada layout XML Anda
-//        TextView textLemak = findViewById(R.id.hasil_lemak); // Sesuaikan dengan ID TextView untuk hasil lemak pada layout XML Anda
-//
-//        // Setel nilai ke elemen antarmuka pengguna
-//        textViewNamaMakanan.setText(makananModel.getNama());
-////        textViewDeskripsiMakanan.setText(makananModel.getDeskripsi());
-//
-//        // Setel nilai ke TextView hasil karbohidrat, protein, garam, gula, lemak sesuai dengan respons API
-//        textKarbohidrat.setText(String.valueOf(makananModel.getKarbohidrat()));
-//        textProtein.setText(String.valueOf(makananModel.getProtein()));
-//        textGaram.setText(String.valueOf(makananModel.getGaram()));
-//        textGula.setText(String.valueOf(makananModel.getGula()));
-//        textLemak.setText(String.valueOf(makananModel.getLemak()));
-//
-//        // Load gambar menggunakan Glide ke ImageView
-//        Glide.with(this)
-//                .load(makananModel.getGambar())
-//                .into(imageViewMakanan);
-//    }
-
-//    private void loadMakananData(String makananId) {
-//        // Memanggil metode loadMakananData dari kelas utilitas
-//        NetworkUtils.loadMakananData(makananId, this);
-//    }
-
-
-
 }
-
-// Inisialisasi RecyclerView
-//        recyclerView = findViewById(R.id.rvmakanan);
-//                recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//                // Inisialisasi data makanan
-//                makananList = new ArrayList<>();
-//        makananList.add(new MakananModel(1, "Baked Sweet Potato", "Karbohidrat", 50, 0, 163, "Protein", 75, 0, 60, "Gula", 25, 0, 60, "Lemak", 60, 0, 60, "Garam", 60, 0, 60, R.drawable.sweet_potato));
-//        makananList.add(new MakananModel(2, "Another Food Item", "Karbohidrat", 30, 0, 123, "Protein", 60, 0, 50, "Gula", 15, 0, 55, "Lemak", 40, 0, 40, "Garam", 50, 0, 50, R.drawable.sweet_potato));
-//        makananList.add(new MakananModel(3, "Yet Another Food", "Karbohidrat", 45, 0, 156, "Protein", 80, 0, 70, "Gula", 35, 0, 67, "Lemak", 55, 0, 55, "Garam", 70, 0, 80, R.drawable.sweet_potato));
-//        // Tambahkan data makanan lainnya sesuai kebutuhan
-//
-//        RecyclerView recyclerView = findViewById(R.id.rvmakanan);
-//        MakananAdapter adapter = new MakananAdapter(makananList);
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

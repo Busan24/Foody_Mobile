@@ -80,6 +80,8 @@
                             android:layout_height="144dp"
                             android:progress="0"
                             android:max="100"
+                            android:indeterminate="true"
+                            android:indeterminateTint="@color/birutua"
                             />
 
                     </LinearLayout>

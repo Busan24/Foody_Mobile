@@ -49,7 +49,7 @@ public class HomeFoodyActivity extends AppCompatActivity {
 
     private ShapeableImageView fotoProfil;
 
-    private ShapeableImageView gotoPremium;
+    private ImageView gotoPremium;
 
     private WebView webView;
     private TextView karbohidratTextView, proteinTextView, garamTextView, gulaTextView, lemakTextView;
@@ -638,6 +638,9 @@ public class HomeFoodyActivity extends AppCompatActivity {
 
                     // Save premium status
                     savePremiumStatus(userData.isPremium());
+                    if (userData.isPremium()) {
+                        gotoPremium.setImageResource(R.drawable.icon_foody_premium);
+                    }
 //                    SharedPrefManager.savePremiumStatus(userData.isPremium());
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");

@@ -15,6 +15,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @POST("user") // sesuaikan dengan endpoint API Anda
@@ -33,7 +34,10 @@ public interface ApiService {
     Call<UpdateProfileResponse> updateProfile(@Header("Authorization") String authToken, @Body UpdateProfileRequest request);
 
     @GET("makanan")
-    Call<ApiResponse<List<MakananModel>>> getMakanan(@Header("Authorization") String authToken);
+    Call<ApiResponse<List<MakananModel>>> getMakanan(
+            @Header("Authorization") String authToken,
+            @Query("kategori")  String kategori
+        );
 
     @GET("makanan/{id}")
     Call<ApiResponse<MakananModel>> getMakananById(@Header("Authorization") String authToken, @Path("id") String id);
@@ -96,6 +100,12 @@ public interface ApiService {
 
     @POST("makanan/generate")
     Call<ApiResponse<MakananModel>> generateMakanan(
+            @Header("Authorization") String authToken,
+            @Body GenerateMakananRequestModel generateMakananRequestModel
+    );
+
+    @POST("makanan/create")
+    Call<ApiResponse<MakananModel>> createMakanan(
             @Header("Authorization") String authToken,
             @Body GenerateMakananRequestModel generateMakananRequestModel
     );

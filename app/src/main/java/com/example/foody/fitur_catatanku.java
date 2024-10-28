@@ -172,16 +172,7 @@ public class fitur_catatanku extends AppCompatActivity {
         // Tampilkan dialog
 
 
-        // Panggil metode untuk mengambil data makanan dari API
-        getDaftarMakanan();
-
         getCatatanMakananDaily();
-
-        // Panggil metode untuk mengambil data makanan dari API
-        getDaftarMakanan();
-
-
-
     }
 
     private void showCustomDialog(String text, int backgroundColor, String generateButtonTextColor, int drawable) {
@@ -342,6 +333,9 @@ public class fitur_catatanku extends AppCompatActivity {
                 // Menampilkan dialog loading
                 Dialog loadingDialog = new Dialog(fitur_catatanku.this);
                 loadingDialog.setContentView(R.layout.dialog_loading);
+
+                // Mengatur latar belakang dialog agar transparan
+                loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
                 // Atur atribut dialog (opsional)
                 Window window = loadingDialog.getWindow();
@@ -664,26 +658,27 @@ public class fitur_catatanku extends AppCompatActivity {
         return authToken;
     }
 
-    private void getDaftarMakanan() {
-        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-        Call<ApiResponse<List<MakananModel>>> call = apiService.getMakanan("Bearer " + getAuthToken());
-
-        call.enqueue(new Callback<ApiResponse<List<MakananModel>>>() {
-            @Override
-            public void onResponse(Call<ApiResponse<List<MakananModel>>> call, Response<ApiResponse<List<MakananModel>>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    daftarMakanan = response.body().getData();
-                    adapter.addAll(daftarMakanan);
-                    adapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ApiResponse<List<MakananModel>>> call, Throwable t) {
-                Log.e("API Error", "Gagal mengambil data makanan: " + t.getMessage());
-            }
-        });
-    }
+//    private void getDaftarMakanan() {
+//        RequestMakananModel requestMakananModel = new RequestMakananModel();
+//        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+//        Call<ApiResponse<List<MakananModel>>> call = apiService.getMakanan("Bearer " + getAuthToken(), requestMakananModel);
+//
+//        call.enqueue(new Callback<ApiResponse<List<MakananModel>>>() {
+//            @Override
+//            public void onResponse(Call<ApiResponse<List<MakananModel>>> call, Response<ApiResponse<List<MakananModel>>> response) {
+//                if (response.isSuccessful() && response.body() != null) {
+//                    daftarMakanan = response.body().getData();
+//                    adapter.addAll(daftarMakanan);
+//                    adapter.notifyDataSetChanged();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ApiResponse<List<MakananModel>>> call, Throwable t) {
+//                Log.e("API Error", "Gagal mengambil data makanan: " + t.getMessage());
+//            }
+//        });
+//    }
 
     private void showSuccessDialog() {
         // Membuat dialog
