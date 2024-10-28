@@ -116,6 +116,7 @@ public class FiturProfil extends AppCompatActivity {
 
     private LinearLayout resetPassword;
     private LinearLayout daftarTransaksi;
+    private LinearLayout reportPdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,6 +176,7 @@ public class FiturProfil extends AppCompatActivity {
 
         resetPassword = findViewById(R.id.ganti_password);
         daftarTransaksi =  findViewById(R.id.transksi);
+        reportPdf =  findViewById(R.id.report_pdf);
 
         if (!getPremiumStatus()) {
             iconPremium.setVisibility(View.GONE);
@@ -208,6 +210,14 @@ public class FiturProfil extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FiturProfil.this, DaftarTransaksiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        reportPdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FiturProfil.this, ReportPdfActivity.class);
                 startActivity(intent);
             }
         });

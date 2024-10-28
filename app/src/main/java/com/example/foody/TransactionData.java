@@ -1,5 +1,8 @@
 package com.example.foody;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class TransactionData {
     private String id;
     private String nama_paket;
@@ -51,5 +54,14 @@ public class TransactionData {
 
     public String getJam() {
         return jam;
+    }
+
+    public String getJumlah_PembayaranRupiah () {
+        Locale indonesia = new Locale("id", "ID");
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(indonesia);
+
+        String formattedAmount = currencyFormat.format(jumlah_bayar);
+
+        return  formattedAmount;
     }
 }

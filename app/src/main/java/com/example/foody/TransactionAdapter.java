@@ -34,7 +34,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.packageName.setText("Premium " + transaction.getNama_paket());
         holder.paymentMethod.setText(transaction.getMetode_pembayaran().toUpperCase());
         holder.transactionNumber.setText(transaction.getNo_transaksi());
-        holder.amount.setText("Rp " + transaction.getJumlah_bayar());
+        holder.amount.setText(transaction.getJumlah_PembayaranRupiah());
         holder.date.setText(transaction.getTanggal());
         holder.time.setText(transaction.getJam());
 

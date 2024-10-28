@@ -106,6 +106,12 @@ public interface ApiService {
             @Body ResetPasswordRequest resetPasswordRequest
     );
 
+    @POST("user/report")
+    Call<ResponseBody> reportPdf(
+            @Header("Authorization")  String authToken,
+            @Body ReportPdfRequestModel reportPdfRequestModel
+    );
+
     @Multipart
     @POST("user/image")
     Call<ApiResponse<Void>> updateProfilePicture(

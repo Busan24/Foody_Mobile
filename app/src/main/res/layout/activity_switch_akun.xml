@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:text="Transaksi"
+                    android:text="Riwayat Transaksi"
                     android:textColor="@color/birutua"
                     android:textSize="16sp"
                     android:fontWeight="700"
