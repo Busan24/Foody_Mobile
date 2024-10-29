@@ -127,8 +127,7 @@ public class PremiumActivity extends AppCompatActivity {
     }
 
     public void kembaliKeHome(View view) {
-        Intent intent = new Intent(this, HomeFoodyActivity.class);
-        startActivity(intent);
+        finish();
     }
 
 

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="20dp"
     android:layout_gravity="center"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
 
     <LinearLayout
@@ -29,7 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="20dp"
             android:text="AI Sedang mencari data Makanan"
             android:layout_gravity="center"
             android:textSize="20dp"
@@ -38,13 +37,20 @@
             android:textColor="@color/birutua"
             android:layout_marginTop="10dp"/>
 
-            <ProgressBar
-                android:id="@+id/bar_home"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginBottom="20dp"
-                android:indeterminate="true"
-                android:indeterminateTint="@color/birutua"/>
+<!--        <ProgressBar-->
+<!--            android:id="@+id/bar_home"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:indeterminate="true"-->
+<!--            android:indeterminateTint="@color/birutua"/>-->
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/loading_cari_makanan"
+            android:layout_gravity="center"/>
 
 <!--        <ImageView-->
 <!--            android:layout_width="130dp"-->

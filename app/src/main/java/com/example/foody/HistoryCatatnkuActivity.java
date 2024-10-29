@@ -71,7 +71,6 @@ public class HistoryCatatnkuActivity extends AppCompatActivity {
 
 
     public void kembaliKeFiturCatatanku(View view) {
-        Intent intent = new Intent(this, fitur_catatanku.class);
-        startActivity(intent);
+        finish();
     }
 }

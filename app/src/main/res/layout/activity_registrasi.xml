@@ -49,14 +49,14 @@
                 android:fontFamily="sans-serif"
                 android:textColor="@color/abupucet"
                 android:layout_gravity="center"
-                android:textSize="22dp"
+                android:textSize="22sp"
                 android:paddingTop="20dp"
                 android:paddingBottom="40dp"/>
 
 
             <EditText
                 android:layout_width="340dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Nama"
                 android:layout_gravity="center"
@@ -69,7 +69,7 @@
             <Spinner
                 android:id="@+id/spinner_main"
                 android:layout_width="340dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
@@ -78,7 +78,7 @@
 
 <!--            <EditText-->
 <!--                android:layout_width="340dp"-->
-<!--                android:layout_height="65dp"-->
+<!--                android:layout_height="55dp"-->
 <!--                android:background="@drawable/input_abupucet"-->
 <!--                android:hint="Jenis Kelamin"-->
 <!--                android:layout_gravity="center"-->
@@ -87,7 +87,7 @@
             <Spinner
                 android:id="@+id/spinner_aktivitas"
                 android:layout_width="340dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
@@ -103,7 +103,7 @@
 
                 <EditText
                     android:layout_width="0dp"
-                    android:layout_height="65dp"
+                    android:layout_height="55dp"
                     android:layout_weight="0.5"
                     android:background="@drawable/input_abupucet"
                     android:hint="Tinggi Badan"
@@ -116,7 +116,7 @@
 
                 <EditText
                     android:layout_width="0dp"
-                    android:layout_height="65dp"
+                    android:layout_height="55dp"
                     android:layout_weight="0.5"
                     android:background="@drawable/input_abupucet"
                     android:hint="Berat Badan"
@@ -132,7 +132,7 @@
 
             <EditText
                 android:layout_width="340dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Tanggal Lahir"
                 android:layout_gravity="center"
@@ -145,7 +145,7 @@
 
             <EditText
                 android:layout_width="340dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Email"
                 android:layout_gravity="center"
@@ -154,7 +154,7 @@
 
 <!--            <EditText-->
 <!--                android:layout_width="340dp"-->
-<!--                android:layout_height="65dp"-->
+<!--                android:layout_height="55dp"-->
 <!--                android:background="@drawable/input_abupucet"-->
 <!--                android:hint="Username"-->
 <!--                android:layout_gravity="center"-->
@@ -163,7 +163,7 @@
 
             <EditText
                 android:layout_width="340dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -174,7 +174,7 @@
 
             <EditText
                 android:layout_width="340dp"
-                android:layout_height="65dp"
+                android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
@@ -189,9 +189,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:width="340dp"
-                android:height="65dp"
-                android:text="REGISTER"
-                android:textSize="25dp"
+                android:layout_height="55dp"
+                android:text="Register"
+                android:textSize="22sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textAllCaps="false"
                 android:textColor="@color/birutua"
                 android:background="@drawable/button_birucerah"
                 android:layout_marginTop="30dp"/>

@@ -256,11 +256,6 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
 //        });
 //    }
 
-    private void showChartInWebView(String chartUrl) {
-        // Load data chart ke dalam WebView
-        webView.loadUrl(chartUrl);
-    }
-
 
     @Override
     public void onDeleteClick(int position, BmiHistoryModel bmi) {
@@ -309,7 +304,14 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_dialog_hapus);
 
-        // ... (inisialisasi elemen-elemen dalam dialog)
+        // Mengatur latar belakang dialog agar transparan
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        // Atur atribut dialog (opsional)
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
 
         // Ketika tombol "Hapus" pada dialog diklik
         Button hapusButton = dialog.findViewById(R.id.hapus_catatanku);
@@ -383,7 +385,6 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
                         Glide.with(KalkulatorBmi.this)
                                 .load(link)
                                 .into(imageView);
-//                    showChartInWebView(link);
                 }
             };
 

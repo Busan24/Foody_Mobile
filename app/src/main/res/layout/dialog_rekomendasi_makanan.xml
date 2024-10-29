@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:text="REKOMENDASI MAKANAN"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/birutua"
+            />
+
+        <TextView
+            android:id="@+id/nama_makanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Makanan"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/birutua"
+            />
+
+        <TextView
+            android:id="@+id/deskripsi_makanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="masdfd asdfsdfm asdfsdf amsdf adsfmd asdf amsdf asdfm asdf sdamf asdmf asdmfamfsfmk ffm asdkfmskmaksdm sdksmfk smksmksk sdm"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="5dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/birucerah"
+                        android:padding="5dp"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Karbohidrat"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                        <TextView
+                            android:id="@+id/jumlah_karbohidrat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="23 g"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="5dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/birucerah"
+                        android:padding="5dp"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Protein"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                        <TextView
+                            android:id="@+id/jumlah_protein"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="23 g"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="5dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/birucerah"
+                        android:padding="5dp"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lemak"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                        <TextView
+                            android:id="@+id/jumlah_lemak"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="23 g"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="5dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/birucerah"
+                        android:padding="5dp"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Gula"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                        <TextView
+                            android:id="@+id/jumlah_gula"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="23 g"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="5dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/birucerah"
+                        android:padding="5dp"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Garam"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                        <TextView
+                            android:id="@+id/jumlah_garam"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="23 g"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="5dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/birucerah"
+                        android:padding="5dp"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Kalori"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                        <TextView
+                            android:id="@+id/jumlah_kalori"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="23 g"
+                            android:textSize="12sp"
+                            android:textColor="@color/birutua"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textAlignment="center"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Selesai"
+            android:textColor="@color/birucerah"
+            android:textAllCaps="false"
+            android:background="@drawable/button_birutua"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

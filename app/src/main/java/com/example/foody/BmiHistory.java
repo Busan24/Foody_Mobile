@@ -71,7 +71,6 @@ public class BmiHistory extends AppCompatActivity {
     }
 
     public void kembaliKalkulatorBmi(View view) {
-        Intent intent = new Intent(this, KalkulatorBmi.class);
-        startActivity(intent);
+       finish();
     }
 }

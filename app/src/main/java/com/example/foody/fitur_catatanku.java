@@ -364,12 +364,14 @@ public class fitur_catatanku extends AppCompatActivity {
                             EditText edtJumlahLemak = myDialog.findViewById(R.id.jmlh_lemak);
                             EditText edtJumlahGula = myDialog.findViewById(R.id.jmlh_gula);
                             EditText edtJumlahGaram = myDialog.findViewById(R.id.jmlh_garam);
+                            EditText edtJumlahPorsi = myDialog.findViewById(R.id.jmlh_porsi);
 
                             edtJumlahKarbohidrat.setText(String.valueOf(makananModel.getKarbohidrat()));
                             edtJumlahProtein.setText(String.valueOf(makananModel.getProtein()));
                             edtJumlahLemak.setText(String.valueOf(makananModel.getLemak()));
                             edtJumlahGula.setText(String.valueOf(makananModel.getGula()));
                             edtJumlahGaram.setText(String.valueOf(makananModel.getGaram()));
+                            edtJumlahPorsi.setText(String.valueOf(1));
 
                             // Menutup loading dialog dengan penundaan
                             new Handler().postDelayed(new Runnable() {
@@ -570,6 +572,9 @@ public class fitur_catatanku extends AppCompatActivity {
                                         if (i == kelebihan.size() - 2 ) {
                                             kandungan = kandungan.concat(kelebihan.get(i) + ", dan ");
                                         }
+                                        if (i == kelebihan.size() - 1 ) {
+                                            kandungan = kandungan.concat(kelebihan.get(i));
+                                        }
                                         else {
                                             kandungan = kandungan.concat(kelebihan.get(i) + ", ");
                                         }
@@ -610,7 +615,15 @@ public class fitur_catatanku extends AppCompatActivity {
         // Access elements in the dialog
         TextView peringatanKandungan = warningDialog.findViewById(R.id.peringatan_kandungan);
         TextView nanti = warningDialog.findViewById(R.id.nanti);
-        Button rekomendasiMakanan = findViewById(R.id.rekomendasi_makanan);
+        Button rekomendasiMakanan = warningDialog.findViewById(R.id.rekomendasi_makanan);
+
+        rekomendasiMakanan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                warningDialog.dismiss();
+                getRekomendasiMakana();
+            }
+        });
 
         // Set text based on the exceeded values
         String warningText = "Konsumsi " + kandungan + " telah melebihi batas normal harian. Konsumi makanan dengan kandunga " + kandungan + " yang rendah.";
@@ -678,6 +691,102 @@ public class fitur_catatanku extends AppCompatActivity {
                 showDeleteConfirmationDialog(catatanId);
             }
         });
+    }
+
+    private void getRekomendasiMakana() {
+
+        Dialog loadingDialog = new Dialog(fitur_catatanku.this);
+        loadingDialog.setContentView(R.layout.dialog_loading);
+
+        // Mengatur latar belakang dialog agar transparan
+        loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        // Atur atribut dialog (opsional)
+        Window window = loadingDialog.getWindow();
+        if (window != null) {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
+
+        // Menampilkan loading dialog
+        loadingDialog.show();
+
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        String authToken = "Bearer " + getAuthToken();
+
+        Call<ApiResponse<MakananModel>> call = apiService.getRekomendasiMakanan(authToken);
+        call.enqueue(new Callback<ApiResponse<MakananModel>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<MakananModel>> call, Response<ApiResponse<MakananModel>> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
+
+                    loadingDialog.dismiss();
+                    MakananModel makanan = response.body().getData();
+
+                    showRekomendasiDialog(makanan);
+
+                }
+
+                else {
+                    loadingDialog.dismiss();
+
+                    showFailedDialog();
+                    Toast.makeText(fitur_catatanku.this, "Gagal mendapatkan data kandungan makanan", Toast.LENGTH_SHORT).show();
+                    Log.e("RetrofitError", "Response code: " + response.code());
+                    Log.e("RetrofitError", "Error body: " + response.body());
+                }
+
+            }
+
+            public void  onFailure(Call<ApiResponse<MakananModel>> call, Throwable t) {
+                loadingDialog.dismiss();
+                Log.e("RetrofitError", "Error: " + t.getMessage(), t);
+            }
+
+        });
+
+
+    }
+
+    private void showRekomendasiDialog(MakananModel makanan) {
+        Dialog rekomendasiDialog = new Dialog(fitur_catatanku.this);
+        rekomendasiDialog.setContentView(R.layout.dialog_rekomendasi_makanan);
+
+        TextView namaMakanan = rekomendasiDialog.findViewById(R.id.nama_makanan);
+        TextView deskripsiMakanan  = rekomendasiDialog.findViewById(R.id.deskripsi_makanan);
+        TextView jumlahKarbohidrat = rekomendasiDialog.findViewById(R.id.jumlah_karbohidrat);
+        TextView jumlahProtein = rekomendasiDialog.findViewById(R.id.jumlah_protein);
+        TextView jumlahLemak = rekomendasiDialog.findViewById(R.id.jumlah_lemak);
+        TextView jumlahGula = rekomendasiDialog.findViewById(R.id.jumlah_gula);
+        TextView jumlahGaram = rekomendasiDialog.findViewById(R.id.jumlah_garam);
+        TextView jumlahKalori = rekomendasiDialog.findViewById(R.id.jumlah_kalori);
+        Button finish = rekomendasiDialog.findViewById(R.id.btn_finish);
+
+        namaMakanan.setText(makanan.getNama());
+        deskripsiMakanan.setText(makanan.getDeskripsi());
+        jumlahKarbohidrat.setText(String.valueOf(makanan.getKarbohidrat()));
+        jumlahProtein.setText(String.valueOf(makanan.getProtein()));
+        jumlahLemak.setText(String.valueOf(makanan.getLemak()));
+        jumlahGula.setText(String.valueOf(makanan.getGula()));
+        jumlahGaram.setText(String.valueOf(makanan.getGaram()));
+
+        // Mengatur latar belakang dialog agar transparan
+        rekomendasiDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        // Atur atribut dialog (opsional)
+        Window window = rekomendasiDialog.getWindow();
+        if (window != null) {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
+
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rekomendasiDialog.dismiss();
+            }
+        });
+
+        // Menampilkan loading dialog
+        rekomendasiDialog.show();
     }
 
 
@@ -759,7 +868,14 @@ public class fitur_catatanku extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_dialog_hapus);
 
-        // ... (inisialisasi elemen-elemen dalam dialog)
+        // Mengatur latar belakang dialog agar transparan
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        // Atur atribut dialog (opsional)
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
 
         // Ketika tombol "Hapus" pada dialog diklik
         Button hapusButton = dialog.findViewById(R.id.hapus_catatanku);

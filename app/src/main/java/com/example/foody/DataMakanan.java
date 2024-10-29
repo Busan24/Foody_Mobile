@@ -250,7 +250,6 @@ public class DataMakanan extends AppCompatActivity {
     }
 
     public void kembaliKeMakanan(View view) {
-        Intent intent = new Intent(this, FiturMakanan.class);
-        startActivity(intent);
+        finish();
     }
 }

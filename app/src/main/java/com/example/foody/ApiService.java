@@ -110,6 +110,9 @@ public interface ApiService {
             @Body GenerateMakananRequestModel generateMakananRequestModel
     );
 
+    @GET("makanan/rekomendasi")
+    Call<ApiResponse<MakananModel>> getRekomendasiMakanan(@Header("Authorization") String authToken);
+
     @PUT("user/password")
     Call<ApiResponse<UserData>> changePassword(
             @Header("Authorization")  String authToken,
