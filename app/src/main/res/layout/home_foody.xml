@@ -72,7 +72,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Selamat Datang, "
-                        android:textSize="18dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="16sp"
                         android:textColor="@color/birutua"/>
                     <TextView
                         android:id="@+id/username_home"
@@ -124,9 +125,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Total Konsumsi Hari Ini"
                     android:textColor="@color/birutua"
-                    android:textSize="18dp"
+                    android:textSize="16sp"
                     android:layout_marginTop="15dp"/>
 <!--                <LinearLayout-->
 <!--                    android:layout_width="match_parent"-->
@@ -351,6 +353,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Karbohidrat"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/birutua"
                                             android:layout_marginTop="5dp"
@@ -360,6 +363,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="0"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:layout_marginTop="5dp"
                                             android:textColor="@color/abupucet"
@@ -369,6 +373,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="%"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:layout_marginTop="5dp"
                                             android:textColor="@color/abupucet"
@@ -396,12 +401,14 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="/"
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
@@ -409,6 +416,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                 </LinearLayout>
@@ -426,6 +434,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Protein"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/birutua"
                                             android:layout_alignParentStart="true"/>
@@ -434,6 +443,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="0"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/abupucet"
                                             android:layout_alignParentEnd="true"
@@ -442,6 +452,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="%"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/abupucet"
                                             android:layout_alignParentEnd="true"/>
@@ -466,12 +477,14 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="/"
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
@@ -479,6 +492,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                 </LinearLayout>
@@ -496,6 +510,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Gula"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/birutua"
                                             android:layout_alignParentStart="true"/>
@@ -504,6 +519,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="0"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/abupucet"
                                             android:layout_alignParentEnd="true"
@@ -512,6 +528,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="%"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/abupucet"
                                             android:layout_alignParentEnd="true"/>
@@ -536,12 +553,14 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="/"
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
@@ -549,6 +568,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                 </LinearLayout>
@@ -566,6 +586,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Lemak"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/birutua"
                                             android:layout_alignParentStart="true"/>
@@ -574,6 +595,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="0"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/abupucet"
                                             android:layout_alignParentEnd="true"
@@ -582,6 +604,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="%"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/abupucet"
                                             android:layout_alignParentEnd="true"/>
@@ -606,12 +629,14 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="/"
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
@@ -619,6 +644,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                 </LinearLayout>
@@ -636,6 +662,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Garam"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/birutua"
                                             android:layout_alignParentStart="true"/>
@@ -644,6 +671,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="0"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/abupucet"
                                             android:layout_alignParentEnd="true"
@@ -652,6 +680,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="%"
+                                            android:fontFamily="@font/poppins_regular"
                                             android:textSize="10dp"
                                             android:textColor="@color/abupucet"
                                             android:layout_alignParentEnd="true"/>
@@ -676,12 +705,14 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="/"
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                     <TextView
@@ -689,6 +720,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text=""
+                                        android:fontFamily="@font/poppins_regular"
                                         android:textSize="10dp"
                                         android:textColor="@color/birutua"/>
                                 </LinearLayout>

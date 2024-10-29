@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:text="CATATANKU"
             android:textStyle="bold"
-            android:fontFamily="sans-serif"
-            android:textSize="25dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="18sp"
             android:textColor="@color/birutua"
             android:layout_gravity="center"
             android:padding="20dp" />
@@ -41,8 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select your meal time to add notes"
-                android:fontFamily="sans-serif"
-                android:textSize="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="16sp"
                 android:textColor="@color/birutua"
                 android:layout_gravity="center"
                 android:paddingTop="20dp" />
@@ -60,7 +60,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="124dp"
-                        android:layout_height="184dp"
+                        android:layout_height="194dp"
                         android:layout_margin="20dp"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="10dp"
@@ -85,7 +85,7 @@
                                 android:text="Pagi"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/poppins_regular"
                                 android:layout_gravity="center"/>
 
                             <TextView
@@ -94,7 +94,7 @@
                                 android:text="00.00 - 09.00"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/poppins_regular"
                                 android:paddingTop="10dp"
                                 android:layout_gravity="center"/>
                             <Button
@@ -111,7 +111,7 @@
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
                         android:layout_width="124dp"
-                        android:layout_height="184dp"
+                        android:layout_height="194dp"
                         android:layout_margin="20dp"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="10dp"
@@ -135,7 +135,7 @@
                                 android:text="Siang"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/poppins_regular"
                                 android:layout_gravity="center"/>
 
                             <TextView
@@ -144,7 +144,7 @@
                                 android:text="10.00 - 14.00"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/poppins_regular"
                                 android:paddingTop="10dp"
                                 android:layout_gravity="center"/>
                             <Button
@@ -161,7 +161,7 @@
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
                         android:layout_width="124dp"
-                        android:layout_height="184dp"
+                        android:layout_height="194dp"
                         android:layout_margin="20dp"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="10dp"
@@ -185,7 +185,7 @@
                                 android:text="Sore"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/poppins_regular"
                                 android:layout_gravity="center"/>
 
                             <TextView
@@ -194,7 +194,7 @@
                                 android:text="15.00 - 18.00"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/poppins_regular"
                                 android:paddingTop="10dp"
                                 android:layout_gravity="center"/>
                             <Button
@@ -211,7 +211,7 @@
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
                         android:layout_width="124dp"
-                        android:layout_height="184dp"
+                        android:layout_height="194dp"
                         android:layout_margin="20dp"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="10dp"
@@ -235,7 +235,7 @@
                                 android:text="Malam"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/poppins_regular"
                                 android:layout_gravity="center"/>
 
                             <TextView
@@ -244,7 +244,7 @@
                                 android:text="19.00 - 23.00"
                                 android:textColor="@color/birutua"
                                 android:textSize="15dp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/poppins_regular"
                                 android:paddingTop="10dp"
                                 android:layout_gravity="center"/>
                             <Button
@@ -277,7 +277,8 @@
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/button_birutua"
                     android:text="  Recent"
-                    android:textSize="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
                     android:textColor="@color/birucerah"
                     android:drawableStart="@drawable/icon_recent"
                     android:paddingHorizontal="20dp"
@@ -292,7 +293,8 @@
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/button_birucerah"
                     android:text="  History"
-                    android:textSize="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
                     android:textColor="@color/birutua"
                     android:layout_marginLeft="20dp"
                     android:paddingHorizontal="20dp"

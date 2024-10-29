@@ -28,8 +28,8 @@
                 android:layout_height="wrap_content"
                 android:text="REGISTER"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:textSize="35sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="30sp"
                 android:textColor="@color/birutua"
                 android:paddingTop="30dp"
                 android:layout_gravity="center"
@@ -46,10 +46,10 @@
                 android:layout_height="wrap_content"
                 android:text="See your growt and get\nconsulting support!"
                 android:textAlignment="center"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_light"
                 android:textColor="@color/abupucet"
                 android:layout_gravity="center"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:paddingTop="20dp"
                 android:paddingBottom="40dp"/>
 
@@ -59,6 +59,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Nama"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
                 android:id="@+id/name_regis"/>
@@ -73,6 +74,7 @@
                 android:background="@drawable/input_abupucet"
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_marginTop="20dp"/>
 
 
@@ -90,6 +92,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:layout_gravity="center"
+                android:fontFamily="@font/poppins_regular"
                 android:paddingLeft="10dp"
                 android:layout_marginTop="20dp"/>
 
@@ -109,6 +112,7 @@
                     android:hint="Tinggi Badan"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/tb_regis"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
@@ -123,6 +127,7 @@
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:id="@+id/bb_regis"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginLeft="6dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
@@ -135,6 +140,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Tanggal Lahir"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
                 android:layout_marginTop="20dp"
@@ -148,6 +154,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Email"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
                 android:id="@+id/email_regis" />
@@ -166,6 +173,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
                 android:hint="Password"
+                android:fontFamily="@font/poppins_regular"
                 android:inputType="textPassword"
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
@@ -176,7 +184,8 @@
                 android:layout_width="340dp"
                 android:layout_height="55dp"
                 android:background="@drawable/input_abupucet"
-                android:hint="Confirm Password"
+                android:hint="Konfirmasi Password"
+                android:fontFamily="@font/poppins_regular"
                 android:inputType="textPassword"
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
@@ -186,14 +195,12 @@
             <Button
                 android:id="@+id/btn_register"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:width="340dp"
-                android:layout_height="55dp"
                 android:text="Register"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:fontFamily="@font/poppins_medium"
-                android:textAllCaps="false"
                 android:textColor="@color/birutua"
                 android:background="@drawable/button_birucerah"
                 android:layout_marginTop="30dp"/>

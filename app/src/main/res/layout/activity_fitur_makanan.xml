@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:text="MAKANAN"
             android:textStyle="bold"
-            android:fontFamily="sans-serif"
-            android:textSize="25dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="18sp"
             android:textColor="@color/birutua"
             android:layout_gravity="center"
             android:padding="20dp" />
