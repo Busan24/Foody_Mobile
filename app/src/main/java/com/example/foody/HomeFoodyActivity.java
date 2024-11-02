@@ -40,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFoodyActivity extends AppCompatActivity {
+public class HomeFoodyActivity extends AdsActivity {
     BottomNavigationView bottomNavigationView;
 
     ViewSwitcher switcher;
@@ -58,7 +58,10 @@ public class HomeFoodyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_foody);
+
+        getLayoutInflater().inflate(R.layout.home_foody, findViewById(R.id.content_frame));
+//        setContentView(R.layout.home_foody);
+
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);

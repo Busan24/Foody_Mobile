@@ -24,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DataMakanan extends AppCompatActivity {
+public class DataMakanan extends AdsActivity {
 
     private TextView namaMakananTextView;
     private TextView karbohidratTextView;
@@ -39,7 +39,8 @@ public class DataMakanan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_makanan);
+        getLayoutInflater().inflate(R.layout.activity_data_makanan, findViewById(R.id.content_frame));
+//        setContentView(R.layout.activity_data_makanan);
 
         // Inisialisasi elemen UI
         namaMakananTextView = findViewById(R.id.nm_data);

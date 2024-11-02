@@ -26,14 +26,15 @@ import okhttp3.ResponseBody;
 
 import java.lang.annotation.Annotation;
 
-public class ResetPasswordActivity extends AppCompatActivity {
+public class ResetPasswordActivity extends AdsActivity {
     EditText eTcurrentPassword, eTnewPassword, eTnewPassowrdConfirmation;
     Button btnSubmit, buttonBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_reset_password);
+        getLayoutInflater().inflate(R.layout.activity_reset_password, findViewById(R.id.content_frame));
+//        setContentView(R.layout.activity_reset_password);
 
         buttonBack = findViewById(R.id.btn_close);
 

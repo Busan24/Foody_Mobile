@@ -11,8 +11,8 @@ android {
         applicationId = "com.example.foody"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "2.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -63,5 +63,9 @@ dependencies {
 
     // Cardview
     implementation("androidx.cardview:cardview:1.0.0")
+
+    // Google Admob
+    implementation("com.google.android.gms:play-services-ads:23.3.0")
+    implementation("androidx.lifecycle:lifecycle-process:2.8.3")
 
 }

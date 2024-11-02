@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DaftarTransaksiActivity extends AppCompatActivity {
+public class DaftarTransaksiActivity extends AdsActivity {
     private RecyclerView recyclerView;
     private TransactionAdapter adapter;
     private List<TransactionData> transactionList = new ArrayList<>();
@@ -36,7 +36,8 @@ public class DaftarTransaksiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_daftar_transaksi);
+        getLayoutInflater().inflate(R.layout.activity_daftar_transaksi, findViewById(R.id.content_frame));
+//        setContentView(R.layout.activity_daftar_transaksi);
 
         buttonBack = findViewById(R.id.btn_close);
 

@@ -50,7 +50,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter.OnDeleteClickListener {
+public class KalkulatorBmi extends AdsActivity implements BmiRecentAdapter.OnDeleteClickListener {
 
     BottomNavigationView bottomNavigationView;
     Dialog dialog;
@@ -68,7 +68,8 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kalkulator_bmi);
+        getLayoutInflater().inflate(R.layout.activity_kalkulator_bmi, findViewById(R.id.content_frame));
+//        setContentView(R.layout.activity_kalkulator_bmi);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_kalkulator);
@@ -140,6 +141,7 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         btnCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showInterstitialAd();
 
                 if (!getPremiumStatus() && bmiHariIni >= 1) {
                     showPremiumDialog();
@@ -174,6 +176,15 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
                 etTinggiBadan.setText("");
                 etBeratBadan.setText("");
                 closeKeyboard();
+            }
+        });
+
+        Button btnHistory = findViewById(R.id.btn_hs_bmi);
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Reset input fields
+                showInterstitialAdAndNavigate(BmiHistory.class);
             }
         });
 
@@ -510,55 +521,6 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         dialog.show();
     }
 
-    private void showPremiumDialog() {
-        BottomSheetDialog premiumDialog = new BottomSheetDialog(this);
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.popup_premium, null);
-
-        // Atur layout untuk tampil full screen
-        premiumDialog.setContentView(dialogView);
-        BottomSheetBehavior<FrameLayout> behavior = premiumDialog.getBehavior();
-        behavior.setState(BottomSheetBehavior.STATE_EXPANDED); // Full screen
-        behavior.setPeekHeight(BottomSheetBehavior.PEEK_HEIGHT_AUTO, true);
-
-        // Mencegah dialog ditutup saat di-scroll
-        behavior.setHideable(false); // Dialog tidak dapat ditutup dengan scroll
-        behavior.setDraggable(false); // Nonaktifkan scroll dialog
-
-        // Mengubah layout root agar tinggi menjadi full screen
-        ViewGroup.LayoutParams params = dialogView.getLayoutParams();
-        params.height = ViewGroup.LayoutParams.MATCH_PARENT; // Full screen height
-        dialogView.setLayoutParams(params);
-
-        // Menghapus bayangan (dimming) di belakang dialog
-        if (premiumDialog.getWindow() != null) {
-            premiumDialog.getWindow().setDimAmount(0f); // Tanpa bayangan
-            premiumDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-
-        // Temukan TextView dan Button dalam layout
-        TextView btnTutup = dialogView.findViewById(R.id.text_tutup);
-        Button btnUpgrade = dialogView.findViewById(R.id.btn_upgrade);
-
-        btnTutup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Dismiss the dialog when close button is clicked
-                premiumDialog.dismiss();
-            }
-        });
-
-        btnUpgrade.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(KalkulatorBmi.this, PremiumActivity.class));
-            }
-        });
-
-        // Menampilkan dialog
-        premiumDialog.show();
-    }
-
-
     private String getAuthToken() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("auth_token", MODE_PRIVATE);
         String authToken = sharedPreferences.getString("token", "");
@@ -566,12 +528,6 @@ public class KalkulatorBmi extends AppCompatActivity implements BmiRecentAdapter
         return authToken;
     }
 
-    private boolean getPremiumStatus() {
-        SharedPreferences sharedPreferences = this.getSharedPreferences("premium_status", MODE_PRIVATE);
-        boolean premium = sharedPreferences.getBoolean("is_premium", false);
-        Log.d("Premium", "status: " + premium); // Tambahkan log ini
-        return premium;
-    }
 
     private void closeKeyboard() {
         View view = this.getCurrentFocus();

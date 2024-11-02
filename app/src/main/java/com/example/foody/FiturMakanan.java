@@ -34,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FiturMakanan extends AppCompatActivity {
+public class FiturMakanan extends AdsActivity {
     BottomNavigationView bottomNavigationView;
     private RecyclerView recyclerView;
     private MakananAdapter makananAdapter;
@@ -49,7 +49,8 @@ public class FiturMakanan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fitur_makanan);
+        getLayoutInflater().inflate(R.layout.activity_fitur_makanan, findViewById(R.id.content_frame));
+//        setContentView(R.layout.activity_fitur_makanan);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
@@ -190,6 +191,10 @@ public class FiturMakanan extends AppCompatActivity {
         generateMakanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!getPremiumStatus()) {
+                    showPremiumDialog();
+                    return;
+                }
                 if (!makananDicari.isEmpty()) {
                     generateMakanan(makananDicari);
                 }

@@ -273,7 +273,7 @@
                     android:paddingLeft="10dp"
                     android:textAllCaps="false"
                     android:gravity="start|center_vertical"
-                    android:onClick="HalamanHistoryBmi"/>
+                    />
 
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView

@@ -17,14 +17,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BmiHistory extends AppCompatActivity {
+public class BmiHistory extends AdsActivity {
 
     private RecyclerView rvBmiHistory;
     private BmiHistoryAdapter bmiHistoryAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bmi_history);
+        getLayoutInflater().inflate(R.layout.activity_bmi_history, findViewById(R.id.content_frame));
+//        setContentView(R.layout.activity_bmi_history);
+
+        loadInterstitialAd();
+        showInterstitialAd();
 
         // Inisialisasi RecyclerView
         rvBmiHistory = findViewById(R.id.rvbmi_history);

@@ -7,25 +7,25 @@
     tools:context=".FiturProfil"
     android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/text_hal_profil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/birucerah">
+    <LinearLayout
+        android:id="@+id/text_hal_bmi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/birucerah">
 
-            <TextView
-                android:id="@+id/profil_judul"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PROFIL"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:textSize="25dp"
-                android:textColor="@color/birutua"
-                android:layout_gravity="center"
-                android:padding="20dp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/profil_judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PROFIL"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="18sp"
+            android:textColor="@color/birutua"
+            android:layout_gravity="center"
+            android:padding="20dp" />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

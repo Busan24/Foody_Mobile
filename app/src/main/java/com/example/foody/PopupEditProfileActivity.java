@@ -46,7 +46,7 @@ import java.util.Locale;
 
 import com.bumptech.glide.Glide;
 
-public class PopupEditProfileActivity extends AppCompatActivity {
+public class PopupEditProfileActivity extends AdsActivity {
     Button buttonBack;
     private ArrayAdapter<String> aktivitasAdapter;
     private EditText epNama, epEmail, epUsername, epDate;
@@ -61,7 +61,9 @@ public class PopupEditProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.popup_edit_profile);
+        getLayoutInflater().inflate(R.layout.popup_edit_profile, findViewById(R.id.content_frame));
+//        setContentView(R.layout.popup_edit_profile);
+
         buttonBack = findViewById(R.id.btn_close);
 
         buttonBack.setOnClickListener(view -> {

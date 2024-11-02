@@ -68,7 +68,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class FiturProfil extends AppCompatActivity {
+public class FiturProfil extends AdsActivity {
 
     Dialog myDialog;
     private ViewSwitcher summarySwitcher;
@@ -121,7 +121,8 @@ public class FiturProfil extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fitur_profil);
+        getLayoutInflater().inflate(R.layout.activity_fitur_profil, findViewById(R.id.content_frame));
+//        setContentView(R.layout.activity_fitur_profil);
         myDialog = new Dialog(this);
 
 
@@ -201,22 +202,28 @@ public class FiturProfil extends AppCompatActivity {
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FiturProfil.this, ResetPasswordActivity.class);
-                startActivity(intent);
+                showInterstitialAdAndNavigate(ResetPasswordActivity.class);
+//                Intent intent = new Intent(FiturProfil.this, ResetPasswordActivity.class);
+//                startActivity(intent);
             }
         });
 
         daftarTransaksi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FiturProfil.this, DaftarTransaksiActivity.class);
-                startActivity(intent);
+                showInterstitialAdAndNavigate(DaftarTransaksiActivity.class);
+//                Intent intent = new Intent(FiturProfil.this, DaftarTransaksiActivity.class);
+//                startActivity(intent);
             }
         });
 
         reportPdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!getPremiumStatus()){
+                    showPremiumDialog();
+                    return;
+                }
                 Intent intent = new Intent(FiturProfil.this, ReportPdfActivity.class);
                 startActivity(intent);
             }
@@ -310,8 +317,9 @@ public class FiturProfil extends AppCompatActivity {
             public void onClick(View v) {
                 // Panggil metode showCustomDialog() ketika tombol btn_edit_profile ditekan
 //                showCustomDialog();
-                Intent intent = new Intent(FiturProfil.this, PopupEditProfileActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(FiturProfil.this, PopupEditProfileActivity.class);
+//                startActivity(intent);
+                showInterstitialAdAndNavigate(PopupEditProfileActivity.class);
             }
         });
 
@@ -371,6 +379,7 @@ public class FiturProfil extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        showInterstitialAd();
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -392,6 +401,7 @@ public class FiturProfil extends AppCompatActivity {
     }
 
     private void switchView() {
+        showInterstitialAd();
         if (summarySwitcher.getCurrentView() == summarySwitcher.findViewById(R.id.switch_akun)) {
             summarySwitcher.showPrevious();
             btnAccount.setBackgroundColor(Color.TRANSPARENT);
@@ -558,13 +568,6 @@ public class FiturProfil extends AppCompatActivity {
             premiumBanner.setVisibility(View.GONE);
         }
 
-    }
-
-    private boolean getPremiumStatus() {
-        SharedPreferences sharedPreferences = this.getSharedPreferences("premium_status", MODE_PRIVATE);
-        boolean premium = sharedPreferences.getBoolean("is_premium", false);
-        Log.d("Premium", "status: " + premium); // Tambahkan log ini
-        return premium;
     }
 
     private String getAuthToken() {

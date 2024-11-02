@@ -18,14 +18,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HistoryCatatnkuActivity extends AppCompatActivity {
+public class HistoryCatatnkuActivity extends AdsActivity {
 
     private RecyclerView rvHistory;
     private HistoryAdapter historyAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.history_catatnku);
+        getLayoutInflater().inflate(R.layout.history_catatnku, findViewById(R.id.content_frame));
+//        setContentView(R.layout.history_catatnku);
 
         rvHistory = findViewById(R.id.rvcatatanku_history);
         historyAdapter = new HistoryAdapter();

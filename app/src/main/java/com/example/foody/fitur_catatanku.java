@@ -46,7 +46,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class fitur_catatanku extends AppCompatActivity {
+public class fitur_catatanku extends AdsActivity {
     Dialog myDialog;
 
     BottomNavigationView bottomNavigationView;
@@ -63,7 +63,8 @@ public class fitur_catatanku extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fitur_catatanku);
+        getLayoutInflater().inflate(R.layout.activity_fitur_catatanku, findViewById(R.id.content_frame));
+//        setContentView(R.layout.activity_fitur_catatanku);
         myDialog = new Dialog(this);
 
         EditText editTextJmlhPorsi = myDialog.findViewById(R.id.jmlh_porsi);
@@ -73,6 +74,7 @@ public class fitur_catatanku extends AppCompatActivity {
         btnNyatat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showInterstitialAd();
                 showCustomDialog("PAGI", R.drawable.pp_pink , "#131049", R.drawable.button_birucerah); // Teks "PAGI" dan latar belakang pink
             }
         });
@@ -81,6 +83,7 @@ public class fitur_catatanku extends AppCompatActivity {
         btnNyatatSiang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showInterstitialAd();
                 showCustomDialog("SIANG", R.drawable.pp_birucerah, "#131049", R.drawable.button_merahcerah); // Teks "SIANG" dan latar belakang biru cerah
             }
         });
@@ -105,8 +108,9 @@ public class fitur_catatanku extends AppCompatActivity {
             btnHistory.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(fitur_catatanku.this, HistoryCatatnkuActivity.class);
-                    startActivity(intent);
+                    showInterstitialAdAndNavigate(HistoryCatatnkuActivity.class);
+//                    Intent intent = new Intent(fitur_catatanku.this, HistoryCatatnkuActivity.class);
+//                    startActivity(intent);
                 }
             });
 
@@ -176,6 +180,11 @@ public class fitur_catatanku extends AppCompatActivity {
     }
 
     private void showCustomDialog(String text, int backgroundColor, String generateButtonTextColor, int drawable) {
+
+        if (!getPremiumStatus()) {
+            showInterstitialAd();
+        }
+
         if (!getPremiumStatus() && catatanHariIni >=  3) {
             showPremiumDialog();
             return;
@@ -557,7 +566,7 @@ public class fitur_catatanku extends AppCompatActivity {
 
                             String kandungan = "";
 
-                            if (!kelebihan.isEmpty()) {
+                            if (!kelebihan.isEmpty() && getPremiumStatus()) {
 
                                 if (kelebihan.size() == 1){
                                     kandungan = kelebihan.get(0);
@@ -930,59 +939,6 @@ public class fitur_catatanku extends AppCompatActivity {
         });
     }
 
-    private void showPremiumDialog() {
-        BottomSheetDialog premiumDialog = new BottomSheetDialog(this);
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.popup_premium, null);
 
-        // Atur layout untuk tampil full screen
-        premiumDialog.setContentView(dialogView);
-        BottomSheetBehavior<FrameLayout> behavior = premiumDialog.getBehavior();
-        behavior.setState(BottomSheetBehavior.STATE_EXPANDED); // Full screen
-        behavior.setPeekHeight(BottomSheetBehavior.PEEK_HEIGHT_AUTO, true);
-
-        // Mencegah dialog ditutup saat di-scroll
-        behavior.setHideable(false); // Dialog tidak dapat ditutup dengan scroll
-        behavior.setDraggable(false); // Nonaktifkan scroll dialog
-
-        // Mengubah layout root agar tinggi menjadi full screen
-        ViewGroup.LayoutParams params = dialogView.getLayoutParams();
-        params.height = ViewGroup.LayoutParams.MATCH_PARENT; // Full screen height
-        dialogView.setLayoutParams(params);
-
-        // Menghapus bayangan (dimming) di belakang dialog
-        if (premiumDialog.getWindow() != null) {
-            premiumDialog.getWindow().setDimAmount(0f); // Tanpa bayangan
-            premiumDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-
-        // Temukan TextView dan Button dalam layout
-        TextView btnTutup = dialogView.findViewById(R.id.text_tutup);
-        Button btnUpgrade = dialogView.findViewById(R.id.btn_upgrade);
-
-        btnTutup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Dismiss the dialog when close button is clicked
-                premiumDialog.dismiss();
-            }
-        });
-
-        btnUpgrade.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(fitur_catatanku.this, PremiumActivity.class));
-            }
-        });
-
-        // Menampilkan dialog
-        premiumDialog.show();
-    }
-
-    private boolean getPremiumStatus() {
-        SharedPreferences sharedPreferences = this.getSharedPreferences("premium_status", MODE_PRIVATE);
-        boolean premium = sharedPreferences.getBoolean("is_premium", false);
-        Log.d("Premium", "status: " + premium); // Tambahkan log ini
-        return premium;
-    }
 
 }

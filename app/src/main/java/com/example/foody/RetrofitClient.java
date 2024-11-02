@@ -12,7 +12,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 public class RetrofitClient {
-    private static final String BASE_URL = "https://api-test.foody.web.id/api/v1/";
+    private static final String BASE_URL = "https://foody.web.id/api/v1/";
 
     private static Retrofit retrofit;
 
