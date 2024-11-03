@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/merahcerah"
+    app:cardBackgroundColor="@color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Konsumsi "
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
                 android:textColor="@color/birutua" />
@@ -40,14 +40,14 @@
             android:id="@+id/rekomendasi_makanan"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:paddingHorizontal="10dp"
+            android:paddingHorizontal="20dp"
             android:background="@drawable/button_birutua"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:textColor="@color/birucerah"
-            android:text="Cari rekomendasi makanan"
+            android:text="Dapatkan rekomendasi"
             android:textAllCaps="false"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/poppins_medium"
             android:textSize="18dp"/>
 
         <TextView
@@ -58,7 +58,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:textAlignment="center"
-            android:text="Nanti"
+            android:text="Nanti saja"
             android:textSize="16sp"
             android:textColor="@color/abupucet"
             android:fontFamily="@font/poppins_semibold"

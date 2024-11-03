@@ -653,7 +653,7 @@ public class fitur_catatanku extends AdsActivity {
                                         if (i == kelebihan.size() - 2 ) {
                                             kandungan = kandungan.concat(kelebihan.get(i) + ", dan ");
                                         }
-                                        if (i == kelebihan.size() - 1 ) {
+                                        else if (i == kelebihan.size() - 1 ) {
                                             kandungan = kandungan.concat(kelebihan.get(i));
                                         }
                                         else {
@@ -664,6 +664,10 @@ public class fitur_catatanku extends AdsActivity {
 
                                 Log.d("Kandunga", kandungan);
                                 showWarningDialog(kandungan);
+                            }
+
+                            else {
+                                showSuccessDialog();
                             }
 
                         } else {
@@ -707,7 +711,7 @@ public class fitur_catatanku extends AdsActivity {
         });
 
         // Set text based on the exceeded values
-        String warningText = "Konsumsi " + kandungan + " telah melebihi batas normal harian. Konsumi makanan dengan kandunga " + kandungan + " yang rendah.";
+        String warningText = "Konsumsi " + kandungan + " telah melebihi batas normal harian. Konsumi makanan dengan kandungan " + kandungan + " yang rendah.";
         peringatanKandungan.setText(warningText);
 
         // Close the warning dialog
@@ -906,20 +910,14 @@ public class fitur_catatanku extends AdsActivity {
         Dialog loadingDialog = new Dialog(fitur_catatanku.this);
         successDialog.setContentView(R.layout.activity_dialog_success);
 
+        successDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         Button successCloseButton = successDialog.findViewById(R.id.success_close);
         successCloseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Tutup dialog sukses
                 successDialog.dismiss();
-
-                // Tutup dialog loading
-                loadingDialog.dismiss();
-
-                // Tutup dialog login
-                myDialog.dismiss();
-
-                getSummaryData();
             }
         });
 
