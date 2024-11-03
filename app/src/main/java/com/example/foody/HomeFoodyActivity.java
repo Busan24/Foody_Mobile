@@ -648,7 +648,8 @@ public class HomeFoodyActivity extends AdsActivity {
                     if (userData.isPremium()) {
                         gotoPremium.setImageResource(R.drawable.icon_foody_premium);
                     }
-//                    SharedPrefManager.savePremiumStatus(userData.isPremium());
+//
+                    saveVerifiedStatus(userData.isVerified());
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
@@ -780,6 +781,13 @@ public class HomeFoodyActivity extends AdsActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("premium_status", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("is_premium", premium);
+        editor.apply();
+    }
+
+    private void saveVerifiedStatus(boolean verified) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("verified_status", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("is_verified", verified);
         editor.apply();
     }
 }

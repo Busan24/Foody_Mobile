@@ -29,17 +29,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Let's live healthy!"
+            android:text="Ayo Hidup sehat!"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/birutua"
             android:layout_gravity="center"
-            android:layout_marginTop="250dp"/>
+            android:layout_marginTop="220dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Easily track and maintain a healthy lifestyle\nwith foody"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Pantau dan jaga gaya hidup sehat\ndengan Foody"
             android:textAlignment="center"
             android:textSize="15dp"
             android:textColor="@color/birutua"
@@ -62,7 +64,8 @@
         android:layout_gravity="center"
         android:width="340dp"
         android:height="65dp"
-        android:text="GET STARTED"
+        android:fontFamily="@font/poppins_medium"
+        android:text="MULAI SEKARANG"
         android:textSize="20dp"
         android:textColor="@color/birucerah"
         android:background="@drawable/button_birutua"

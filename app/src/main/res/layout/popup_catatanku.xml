@@ -28,217 +28,280 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="Nama Makanan"
             android:textSize="13dp"
             android:textColor="@color/birutua"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"/>
 
-        <AutoCompleteTextView
-            android:id="@+id/nama_makanan"
-            android:layout_width="301dp"
-            android:layout_height="40dp"
-            android:hint="Masukkan Nama Makanan"
-            android:background="@drawable/pp_putih"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/bg_rounded_putih"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/nama_makanan"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_putih"
+                android:hint="Masukkan Nama Makanan"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:textSize="12dp"
+                android:completionThreshold="1"
+                android:inputType="text"/>
+
+            <Button
+                android:id="@+id/btn_generate_makanan"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button_birucerah"
+                android:drawableStart="@drawable/icon_ai_birutua"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Cari Makanan"
+                android:textAllCaps="false"
+                android:textColor="@color/birutua"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/data_wraper"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Karbohidrat"
+                        android:textSize="13dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginTop="20dp"/>
+
+                    <EditText
+                        android:id="@+id/jmlh_karbohidrat"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:background="@drawable/pp_putih"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:hint="gram"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12dp"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Protein"
+                        android:textSize="13dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginTop="20dp"/>
+
+                    <EditText
+                        android:id="@+id/jmlh_protein"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:background="@drawable/pp_putih"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:hint="gram"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12dp"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Lemak"
+                        android:textSize="13dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginTop="20dp"/>
+
+                    <EditText
+                        android:id="@+id/jmlh_lemak"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:background="@drawable/pp_putih"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:hint="gram"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12dp"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Gula"
+                        android:textSize="13dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginTop="20dp"/>
+
+                    <EditText
+                        android:id="@+id/jmlh_gula"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:background="@drawable/pp_putih"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:hint="gram"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12dp"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Garam"
+                        android:textSize="13dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginTop="20dp"/>
+
+                    <EditText
+                        android:id="@+id/jmlh_garam"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:background="@drawable/pp_putih"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="20dp"
+                        android:hint="gram"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12dp"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Porsi"
+                        android:textSize="13dp"
+                        android:textColor="@color/birutua"
+                        android:layout_marginTop="20dp"/>
+
+                    <EditText
+                        android:id="@+id/jmlh_porsi"
+                        android:layout_width="match_parent"
+                        android:layout_height="41dp"
+                        android:background="@drawable/pp_putih"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="20dp"
+                        android:hint="porsi"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12dp"
+                        android:inputType="number"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="20dp"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="20dp"
-            android:textSize="12dp"
-            android:completionThreshold="1"
-            android:inputType="text"/>
+            android:orientation="vertical"
+            >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/collapse_data"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:paddingLeft="20dp"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:text="Lihat Detail"
+                android:drawableRight="@drawable/icon_keyboard_down_24"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_gravity="center"
+                />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jumlah Karbohidrat"
-                    android:textSize="13dp"
-                    android:textColor="@color/birutua"
-                    android:layout_marginTop="20dp"/>
-
-                <EditText
-                    android:id="@+id/jmlh_karbohidrat"
-                    android:layout_width="142dp"
-                    android:layout_height="41dp"
-                    android:background="@drawable/pp_putih"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="20dp"
-                    android:hint="gram"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12dp"
-                    android:inputType="number"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:paddingLeft="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jumlah Protein"
-                    android:textSize="13dp"
-                    android:textColor="@color/birutua"
-                    android:layout_marginTop="20dp"/>
-
-                <EditText
-                    android:id="@+id/jmlh_protein"
-                    android:layout_width="142dp"
-                    android:layout_height="41dp"
-                    android:background="@drawable/pp_putih"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="20dp"
-                    android:hint="gram"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12dp"
-                    android:inputType="number"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:paddingLeft="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jumlah Lemak"
-                    android:textSize="13dp"
-                    android:textColor="@color/birutua"
-                    android:layout_marginTop="20dp"/>
-
-                <EditText
-                    android:id="@+id/jmlh_lemak"
-                    android:layout_width="142dp"
-                    android:layout_height="41dp"
-                    android:background="@drawable/pp_putih"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="20dp"
-                    android:hint="gram"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12dp"
-                    android:inputType="number"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:paddingLeft="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jumlah Gula"
-                    android:textSize="13dp"
-                    android:textColor="@color/birutua"
-                    android:layout_marginTop="20dp"/>
-
-                <EditText
-                    android:id="@+id/jmlh_gula"
-                    android:layout_width="142dp"
-                    android:layout_height="41dp"
-                    android:background="@drawable/pp_putih"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="20dp"
-                    android:hint="gram"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12dp"
-                    android:inputType="number"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:paddingLeft="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jumlah Garam"
-                    android:textSize="13dp"
-                    android:textColor="@color/birutua"
-                    android:layout_marginTop="20dp"/>
-
-                <EditText
-                    android:id="@+id/jmlh_garam"
-                    android:layout_width="142dp"
-                    android:layout_height="41dp"
-                    android:background="@drawable/pp_putih"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="20dp"
-                    android:hint="gram"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12dp"
-                    android:inputType="number"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:paddingLeft="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jumlah Porsi"
-                    android:textSize="13dp"
-                    android:textColor="@color/birutua"
-                    android:layout_marginTop="20dp"/>
-
-                <EditText
-                    android:id="@+id/jmlh_porsi"
-                    android:layout_width="142dp"
-                    android:layout_height="41dp"
-                    android:background="@drawable/pp_putih"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="20dp"
-                    android:hint="porsi"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12dp"
-                    android:inputType="number"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -254,7 +317,7 @@
                 android:textSize="13dp"
                 android:textColor="@color/birutua"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="10dp"/>
 
 
             <Spinner
@@ -276,32 +339,16 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_generate_makanan"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/button_birucerah"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="20dp"
-                android:layout_gravity="center"
-                android:textAllCaps="false"
-                android:text="Cari Data Makanan"
-                android:textColor="@color/birutua"/>
-
-            <Button
                 android:id="@+id/btn_save_ctt"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/button_birutua"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center"
-                android:textAllCaps="false"
                 android:text="Simpan"
                 android:textColor="@color/birucerah"/>
 

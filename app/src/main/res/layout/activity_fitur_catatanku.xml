@@ -40,7 +40,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select your meal time to add notes"
+                android:layout_marginHorizontal="20dp"
+                android:text="Pilih waktu makan untuk membuat catatan"
+                android:textAlignment="center"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="16sp"
                 android:textColor="@color/birutua"
@@ -267,24 +269,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp">
 
-                <Button
-                    android:id="@+id/btn_recent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="46dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/button_birutua"
-                    android:text="  Recent"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="14sp"
-                    android:textColor="@color/birucerah"
-                    android:drawableStart="@drawable/icon_recent"
-                    android:paddingHorizontal="20dp"
-                    android:textAllCaps="false"
-                    android:gravity="start|center_vertical"
-                    />
+<!--                <Button-->
+<!--                    android:id="@+id/btn_recent"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="46dp"-->
+<!--                    android:layout_marginVertical="10dp"-->
+<!--                    android:background="@drawable/button_birutua"-->
+<!--                    android:text="  Recent"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textColor="@color/birucerah"-->
+<!--                    android:drawableStart="@drawable/icon_recent"-->
+<!--                    android:paddingHorizontal="20dp"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:gravity="start|center_vertical"-->
+<!--                    />-->
 
                 <Button
                     android:id="@+id/btn_hs_catatan"
@@ -292,7 +293,7 @@
                     android:layout_height="46dp"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/button_birucerah"
-                    android:text="  History"
+                    android:text="  Riwayat"
                     android:fontFamily="@font/poppins_regular"
                     android:textSize="14sp"
                     android:textColor="@color/birutua"

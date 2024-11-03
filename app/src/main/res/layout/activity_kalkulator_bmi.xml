@@ -243,29 +243,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_recent_bmi"
-                    android:layout_width="100dp"
-                    android:layout_height="46dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/button_birutua"
-                    android:text="  Recent"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="14sp"
-                    android:textColor="@color/birucerah"
-                    android:drawableStart="@drawable/icon_recent"
-                    android:paddingLeft="15dp"
-                    android:textAllCaps="false"
-                    android:gravity="start|center_vertical"/>
+<!--                <Button-->
+<!--                    android:id="@+id/btn_recent_bmi"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="46dp"-->
+<!--                    android:layout_marginVertical="10dp"-->
+<!--                    android:background="@drawable/button_birutua"-->
+<!--                    android:text="  Recent"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textColor="@color/birucerah"-->
+<!--                    android:drawableStart="@drawable/icon_recent"-->
+<!--                    android:paddingLeft="15dp"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:gravity="start|center_vertical"/>-->
 
                 <Button
                     android:id="@+id/btn_hs_bmi"
                     android:layout_width="100dp"
                     android:layout_height="46dp"
                     android:layout_marginVertical="10dp"
-                    android:layout_marginLeft="10dp"
                     android:background="@drawable/button_birucerah"
-                    android:text="  History"
+                    android:text="  Riwayat"
                     android:fontFamily="@font/poppins_regular"
                     android:textSize="14sp"
                     android:textColor="@color/birutua"

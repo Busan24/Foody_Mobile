@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="See your growt and get\nconsulting support!"
+            android:text="Pantau pertumbuhan dan\nperkembangan Anda"
             android:textAlignment="center"
             android:fontFamily="@font/poppins_light"
             android:textColor="@color/abupucet"
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No account?"
+            android:text="Belum memiliki akun?"
             android:textColor="@color/abupucet"
             android:textSize="13dp" />
         <TextView
@@ -135,57 +135,57 @@
         android:paddingTop="20dp"
         android:textAlignment="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="This site is protected by reCAPTHA and  the Google"
-            android:textColor="@color/abupucet"
-            android:textSize="13dp" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="This site is protected by reCAPTHA and  the Google"-->
+<!--            android:textColor="@color/abupucet"-->
+<!--            android:textSize="13dp" />-->
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ly_4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/ly_3"
-        android:gravity="center"
-        android:textAlignment="center">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ly_4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_below="@id/ly_3"-->
+<!--        android:gravity="center"-->
+<!--        android:textAlignment="center">-->
 
-        <TextView
-            android:id="@+id/privacy_police"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Privacy police"
-            android:textColor="@color/birutua"
-            android:textSize="13dp"
-            android:textStyle="bold"/>
+<!--        <TextView-->
+<!--            android:id="@+id/privacy_police"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Privacy police"-->
+<!--            android:textColor="@color/birutua"-->
+<!--            android:textSize="13dp"-->
+<!--            android:textStyle="bold"/>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" and"
-            android:textColor="@color/abupucet"
-            android:textSize="13dp" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=" and"-->
+<!--            android:textColor="@color/abupucet"-->
+<!--            android:textSize="13dp" />-->
 
-        <TextView
-            android:id="@+id/tm_service"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Tearms of Service"
-            android:textColor="@color/birutua"
-            android:textSize="13dp"
-            android:textStyle="bold"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tm_service"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=" Tearms of Service"-->
+<!--            android:textColor="@color/birutua"-->
+<!--            android:textSize="13dp"-->
+<!--            android:textStyle="bold"/>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" apply"
-            android:textColor="@color/abupucet"
-            android:textSize="13dp" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=" apply"-->
+<!--            android:textColor="@color/abupucet"-->
+<!--            android:textSize="13dp" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
 </RelativeLayout>

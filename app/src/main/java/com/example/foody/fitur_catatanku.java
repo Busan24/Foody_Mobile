@@ -14,7 +14,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -200,6 +202,51 @@ public class fitur_catatanku extends AdsActivity {
         // Mengakses elemen-elemen dalam dialog
         LinearLayout bgPopup = myDialog.findViewById(R.id.bg_popup);
         TextView txtNyatatHari = myDialog.findViewById(R.id.txt_nyatat_hari);
+        TextView collapseButton = myDialog.findViewById(R.id.collapse_data);
+        LinearLayout dataWarapper = myDialog.findViewById(R.id.data_wraper);
+        EditText namaMakanan = myDialog.findViewById(R.id.nama_makanan);
+        Button generateMakanan = myDialog.findViewById(R.id.btn_generate_makanan);
+
+        namaMakanan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Tidak perlu diisi jika tidak digunakan
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Setiap kali teks berubah, sembunyikan tombol
+                generateMakanan.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Tidak perlu diisi jika tidak digunakan
+            }
+        });
+
+        // Buka data makana ketika diklik
+        collapseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dataWarapper.getHeight() != 0) {
+                    ViewGroup.LayoutParams params = dataWarapper.getLayoutParams();
+                    params.height = 0;
+
+                    collapseButton.setText("Lihat Detail");
+                    collapseButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.icon_keyboard_down_24, 0);
+                }
+
+                else {
+                    ViewGroup.LayoutParams params = dataWarapper.getLayoutParams();
+                    params.height = LayoutParams.WRAP_CONTENT;
+
+                    collapseButton.setText("Sembunyikan Detail");
+                    collapseButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.icon_keyboard_up_24, 0);
+                }
+
+            }
+        });
 
         // Mengubah teks dan latar belakang sesuai dengan tombol yang ditekan
         txtNyatatHari.setText(text);
@@ -265,42 +312,49 @@ public class fitur_catatanku extends AdsActivity {
                 if (TextUtils.isEmpty(namaMakanan)) {
                     edtNamaMakanan.setError("Nama Makanan harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Nama Makanan harus diisi", Toast.LENGTH_SHORT).show();
+                    showDetail();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahKarbohidratStr)) {
                     edtJumlahKarbohidrat.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Karbohidrat harus diisi", Toast.LENGTH_SHORT).show();
+                    showDetail();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahProteinStr)) {
                     edtJumlahProtein.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Protein harus diisi", Toast.LENGTH_SHORT).show();
+                    showDetail();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahLemakStr)) {
                     edtJumlahLemak.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Lemak harus diisi", Toast.LENGTH_SHORT).show();
+                    showDetail();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahGulaStr)) {
                     edtJumlahGula.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Gula harus diisi", Toast.LENGTH_SHORT).show();
+                    showDetail();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahGaramStr)) {
                     edtJumlahGaram.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Garam harus diisi", Toast.LENGTH_SHORT).show();
+                    showDetail();
                     return;
                 }
 
                 if (TextUtils.isEmpty(jumlahPorsiStr)) {
                     edtJumlahPorsi.setError("Jumlah Porsi harus diisi");
                     Toast.makeText(fitur_catatanku.this, "Jumlah Porsi harus diisi", Toast.LENGTH_SHORT).show();
+                    showDetail();
                     return;
                 }
 
@@ -326,6 +380,14 @@ public class fitur_catatanku extends AdsActivity {
 
                 // Panggil Retrofit untuk menyimpan catatan makanan
                 simpanCatatanMakanan(catatanMakanan);
+            }
+
+            public void showDetail() {
+                ViewGroup.LayoutParams params = dataWarapper.getLayoutParams();
+                params.height = LayoutParams.WRAP_CONTENT;
+
+                collapseButton.setText("Sembunyikan Detail");
+                collapseButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.icon_keyboard_up_24, 0);
             }
         });
 
@@ -387,17 +449,23 @@ public class fitur_catatanku extends AdsActivity {
                             edtJumlahPorsi.setText(String.valueOf(1));
 
                             // Menutup loading dialog dengan penundaan
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    loadingDialog.dismiss();
+//                            new Handler().postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    loadingDialog.dismiss();
+//
+//                                    // Tampilkan dialog sukses setelah penutupan dialog loading
+////                                    showSuccessDialog();
+//
+//                                }
+//                            }, DELAY_MILLIS);
+                            loadingDialog.dismiss();
 
-                                    // Tampilkan dialog sukses setelah penutupan dialog loading
-//                                    showSuccessDialog();
+                            ViewGroup.LayoutParams params = dataWarapper.getLayoutParams();
+                            params.height = LayoutParams.WRAP_CONTENT;
 
-                                }
-                            }, DELAY_MILLIS);
-
+                            collapseButton.setText("Sembunyikan Detail");
+                            collapseButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.icon_keyboard_up_24, 0);
 
                         }
 
@@ -577,7 +645,7 @@ public class fitur_catatanku extends AdsActivity {
                                 }
 
                                 if (kelebihan.size() == 2) {
-                                    kandungan += kelebihan.get(0) + " dan " + kelebihan;
+                                    kandungan += kelebihan.get(0) + " dan " + kelebihan.get(1);
                                 }
 
                                 else {
