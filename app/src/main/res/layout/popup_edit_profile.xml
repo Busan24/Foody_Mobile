@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".PopupEditProfileActivity"
     android:id="@+id/bg_popup_ep"
+    android:orientation="vertical"
     android:background="@drawable/pp_putih"
-    android:orientation="vertical">
+    tools:context=".PopupEditProfileActivity"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"

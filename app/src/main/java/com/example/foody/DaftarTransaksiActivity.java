@@ -2,7 +2,6 @@ package com.example.foody;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +34,6 @@ public class DaftarTransaksiActivity extends AdsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         getLayoutInflater().inflate(R.layout.activity_daftar_transaksi, findViewById(R.id.content_frame));
 //        setContentView(R.layout.activity_daftar_transaksi);
 
