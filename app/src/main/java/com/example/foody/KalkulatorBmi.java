@@ -92,20 +92,24 @@ public class KalkulatorBmi extends AdsActivity implements BmiRecentAdapter.OnDel
                     Intent intent = new Intent(KalkulatorBmi.this, HomeFoodyActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_catatanku) {
                     Intent intent = new Intent(KalkulatorBmi.this, fitur_catatanku.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_kalkulator) {
                     return true;
                 } else if (item.getItemId() == R.id.nav_makanan) {
                     Intent intent = new Intent(KalkulatorBmi.this, FiturMakanan.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_profil) {
                     Intent intent = new Intent(KalkulatorBmi.this, FiturProfil.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 }
                 return true;
             }

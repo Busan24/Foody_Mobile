@@ -37,6 +37,7 @@ public class VerifikasiOtp extends AppCompatActivity {
 //    private ProgressBar otpProgressBar;
 
     private TextView kirimUlangOtp;
+    private TextView logout;
     private CountDownTimer countDownTimer;
     private long timeLeftInMilliseconds = 60000;
 
@@ -65,6 +66,7 @@ public class VerifikasiOtp extends AppCompatActivity {
         // Menangani klik tombol verifikasi
 
         kirimUlangOtp = findViewById(R.id.kirim_ulang_otp);
+        logout = findViewById(R.id.logout);
 
         if (!isResendClicked) {
             // Jika belum, maka mulai countdown
@@ -72,7 +74,12 @@ public class VerifikasiOtp extends AppCompatActivity {
             updateCountdownText();
         }
 
-
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logoutUser(getAuthToken());
+            }
+        });
 
         kirimUlangOtp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -393,7 +400,67 @@ public class VerifikasiOtp extends AppCompatActivity {
         });
     }
 
+    private void logoutUser(String authToken) {
+        // Mendapatkan objek ApiService
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
+        // Melakukan permintaan logout
+        Call<Void> call = apiService.logoutUser("Bearer " + authToken);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    // Mendapatkan objek SharedPreferences
+//                    SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+//
+//                    // Menghapus preferensi login
+//                    SharedPreferences.Editor editor = sharedPreferences.edit();
+//                    editor.remove("is_logged_in");
+//                    editor.apply();
+//                    // Jika logout berhasil, pindah ke halaman hal_awal
+//                    Toast.makeText(VerifikasiOtp.this, "Logout berhasil!", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(VerifikasiOtp.this, hal_awal.class);
+//                    startActivity(intent);
+//                    finish(); // Menutup activity saat ini agar tidak dapat kembali ke VerifikasiOtp melalui tombol back
+                } else {
+                    // Tangani kesalahan pada respons
+//                    Toast.makeText(VerifikasiOtp.this, "Logout gagal. Coba lagi.", Toast.LENGTH_SHORT).show();
+                }
+                SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+
+                // Menghapus preferensi login
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("is_logged_in");
+                editor.apply();
+                // Jika logout berhasil, pindah ke halaman hal_awal
+                Toast.makeText(VerifikasiOtp.this, "Logout berhasil!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(VerifikasiOtp.this, hal_awal.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                // Tangani kesalahan pada permintaan
+//                Toast.makeText(VerifikasiOtp.this, "Logout gagal. Periksa koneksi internet Anda.", Toast.LENGTH_SHORT).show();
+
+                // Tambahkan log untuk melihat kesalahan pada logcat
+//                Log.e("Logout Error", "Logout gagal", t);
+                SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+
+                // Menghapus preferensi login
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("is_logged_in");
+                editor.apply();
+                // Jika logout berhasil, pindah ke halaman hal_awal
+                Toast.makeText(VerifikasiOtp.this, "Logout berhasil!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(VerifikasiOtp.this, hal_awal.class);
+                startActivity(intent);
+                finish();
+            }
+
+        });
+    }
 
     private String getAuthToken() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("auth_token", MODE_PRIVATE);

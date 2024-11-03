@@ -138,16 +138,19 @@ public class FiturMakanan extends AdsActivity {
                     Intent intent = new Intent(FiturMakanan.this, HomeFoodyActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_catatanku) {
                     // Buka halaman activity_fitur_catatanku
                     Intent intent = new Intent(FiturMakanan.this, fitur_catatanku.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_kalkulator) {
                     // Buka halaman KalkulatorBmi
                     Intent intent = new Intent(FiturMakanan.this, KalkulatorBmi.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_makanan) {
                     // Buka halaman FiturMakanan
                     return true;
@@ -156,6 +159,7 @@ public class FiturMakanan extends AdsActivity {
                     Intent intent = new Intent(FiturMakanan.this, FiturProfil.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 }
                 return true;
             }

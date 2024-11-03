@@ -17,5 +17,6 @@ public class hal_awal extends AppCompatActivity {
     public void startMainActivity(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }

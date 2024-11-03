@@ -50,7 +50,7 @@ public class registrasi extends AppCompatActivity {
         TextView loginTextView = findViewById(R.id.text_login);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Checking registration...");
+        progressDialog.setMessage("Meregistrasi pengguna...");
         progressDialog.setCancelable(false);
 
         loginTextView.setOnClickListener(new View.OnClickListener() {
@@ -216,7 +216,6 @@ public class registrasi extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog.show();
 
                 EditText nameEditText = findViewById(R.id.name_regis);
                 EditText emailEditText = findViewById(R.id.email_regis);
@@ -298,6 +297,7 @@ public class registrasi extends AppCompatActivity {
                     Toast.makeText(registrasi.this, "Tanggal lahir belum diisi", Toast.LENGTH_SHORT).show();
                 } else {
                     // Semua validasi berhasil, lanjutkan dengan pendaftaran
+                    progressDialog.show();
                     RegistrationRequestModel requestModel = new RegistrationRequestModel(name, email, password, jenisKelamin, tanggalLahir, aktivitas, tinggiBadan, beratBadan);
                     Call<RegistrationRequestModel> call = apiService.registerUser(requestModel);
                     call.enqueue(new Callback<RegistrationRequestModel>() {
@@ -332,9 +332,9 @@ public class registrasi extends AppCompatActivity {
                                     ApiError<?> errorResponse = new Gson().fromJson(response.errorBody().string(), ApiError.class);
 
                                     if (errorResponse != null) {
-                                        if (errorResponse.getMessage() != null && errorResponse.getMessage() instanceof Map) {
+                                        if (errorResponse.getError() != null && errorResponse.getError() instanceof Map) {
                                             // Menampilkan pesan kesalahan spesifik untuk email dan username
-                                            Map<String, List<String>> errorMap = (Map<String, List<String>>) errorResponse.getMessage();
+                                            Map<String, List<String>> errorMap = (Map<String, List<String>>) errorResponse.getError();
                                             if (errorMap.containsKey("email")) {
                                                 String emailError = errorMap.get("email").get(0);
                                                 Toast.makeText(registrasi.this, "Email sudah terpakai", Toast.LENGTH_SHORT).show();
@@ -398,6 +398,8 @@ public class registrasi extends AppCompatActivity {
                         // Misalnya, Anda dapat menyimpan token atau ID pengguna di sini
                         // ...
                         saveAuthToken(token);
+                        saveLoginStatus(true);
+                        saveVerifiedStatus(false);
 
                         // Lanjutkan dengan perpindahan ke halaman berikutnya setelah login berhasil
                         Intent intent = new Intent(registrasi.this, VerifikasiOtp.class);
@@ -433,6 +435,20 @@ public class registrasi extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("auth_token", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token", token);
+        editor.apply();
+    }
+
+    private void saveLoginStatus(boolean status) {
+        SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("is_logged_in", status);
+        editor.apply();
+    }
+
+    private void saveVerifiedStatus(boolean verified) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("verified_status", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("is_verified", verified);
         editor.apply();
     }
 

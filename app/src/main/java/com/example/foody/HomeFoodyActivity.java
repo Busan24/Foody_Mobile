@@ -462,21 +462,25 @@ public class HomeFoodyActivity extends AdsActivity {
                     Intent intent = new Intent(HomeFoodyActivity.this, fitur_catatanku.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_kalkulator) {
                     // Buka halaman KalkulatorBmi
                     Intent intent = new Intent(HomeFoodyActivity.this, KalkulatorBmi.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_makanan) {
                     // Buka halaman FiturMakanan
                     Intent intent = new Intent(HomeFoodyActivity.this, FiturMakanan.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_profil) {
                     // Buka halaman FiturProfil
                     Intent intent = new Intent(HomeFoodyActivity.this, FiturProfil.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 }
                 return true;
             }
@@ -636,7 +640,7 @@ public class HomeFoodyActivity extends AdsActivity {
                     if (!userData.isVerified()) {
                         Intent intent = new Intent(HomeFoodyActivity.this, VerifikasiOtp.class);
                         startActivity(intent);
-                        overridePendingTransition(0, 0);
+                        finish();
                     }
 
                     // Save premium status

@@ -10,13 +10,14 @@
 
    <ImageView
        android:layout_width="wrap_content"
-       android:layout_height="370dp"
+       android:layout_height="300dp"
        android:src="@drawable/verif_otp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="VERIFIKASI OTP"
+        android:fontFamily="@font/poppins_medium"
         android:textSize="24dp"
         android:textStyle="bold"
         android:textColor="@color/birutua"
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Silakan Masukkan Kode Anda yang telah kami\n kirimkan kepada Anda"
         android:textAlignment="center"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="15dp"
         android:textColor="@color/birutua"
         android:layout_gravity="center"
@@ -37,6 +39,7 @@
         android:layout_height="wrap_content"
         android:text="Alamat Email:"
         android:textAlignment="center"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="15dp"
         android:textColor="@color/birutua"
         android:layout_gravity="center"
@@ -49,6 +52,7 @@
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="15dp"
+        android:fontFamily="@font/poppins_regular"
         android:textColor="@color/birutua"
         android:text="texxxt@gmail.com"
         />
@@ -61,17 +65,19 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="30dp"
-        android:gravity="center">
+        android:gravity="center"
+        >
 
         <EditText
             android:id="@+id/verif_otp_email1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/abupucetcerah"
+            android:background="@drawable/bg_abu_rounded"
             android:gravity="center"
             android:inputType="number"
             android:maxLines="1"
             android:textColor="@color/birutua"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="24dp"
             android:textStyle="bold"
             android:layout_marginEnd="10dp"
@@ -81,11 +87,12 @@
             android:id="@+id/verif_otp_email2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/abupucetcerah"
+            android:background="@drawable/bg_abu_rounded"
             android:gravity="center"
             android:inputType="number"
             android:maxLines="1"
             android:textColor="@color/birutua"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="24dp"
             android:textStyle="bold"
             android:layout_marginEnd="10dp"
@@ -95,28 +102,30 @@
             android:id="@+id/verif_otp_email3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/abupucetcerah"
+            android:background="@drawable/bg_abu_rounded"
             android:gravity="center"
             android:inputType="number"
             android:maxLines="1"
             android:textColor="@color/birutua"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="24dp"
             android:textStyle="bold"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"/>
+
         <EditText
             android:id="@+id/verif_otp_email4"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/abupucetcerah"
+            android:layout_weight="1"
+            android:background="@drawable/bg_abu_rounded"
+            android:fontFamily="@font/poppins_regular"
             android:gravity="center"
             android:inputType="number"
             android:maxLines="1"
             android:textColor="@color/birutua"
             android:textSize="24dp"
-            android:textStyle="bold"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -149,6 +158,7 @@
         android:height="65dp"
         android:text="Verifikasi"
         android:textSize="20dp"
+        android:fontFamily="@font/poppins_medium"
         android:textColor="@color/birucerah"
         android:background="@drawable/button_birutua"
         android:layout_marginTop="20dp"/>
@@ -176,6 +186,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kirim Ulang"
+            android:textColor="@color/birutua"
+            android:textSize="13dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
             android:textColor="@color/birutua"
             android:textSize="13dp"
             android:textStyle="bold"/>

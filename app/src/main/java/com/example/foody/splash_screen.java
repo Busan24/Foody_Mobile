@@ -20,7 +20,12 @@ public class splash_screen extends AppCompatActivity {
             public void run() {
                 // Cek status login
                 if (isLoggedIn()) {
-                    startActivity(new Intent(splash_screen.this, HomeFoodyActivity.class));
+                    if (!getVefifiedStatus()) {
+                        startActivity(new Intent(splash_screen.this, VerifikasiOtp.class));
+                    }
+                    else {
+                        startActivity(new Intent(splash_screen.this, HomeFoodyActivity.class));
+                    }
                 } else {
                     startActivity(new Intent(splash_screen.this, hal_awal.class));
                 }
@@ -32,5 +37,10 @@ public class splash_screen extends AppCompatActivity {
     private boolean isLoggedIn() {
         SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
         return sharedPreferences.getBoolean("is_logged_in", false);
+    }
+
+    private boolean getVefifiedStatus() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("verified_status", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("is_verified", false);
     }
 }

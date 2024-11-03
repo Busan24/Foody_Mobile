@@ -351,21 +351,25 @@ public class FiturProfil extends AdsActivity {
                     Intent intent = new Intent(FiturProfil.this, HomeFoodyActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_catatanku) {
                     // Buka halaman activity_fitur_catatanku
                     Intent intent = new Intent(FiturProfil.this, fitur_catatanku.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_kalkulator) {
                     // Buka halaman KalkulatorBmi
                     Intent intent = new Intent(FiturProfil.this, KalkulatorBmi.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_makanan) {
                     // Buka halaman FiturMakanan
                     Intent intent = new Intent(FiturProfil.this, FiturMakanan.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+                    finish();
                 } else if (item.getItemId() == R.id.nav_profil) {
                     // Buka halaman FiturProfil
                     return true;
@@ -526,30 +530,53 @@ public class FiturProfil extends AdsActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     // Mendapatkan objek SharedPreferences
-                    SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
-
-                    // Menghapus preferensi login
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.remove("is_logged_in");
-                    editor.apply();
-                    // Jika logout berhasil, pindah ke halaman hal_awal
-                    Toast.makeText(FiturProfil.this, "Logout berhasil!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(FiturProfil.this, hal_awal.class);
-                    startActivity(intent);
-                    finish(); // Menutup activity saat ini agar tidak dapat kembali ke FiturProfil melalui tombol back
+//                    SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+//
+//                    // Menghapus preferensi login
+//                    SharedPreferences.Editor editor = sharedPreferences.edit();
+//                    editor.remove("is_logged_in");
+//                    editor.apply();
+//                    // Jika logout berhasil, pindah ke halaman hal_awal
+//                    Toast.makeText(FiturProfil.this, "Logout berhasil!", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(FiturProfil.this, hal_awal.class);
+//                    startActivity(intent);
+//                    finish(); // Menutup activity saat ini agar tidak dapat kembali ke FiturProfil melalui tombol back
                 } else {
                     // Tangani kesalahan pada respons
-                    Toast.makeText(FiturProfil.this, "Logout gagal. Coba lagi.", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(FiturProfil.this, "Logout gagal. Coba lagi.", Toast.LENGTH_SHORT).show();
                 }
+                SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+
+                // Menghapus preferensi login
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("is_logged_in");
+                editor.apply();
+                // Jika logout berhasil, pindah ke halaman hal_awal
+                Toast.makeText(FiturProfil.this, "Logout berhasil!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(FiturProfil.this, hal_awal.class);
+                startActivity(intent);
+                finish(); // Menutup activity saat i
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 // Tangani kesalahan pada permintaan
-                Toast.makeText(FiturProfil.this, "Logout gagal. Periksa koneksi internet Anda.", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(FiturProfil.this, "Logout gagal. Periksa koneksi internet Anda.", Toast.LENGTH_SHORT).show();
+//
+//                // Tambahkan log untuk melihat kesalahan pada logcat
+//                Log.e("Logout Error", "Logout gagal", t);
 
-                // Tambahkan log untuk melihat kesalahan pada logcat
-                Log.e("Logout Error", "Logout gagal", t);
+                SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+
+                // Menghapus preferensi login
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("is_logged_in");
+                editor.apply();
+                // Jika logout berhasil, pindah ke halaman hal_awal
+                Toast.makeText(FiturProfil.this, "Logout berhasil!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(FiturProfil.this, hal_awal.class);
+                startActivity(intent);
+                finish(); // Menutup activity saat i
             }
 
         });
