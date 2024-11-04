@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.foody"
+    namespace = "com.orion.foody"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.foody"
+        applicationId = "com.orion.foody"
         minSdk = 24
         targetSdk = 34
         versionCode = 2
