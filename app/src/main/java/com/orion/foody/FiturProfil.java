@@ -339,7 +339,7 @@ public class FiturProfil extends AdsActivity {
 
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        bottomNavigationView.setSelectedItemId(R.id.nav_profil);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() { // Ganti menjadi setOnItemSelectedListener
             @Override

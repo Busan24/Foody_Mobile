@@ -4,25 +4,25 @@
     <item
         android:id="@+id/nav_home"
         android:title="Home"
-        android:icon="@drawable/home_outline" />
+        android:icon="@drawable/nav_home_selector" />
 
     <item
         android:id="@+id/nav_catatanku"
         android:title="Catatanku"
-        android:icon="@drawable/nav_catatan_outline" />
+        android:icon="@drawable/nav_catatan_selector" />
 
     <item
         android:id="@+id/nav_kalkulator"
         android:title="Kalkulator"
-        android:icon="@drawable/nav_calc_outline"/>
+        android:icon="@drawable/nav_calcul_selector"/>
 
     <item
         android:id="@+id/nav_makanan"
         android:title="Makanan"
-        android:icon="@drawable/food_outline"/>
+        android:icon="@drawable/nav_food_selector"/>
 
     <item
         android:id="@+id/nav_profil"
         android:title="Profil"
-        android:icon="@drawable/nav_user_outline"/>
+        android:icon="@drawable/nav_user_selector"/>
 </menu>

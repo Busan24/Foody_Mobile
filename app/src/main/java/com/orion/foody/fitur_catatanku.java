@@ -114,7 +114,7 @@ public class fitur_catatanku extends AdsActivity {
 
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        bottomNavigationView.setSelectedItemId(R.id.nav_catatanku);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() { // Ganti menjadi setOnItemSelectedListener
             @Override

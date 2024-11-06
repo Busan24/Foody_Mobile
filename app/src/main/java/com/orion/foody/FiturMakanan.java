@@ -51,7 +51,7 @@ public class FiturMakanan extends AdsActivity {
 //        setContentView(R.layout.activity_fitur_makanan);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        bottomNavigationView.setSelectedItemId(R.id.nav_makanan);
 
         tinggiKarbohidrat = findViewById(R.id.tinggi_karbohidrat);
         tinggiProtein   =  findViewById(R.id.tinggi_protein);
