@@ -173,7 +173,7 @@ public class PremiumActivity extends AppCompatActivity {
 
 //                    Toast.makeText(PremiumActivity.this, "Transaksi Berhasil dibuat: " + transaksi.getSnap_token(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(PremiumActivity.this, TransaksiActivity.class);
-                    intent.putExtra("URL", "https://api-test.foody.web.id/api/v1/transaksi/bayar/" + transaksi.getId());
+                    intent.putExtra("URL", "https://foody.web.id/api/v1/transaksi/bayar/" + transaksi.getId());
                     startActivity(intent);
                 }
                 else {

@@ -112,6 +112,9 @@ public interface ApiService {
     @GET("makanan/rekomendasi")
     Call<ApiResponse<MakananModel>> getRekomendasiMakanan(@Header("Authorization") String authToken);
 
+    @GET("release/latest")
+    Call<ApiResponse<NewReleaseModel>> getLatestVersion(@Header("Authorization") String authToken);
+
     @PUT("user/password")
     Call<ApiResponse<UserData>> changePassword(
             @Header("Authorization")  String authToken,

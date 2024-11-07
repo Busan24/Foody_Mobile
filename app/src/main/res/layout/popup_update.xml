@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/rocket_update"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:text="Update Tersedia!"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/birutua"
+            />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="versi"
+            android:textColor="@color/abupucet"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_medium"
+            />
+
+<!--        <TextView-->
+<!--            android:id="@+id/nama_makanan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Nama Makanan"-->
+<!--            android:textSize="18sp"-->
+<!--            android:fontFamily="@font/poppins_medium"-->
+<!--            android:textColor="@color/birutua"-->
+<!--            />-->
+
+        <TextView
+            android:id="@+id/chanagelog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Segera update untuk mendapatkan fitur terbaru!"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            />
+
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:text="Update Sekarang"
+            android:textColor="@color/birucerah"
+            android:textAllCaps="false"
+            android:background="@drawable/button_birutua"
+            />
+
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="Nanti"
+            android:textColor="@color/abupucet"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_bold"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
