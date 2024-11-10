@@ -399,10 +399,10 @@ public class registrasi extends AppCompatActivity {
                         // ...
                         saveAuthToken(token);
                         saveLoginStatus(true);
-                        saveVerifiedStatus(false);
+                        saveVerifiedStatus(true);
 
                         // Lanjutkan dengan perpindahan ke halaman berikutnya setelah login berhasil
-                        Intent intent = new Intent(registrasi.this, VerifikasiOtp.class);
+                        Intent intent = new Intent(registrasi.this, HomeFoodyActivity.class);
                         startActivity(intent);
                         finish();
                     } else {

@@ -81,7 +81,13 @@ public class HomeFoodyActivity extends AdsActivity {
 
         gotoPremium = findViewById(R.id.goto_premium);
 
-        ImageView gotoPremium = findViewById(R.id.goto_premium);
+        gotoPremium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeFoodyActivity.this, PremiumActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //      BAGIAN REKOMENDASI RPODUK AKHIR
 
@@ -165,11 +171,11 @@ public class HomeFoodyActivity extends AdsActivity {
 //                    tampilkanProfil(userData);
 
                     Log.d("Verification Status", "User isVerified: " + userData.isVerified());
-                    if (!userData.isVerified()) {
-                        Intent intent = new Intent(HomeFoodyActivity.this, VerifikasiOtp.class);
-                        startActivity(intent);
-                        finish();
-                    }
+//                    if (!userData.isVerified()) {
+//                        Intent intent = new Intent(HomeFoodyActivity.this, VerifikasiOtp.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
 
                     // Save premium status
                     savePremiumStatus(userData.isPremium());
@@ -177,7 +183,7 @@ public class HomeFoodyActivity extends AdsActivity {
                         gotoPremium.setImageResource(R.drawable.icon_foody_premium);
                     }
 //
-                    saveVerifiedStatus(userData.isVerified());
+                    saveVerifiedStatus(true);
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
